@@ -1,0 +1,26 @@
+{
+  "series": 24,
+  "trace_rows": 12312,
+  "pair_rows": 6144,
+  "methods": [
+    "CHB",
+    "HB",
+    "GD",
+    "NAG-Q"
+  ],
+  "new_full_trajectories": 24,
+  "reused_baseline_series": 12,
+  "synthetic_baseline_objective_available_at": [
+    0,
+    1,
+    2,
+    15,
+    16,
+    63,
+    64,
+    511,
+    512
+  ],
+  "baseline_recomputed": false,
+  "unreported_synthetic_objective_points": "missing; no interpolation"
+}

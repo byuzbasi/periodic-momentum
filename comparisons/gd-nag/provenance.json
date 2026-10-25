@@ -1,0 +1,21 @@
+{
+  "study": "GD and quadratically tuned Nesterov comparison",
+  "accepted_full_trajectories": 24,
+  "accepted_prefix_checks": 4,
+  "recorded_total_gradient_updates": 12296,
+  "accepted_record_files_byte_identical_to_original": 28,
+  "reporting_files_byte_identical_to_original": 7,
+  "mathematical_adapter_functions_AST_identical": true,
+  "design_counter_and_numerical_quality_functions_AST_identical": true,
+  "configuration_scientific_fields_unchanged": true,
+  "configuration_path_field_adapted": true,
+  "publication_changes": [
+    "Repository-relative file access",
+    "Accepted records separated from fresh replay outputs",
+    "Portable integrity manifest for accepted records",
+    "Public documentation and saved-output figures"
+  ],
+  "original_study_configuration_sha256": "e9ad947a31878df35cd582a4fccee3ced0b6d178f6120493deb1404830e545d0",
+  "publication_reran_optimizer": false,
+  "fresh_relocated_numerical_replay_performed": false
+}

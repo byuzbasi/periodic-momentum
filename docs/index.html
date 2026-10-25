@@ -107,7 +107,7 @@
     <section class="evidence-section section-shell" id="evidence" aria-labelledby="evidence-title">
       <div class="evidence-heading">
         <div><p class="eyebrow"><span class="section-number">02</span> THE EVIDENCE</p><h2 id="evidence-title">See the scale.<br>Read the transients.</h2></div>
-        <p class="section-deck">Three figures from the existing study. The computations illustrate the theory and the limits of a comparison at a fixed iteration horizon.</p>
+        <p class="section-deck">The original three CHB/HB illustrations are retained below. <a href="#four-methods">The added GD/Nesterov comparison</a> shows why distance, objective gap and query phase must be assessed together.</p>
       </div>
       <div class="figure-tabs" role="tablist" aria-label="Numerical illustrations">
         <button type="button" role="tab" id="tab-scaling" aria-controls="panel-scaling" aria-selected="true">01 <span>Fourth-power scaling</span></button>
@@ -146,6 +146,30 @@
       <noscript><p class="reading-note">JavaScript is disabled. All three illustrations are shown in order.</p></noscript>
     </section>
 
+    <section class="four-methods section-shell" id="four-methods" aria-labelledby="four-methods-title">
+      <p class="eyebrow">FOUR-METHOD COMPARISON</p>
+      <h2 id="four-methods-title">Compare the distance.<br>Check the objective.</h2>
+      <p class="section-deck">The saved study adds gradient descent (GD) and quadratically tuned Nesterov (NAG-Q) to CHB and HB. Synthetic endpoint distances favor CHB. The Yacht results show the limits of that finite-horizon advantage.</p>
+      <div class="comparison-table-scroll">
+        <table class="comparison-table">
+          <caption>Yacht, exact gradients. D is normalized solution distance; F is normalized objective gap. Smaller values are better.</caption>
+          <thead><tr><th scope="col">Method</th><th scope="col">D at query 511</th><th scope="col">D at query 512</th><th scope="col">F at query 512</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">CHB</th><td>0.22294</td><td>0.07590</td><td>18.37566</td></tr>
+            <tr><th scope="row">HB</th><td>0.20833</td><td>0.20709</td><td>142.46357</td></tr>
+            <tr><th scope="row">GD</th><td>0.84306</td><td>0.84278</td><td>0.79976</td></tr>
+            <tr><th scope="row">NAG-Q</th><td>0.10645</td><td>0.10569</td><td>0.002256</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="comparison-figure">
+        <img src="assets/figures/gd-nag-objective.svg" loading="lazy" alt="Yacht normalized objective gaps for CHB, HB, GD and NAG-Q. NAG-Q is below CHB at every positive query under exact and scalar-half gradients.">
+        <figcaption>Yacht objective gaps on a log scale: exact gradients (left), scalar-half relative errors (right). A value of zero on the vertical axis denotes the initial gap.</figcaption>
+      </figure>
+      <p class="reading-note"><span>Distance and objective differ</span> NAG-Q has smaller objective gaps than CHB at all 512 positive queries under both shared policies. Its exact-gradient terminal gap is about 8145 times smaller. CHB has a smaller distance at query 512, but the larger distance in the final odd/even pair favors NAG-Q by about 2.09. These observations do not imply general empirical superiority.</p>
+      <p class="comparison-links"><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/tree/main/comparisons/gd-nag">Code, configuration and accepted results ↗</a><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/blob/main/comparisons/gd-nag/RESULTS.md">Full comparison tables ↗</a></p>
+    </section>
+
     <section class="reproduce-section" id="reproduce" aria-labelledby="reproduce-title">
       <div class="section-shell reproduction-layout">
         <div class="reproduction-copy">
@@ -164,9 +188,13 @@ python3 -m venv .venv
 # Validate saved records; no optimizer updates
 .venv/bin/python scripts/reproduce.py check --out outputs/check_01
 
-# Recreate reporting data and figures
+# Recreate the original reporting data and figures
 .venv/bin/python scripts/reproduce.py export --out outputs/report_01
-.venv/bin/python scripts/reproduce.py figures --analysis outputs/report_01 --out outputs/figures_01</code></pre>
+.venv/bin/python scripts/reproduce.py figures --analysis outputs/report_01 --out outputs/figures_01
+
+# Check GD/Nesterov records and recreate their tables
+.venv/bin/python -B comparisons/gd-nag/run_pilot.py verify
+.venv/bin/python -B comparisons/gd-nag/report.py --out outputs/gd_nag_reports</code></pre>
           <p class="commands-footnote">Use an existing environment with mpmath 1.3.0 if preferred. Figure rendering requires R with Cairo. Each output directory must be new.</p>
           <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
         </div>
@@ -175,9 +203,9 @@ python3 -m venv .venv
         <p><strong>13 + 16</strong><span>Synthetic work units + Yacht records checked</span></p>
         <p><strong>5 + 2</strong><span>CSV reports + JSON diagnostics matched</span></p>
         <p><strong>8 updates</strong><span>Four state transitions + four gradient updates</span></p>
-        <p><strong>3 figures</strong><span>Drawing content matched the manuscript</span></p>
+        <p><strong>3 figures</strong><span>Original CHB/HB drawing content checked</span></p>
       </div>
-      <p class="section-shell validation-scope">Verification covers saved-output reporting and selected two-step prefixes. The adapted complete numerical replay has not been run end to end. The guide documents its separate command and the limits of the checks.</p>
+      <p class="section-shell validation-scope">The original validation covers saved-output reporting and selected two-step prefixes. The additional GD/NAG-Q records and four-method reports are checked separately without optimizer updates. The adapted complete numerical replay has not been run end to end. The guide documents its separate command and the limits of the checks.</p>
     </section>
 
     <section class="study-notes section-shell" aria-labelledby="notes-title">

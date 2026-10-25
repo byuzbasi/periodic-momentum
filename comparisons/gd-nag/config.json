@@ -1,0 +1,68 @@
+{
+  "version": "gd-nag-v01",
+  "source_repository": "../..",
+  "cases": [
+    {
+      "id": "synthetic_R_half",
+      "kind": "synthetic",
+      "R": "1/2"
+    },
+    {
+      "id": "synthetic_R_eighth",
+      "kind": "synthetic",
+      "R": "1/8"
+    },
+    {
+      "id": "yacht",
+      "kind": "yacht",
+      "R": "1/2"
+    }
+  ],
+  "methods": [
+    "GD",
+    "NAG-Q"
+  ],
+  "profiles": [
+    "exact",
+    "scalar_half"
+  ],
+  "precisions": [
+    80,
+    120
+  ],
+  "horizon": 512,
+  "checkpoints": [
+    1,
+    2,
+    16,
+    64,
+    512
+  ],
+  "coefficient_policy": {
+    "GD": "alpha=2/(L+mu); beta=0",
+    "NAG-Q": "alpha=4/(3*L+mu); beta=(sqrt(3*kappa+1)-2)/(sqrt(3*kappa+1)+2)",
+    "gradient_location": "y=x+beta*(x-x_previous)",
+    "output": "x_next=y-alpha*(gradient(y)+error)",
+    "scalar_half": "error=(epsilon_upper_CHB/2)*gradient(y)",
+    "retuning": false
+  },
+  "limits": {
+    "full_trajectories": 24,
+    "main_gradient_updates": 12288,
+    "prefix_checks": 4,
+    "prefix_gradient_updates": 8,
+    "total_gradient_updates": 12296,
+    "cumulative_numerical_seconds": 120
+  },
+  "tolerances": {
+    "precision_log": "1e-45",
+    "matrix_relative": "1e-60",
+    "oracle_relative": "1e-60",
+    "comparison_log_synthetic": "1e-12",
+    "comparison_log_yacht": "1e-30"
+  },
+  "randomness": "deterministic_no_rng_no_seed",
+  "preprocessing": "unchanged raw Yacht, no intercept, scaling, regularization or split",
+  "reference_policy": "reuse saved 80/120-digit Yacht setup; no new QR or eigensolve",
+  "baseline_policy": "reuse accepted CHB/HB records; no new baseline trajectories"
+}

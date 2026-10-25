@@ -1,0 +1,26 @@
+{
+  "exact": {
+    "ln_relative_x": {
+      "NAG_Q_smaller": 411,
+      "CHB_smaller": 101,
+      "ties": 0
+    },
+    "ln_relative_f": {
+      "NAG_Q_smaller": 512,
+      "CHB_smaller": 0,
+      "ties": 0
+    }
+  },
+  "scalar_half": {
+    "ln_relative_x": {
+      "NAG_Q_smaller": 412,
+      "CHB_smaller": 100,
+      "ties": 0
+    },
+    "ln_relative_f": {
+      "NAG_Q_smaller": 512,
+      "CHB_smaller": 0,
+      "ties": 0
+    }
+  }
+}

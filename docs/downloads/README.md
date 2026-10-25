@@ -10,6 +10,11 @@ phases on the Yacht Hydrodynamics least-squares problem. The uniform vector-erro
 guarantee is a theorem in the manuscript; these selected computations do not
 establish an adversarial optimum or a general performance advantage.
 
+The four-method comparison also includes gradient descent (GD) and
+quadratically tuned Nesterov (NAG-Q). Synthetic endpoint distances favor CHB;
+on Yacht, NAG-Q has smaller objective gaps throughout the observed horizon
+under the two shared policies. See [the comparison materials](comparisons/gd-nag/).
+
 This is a collection of scripts and frozen research inputs, not an installable
 Python or R package.
 
@@ -18,7 +23,8 @@ Python or R package.
 ## Research companion website
 
 The [research website](https://byuzbasi.github.io/periodic-momentum/) presents the theorem,
-the three existing figures, their interpretation and reproduction commands.
+the original CHB/HB figures and the added GD/Nesterov comparison, with
+interpretation and reproduction commands.
 Its source is in `docs/index.html`. It can be previewed with a static web server
 and requires no build or external
 web dependencies. The download on the site contains the validated research
@@ -88,10 +94,32 @@ script's input contract.
 The figure command reads these exported CSV files only. The resulting three
 vector PDFs are in `outputs/figures_local/figures/`. Rendering never starts a
 trajectory. In the limited verification, their text and drawing commands
-matched all three manuscript figures, and their fonts were embedded.
+matched the original three CHB/HB figures, and their fonts were embedded.
+The added four-method reporting data and figures are in `comparisons/gd-nag/`.
 
 All output commands require a new directory and refuse unintended overwrites.
 Use a new output name for another reporting check.
+
+## Verify and report the GD/Nesterov comparison
+
+The [comparison directory](comparisons/gd-nag/) contains fixed configurations,
+code, 24 full accepted trajectories, four prefix records and reporting data.
+The [protocol](comparisons/gd-nag/protocol.md) and
+[results](comparisons/gd-nag/RESULTS.md) specify the scope and limitations.
+
+```bash
+cd periodic-momentum
+.venv/bin/python -B comparisons/gd-nag/run_pilot.py verify
+.venv/bin/python -B comparisons/gd-nag/report.py --out outputs/gd_nag_reports
+Rscript --vanilla comparisons/gd-nag/plot.R outputs/gd_nag_reports outputs/gd_nag_figures
+```
+
+These commands use saved results only. No optimizer step, prefix, QR solve or
+eigensolver is executed. The comparison records preserve the completed
+24-trajectory, 12,296-update study; checking them does not repeat that study.
+The original CHB/HB workflow below remains separate. A fresh comparison replay
+has its own explicit command, documented in the comparison README, and was not
+run when publishing this update.
 
 ## Optional eight-update prefix check
 
@@ -123,7 +151,7 @@ gradient updates, eight updates in total. It passed. See
 `validation/limited_check.json`. Do not interpret this limited check as a fresh
 recomputation of every 512-query result.
 
-The complete verification scope and remaining limits are recorded in
+The original CHB/HB verification scope and remaining limits are recorded in
 [`validation/summary.json`](validation/summary.json).
 
 ## Frozen design

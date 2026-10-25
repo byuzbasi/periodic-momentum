@@ -289,3 +289,20 @@ code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
   .figure-panel { break-inside: avoid; margin-bottom: 20px; }
   .result-section, .reproduce-section { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
+
+/* Four-method comparison using the existing research palette. */
+.four-methods { padding-block: 66px 78px; border-top: 1px solid var(--line); }
+.four-methods > .eyebrow { margin-bottom: 20px; color: var(--muted); }
+.four-methods h2 { margin-bottom: 22px; }
+.four-methods > .section-deck { max-width: 790px; margin-bottom: 28px; }
+.comparison-table-scroll { overflow-x: auto; border: 1px solid var(--line); background: white; }
+.comparison-table { border-collapse: collapse; width: 100%; font-size: 14px; white-space: nowrap; }
+.comparison-table caption { white-space: normal; text-align: left; padding: 18px 20px; color: var(--muted); }
+.comparison-table th, .comparison-table td { padding: 13px 20px; text-align: right; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.comparison-table th:first-child { text-align: left; }
+.comparison-table thead { color: var(--green); }
+.comparison-figure { margin: 28px 0 20px; padding: 16px; background: white; border: 1px solid var(--line); }
+.comparison-figure img { width: 100%; height: auto; }
+.comparison-figure figcaption { padding: 14px 10px 4px; font-size: 13px; color: var(--muted); }
+.comparison-links { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
+@media (max-width: 600px) { .comparison-table { font-size: 12px; } .comparison-table th, .comparison-table td { padding: 10px 12px; } .comparison-figure { padding: 6px; } }
