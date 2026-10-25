@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A research companion on the fourth-power relative-error threshold for two-periodic heavy ball: theorem, numerical illustrations and reproducible source code.">
+  <meta name="theme-color" content="#164d45">
+  <title>Periodic Momentum | A Fourth-Power Accuracy Threshold</title>
+  <link rel="canonical" href="https://byuzbasi.github.io/periodic-momentum/">
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="identity" href="#top" aria-label="Periodic Momentum, back to top">
+      <img src="assets/mark.svg" width="39" height="39" alt="">
+      <span>PERIODIC<span class="identity-second">MOMENTUM</span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#result">The result</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#reproduce">Reproduce</a>
+      <a href="#authors">Authors</a>
+    </nav>
+    <a class="header-download" href="downloads/periodic-momentum-source.zip" download>Get the code <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero section-shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-rule"></span> OPTIMIZATION · RESEARCH COMPANION</p>
+        <h1 id="hero-title">How accurate<br>must the<br><em>gradient be?</em></h1>
+        <p class="hero-title">A fourth-power relative-error threshold<br class="desktop-break"> for two-periodic heavy ball.</p>
+        <p class="hero-description">A gap in the Hessian spectrum can accelerate a periodic method. We study the gradient accuracy needed to retain that asymptotic rate advantage as the gap closes.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#result">Explore the result <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#reproduce">Reproduce the illustrations <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="research-plate">
+          <div class="plate-heading"><span>THE SPECTRAL SETTING</span><span>01 / 02</span></div>
+          <svg class="spectrum" viewBox="0 0 470 178" role="img" aria-labelledby="spectrum-title spectrum-desc">
+            <title id="spectrum-title">Two equal-width spectral bands with a central gap</title>
+            <desc id="spectrum-desc">The Hessian eigenvalues lie in the intervals from mu to a and from b to L. The normalized gap R is the length b minus a divided by L minus mu. This drawing is schematic.</desc>
+            <line x1="34" y1="96" x2="438" y2="96" stroke="#b7c6bd" stroke-width="1"/>
+            <rect x="34" y="69" width="151" height="27" rx="2" fill="#1d6256"/>
+            <rect x="287" y="69" width="151" height="27" rx="2" fill="#1d6256"/>
+            <path d="M185 64V38H287V64" fill="none" stroke="#b68a3e" stroke-width="1.4"/>
+            <text x="236" y="27" text-anchor="middle" fill="#8a692d" font-family="Georgia,serif" font-size="18" font-style="italic">gap</text>
+            <g fill="#213e37" font-family="Georgia,serif" font-size="20" text-anchor="middle">
+              <text x="34" y="123">μ</text><text x="185" y="123">a</text><text x="287" y="123">b</text><text x="438" y="123">L</text>
+            </g>
+            <text x="236" y="163" text-anchor="middle" fill="#5b6d66" font-family="Georgia,serif" font-size="17">R = (b − a) / (L − μ)</text>
+          </svg>
+          <div class="plate-divider"><span>A CLOSING GAP</span><span aria-hidden="true">↓</span></div>
+          <div class="hero-equation" aria-label="The critical relative error is of order R to the fourth power, for fixed condition number kappa">
+            ε<sub>crit</sub><span class="equation-equals">=</span>Θ<sub>κ</sub>(R<sup>4</sup>)
+          </div>
+          <p class="plate-explanation">An accuracy threshold at fixed<br>Hessian condition number κ.</p>
+          <div class="plate-foot"><span>FIXED κ &gt; 1 · R → 0</span><span>SCHEMATIC + THEOREM</span></div>
+        </div>
+        <p class="visual-note">Two alternating steps. One gap-dependent accuracy law.</p>
+      </div>
+      <div class="hero-byline">
+        <p>Bahadır Yüzbaşı <span aria-hidden="true">&</span> Mohammad Arashi</p>
+        <span class="status"><span class="status-dot" aria-hidden="true"></span> Working manuscript</span>
+      </div>
+    </section>
+
+    <section class="result-section" id="result" aria-labelledby="result-title">
+      <div class="section-shell">
+        <div class="section-intro">
+          <p class="eyebrow"><span class="section-number">01</span> THE RESULT</p>
+          <h2 id="result-title">A fourth power<br>sets the scale.</h2>
+          <p>At a fixed condition number, the relative-error budget that preserves the benchmark-rate advantage has matching lower and upper orders as the spectral gap closes.</p>
+        </div>
+        <div class="theorem-layout">
+          <div class="theorem-statement">
+            <p class="eyebrow">THRESHOLD THEOREM · SMALL SPECTRAL GAPS</p>
+            <div class="bound" aria-label="c kappa times R to the fourth is at most epsilon critical, which is at most C kappa times R to the fourth">
+              <span>c<sub>κ</sub> R<sup>4</sup></span><span class="bound-sign">≤</span><span>ε<sub>crit</sub>(κ, R)</span><span class="bound-sign">≤</span><span>C<sub>κ</sub> R<sup>4</sup></span>
+            </div>
+            <p>For each fixed κ &gt; 1 and sufficiently small positive R. The constants c<sub>κ</sub> and C<sub>κ</sub> are explicit, positive and depend only on κ.</p>
+            <div class="theorem-context">
+              <span>Equal-width spectral bands</span><span>Fixed exact-gradient coefficients</span><span>Zero initial momentum</span>
+            </div>
+          </div>
+          <div class="theorem-reading">
+            <h3>What does the threshold measure?</h3>
+            <p>ε<sub>crit</sub> is the supremum of relative-error levels for which the uniform per-query rate stays strictly below the stationary heavy-ball benchmark:</p>
+            <p class="benchmark" aria-label="q equals square root of kappa minus one divided by square root of kappa plus one">q = (√κ − 1) / (√κ + 1).</p>
+            <p>Here κ = L/μ, with positive Hessian bounds μ and L. The error at each query obeys ‖e<sub>k</sub>‖ ≤ ε‖H(x<sub>k</sub> − x<sup>★</sup>)‖, where H is the Hessian, x<sup>★</sup> the minimizer and k the query index. The current iterate is x<sub>k</sub>, its gradient error is e<sub>k</sub>, and ‖·‖ is the Euclidean norm.</p>
+          </div>
+        </div>
+        <div class="proof-notes">
+          <article><span class="note-index">i.</span><h3>A uniform lower bound</h3><p>A regularized quadratic energy controls history-dependent vector errors, including errors that mix Hessian eigenspaces. The estimate covers every iterate and is independent of dimension.</p></article>
+          <article><span class="note-index">ii.</span><h3>A matching upper order</h3><p>A scalar multiplicative error at a spectral endpoint gives a fourth-power obstruction for the same coefficients and rest initialization.</p></article>
+          <article><span class="note-index">iii.</span><h3>A precise boundary</h3><p>The result concerns retention of q. It does not identify a divergence threshold, an optimal leading constant or noise-dependent optimal coefficients.</p></article>
+        </div>
+        <div class="contribution-note"><span class="eyebrow">WHERE THE CONTRIBUTION LIES</span><p>The two-periodic coefficients come from <a href="https://proceedings.mlr.press/v151/goujaud22a.html">Goujaud et al. (2022)</a>. This study quantifies their relative-error tolerance as the gap closes, with a uniform vector-error guarantee and a matching scalar upper order.</p></div>
+      </div>
+    </section>
+
+    <section class="evidence-section section-shell" id="evidence" aria-labelledby="evidence-title">
+      <div class="evidence-heading">
+        <div><p class="eyebrow"><span class="section-number">02</span> THE EVIDENCE</p><h2 id="evidence-title">See the scale.<br>Read the transients.</h2></div>
+        <p class="section-deck">Three figures from the existing study. The computations illustrate the theory and the limits of a comparison at a fixed iteration horizon.</p>
+      </div>
+      <div class="figure-tabs" role="tablist" aria-label="Numerical illustrations">
+        <button type="button" role="tab" id="tab-scaling" aria-controls="panel-scaling" aria-selected="true">01 <span>Fourth-power scaling</span></button>
+        <button type="button" role="tab" id="tab-synthetic" aria-controls="panel-synthetic" aria-selected="false" tabindex="-1">02 <span>Synthetic trajectories</span></button>
+        <button type="button" role="tab" id="tab-yacht" aria-controls="panel-yacht" aria-selected="false" tabindex="-1">03 <span>Yacht application</span></button>
+      </div>
+      <div class="figure-panel" role="tabpanel" id="panel-scaling" aria-labelledby="tab-scaling" tabindex="0">
+        <div class="figure-topline"><span>SCALAR UPPER OBSTRUCTION · κ = 16</span><a class="text-link" href="downloads/Fig1.pdf" download>Vector PDF <span aria-hidden="true">↓</span></a></div>
+        <figure>
+          <img class="research-figure" src="assets/figures/Fig1.svg" alt="Scalar upper threshold divided by R to the fourth approaches its limiting coefficient; the local exponent approaches four as the gap is halved.">
+          <figcaption><span class="caption-number">FIGURE 01.</span> The left panel divides the scalar upper threshold ε<sub>U</sub> by R<sup>4</sup>; the horizontal line is the limiting coefficient. The right panel shows the local exponent for successive gap halvings. At R = 1/32, the normalized coefficient is within 0.0380% of its limit.</figcaption>
+        </figure>
+        <p class="reading-note"><span>Read with care</span> This checks the scalar upper obstruction. The worst-case vector-error threshold is a separate quantity.</p>
+      </div>
+      <div class="figure-panel" role="tabpanel" id="panel-synthetic" aria-labelledby="tab-synthetic" tabindex="0">
+        <div class="figure-topline"><span>FOUR ENDPOINT MODES · 512 QUERIES</span><a class="text-link" href="downloads/Fig2.pdf" download>Vector PDF <span aria-hidden="true">↓</span></a></div>
+        <figure>
+          <img class="research-figure" src="assets/figures/Fig2.svg" loading="lazy" alt="Four panels compare cyclical heavy ball and fixed heavy ball at gaps one half and one eighth, with exact gradients and a scalar error above the upper threshold. Errors are normalized by the benchmark rate.">
+          <figcaption><span class="caption-number">FIGURE 02.</span> Iterate errors are normalized by q<sup>k</sup>, with all four endpoint modes excited from rest. The top row uses exact gradients; the bottom row uses the scalar policy e<sub>k</sub> = (3ε<sub>U</sub>/2)Hx<sub>k</sub>. CHB denotes cyclical heavy ball; HB is the fixed, noiselessly tuned heavy-ball baseline.</figcaption>
+        </figure>
+        <p class="reading-note"><span>Read with care</span> An increasing normalized curve can still represent a convergent method. The noisy baseline is not optimized for the error level, and one selected error path does not establish worst-case robustness.</p>
+      </div>
+      <div class="figure-panel" role="tabpanel" id="panel-yacht" aria-labelledby="tab-yacht" tabindex="0">
+        <div class="figure-topline"><span>YACHT HYDRODYNAMICS · RAW LEAST SQUARES</span><a class="text-link" href="downloads/Fig3.pdf" download>Vector PDF <span aria-hidden="true">↓</span></a></div>
+        <figure>
+          <img class="research-figure" src="assets/figures/Fig3.svg" loading="lazy" alt="Yacht trajectories show alternating even and odd CHB phases for normalized distance and objective gap, compared with HB. Exact gradients and an above-threshold scalar error are shown.">
+          <figcaption><span class="caption-number">FIGURE 03.</span> Exact gradients appear on the left; the scalar policy at 3ε<sub>U</sub>/2 appears on the right. The rows show logarithms of normalized distance D<sub>k</sub> and objective gap F<sub>k</sub>. Solid and dashed lines connect even and odd queries. Both metrics equal one at initialization.</figcaption>
+        </figure>
+        <div class="phase-comparison" aria-label="Adjacent exact-gradient queries">
+          <div class="phase-context"><h3>One query changes the comparison.</h3><p>Exact-gradient normalized-distance ratio, CHB / HB. Lower values favor CHB.</p></div>
+          <div class="phase-value"><span>QUERY 511 · ODD</span><strong>1.0701152</strong><span>HB has smaller distance</span></div>
+          <div class="phase-value even"><span>QUERY 512 · EVEN</span><strong>0.3664869</strong><span>CHB has smaller distance</span></div>
+        </div>
+        <p class="reading-note"><span>Read with care</span> Both exact-gradient objective gaps are still above initialization at query 512: F<sub>512</sub> ≈ 18.38 for CHB and 142.46 for HB. This single raw-data Hessian illustrates phase effects; it cannot establish the fourth-power law or a general performance advantage.</p>
+      </div>
+      <noscript><p class="reading-note">JavaScript is disabled. All three illustrations are shown in order.</p></noscript>
+    </section>
+
+    <section class="reproduce-section" id="reproduce" aria-labelledby="reproduce-title">
+      <div class="section-shell reproduction-layout">
+        <div class="reproduction-copy">
+          <p class="eyebrow"><span class="section-number">03</span> REPRODUCIBILITY</p>
+          <h2 id="reproduce-title">From saved records<br>to the figures.</h2>
+          <p>The source archive includes the numerical kernels, fixed configurations, raw Yacht data, accepted records and reporting scripts. Start by checking the saved records; then regenerate the reporting tables and figures.</p>
+          <div class="reproduction-actions"><a class="button light" href="downloads/periodic-momentum-source.zip" download>Download source & records <span aria-hidden="true">↓</span></a><a class="light-link" href="downloads/README.md">Full reproduction guide <span aria-hidden="true">↗</span></a></div>
+          <div class="environment"><span>VALIDATED ENVIRONMENT</span><p>Python 3.13.5 · mpmath 1.3.0<br>R 4.6.0 with Cairo, for figures</p></div>
+        </div>
+        <div class="commands-card">
+          <div class="commands-header"><span>RUN FROM THE EXTRACTED ARCHIVE'S PARENT</span><button class="copy-button" type="button" data-copy="reporting-commands" aria-label="Copy reporting commands">Copy commands</button></div>
+          <pre><code id="reporting-commands">cd periodic-momentum
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+
+# Validate saved records; no optimizer updates
+.venv/bin/python scripts/reproduce.py check --out outputs/check_01
+
+# Recreate reporting data and figures
+.venv/bin/python scripts/reproduce.py export --out outputs/report_01
+.venv/bin/python scripts/reproduce.py figures --analysis outputs/report_01 --out outputs/figures_01</code></pre>
+          <p class="commands-footnote">Use an existing environment with mpmath 1.3.0 if preferred. Figure rendering requires R with Cairo. Each output directory must be new.</p>
+          <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="section-shell validation-strip">
+        <p><strong>13 + 16</strong><span>Synthetic work units + Yacht records checked</span></p>
+        <p><strong>5 + 2</strong><span>CSV reports + JSON diagnostics matched</span></p>
+        <p><strong>8 updates</strong><span>Four state transitions + four gradient updates</span></p>
+        <p><strong>3 figures</strong><span>Drawing content matched the manuscript</span></p>
+      </div>
+      <p class="section-shell validation-scope">Verification covers saved-output reporting and selected two-step prefixes. The adapted complete numerical replay has not been run end to end. The guide documents its separate command and the limits of the checks.</p>
+    </section>
+
+    <section class="study-notes section-shell" aria-labelledby="notes-title">
+      <p class="eyebrow"><span class="section-number">04</span> STUDY NOTES</p>
+      <div class="notes-layout">
+        <div><h2 id="notes-title">A deliberately<br>bounded study.</h2><p class="notes-lead">The theorem is asymptotic in the gap. The numerical illustrations are finite and retain their original design.</p></div>
+        <dl class="study-facts">
+          <div><dt>Quadratic setting</dt><dd>Two equal-width spectral bands, fixed condition number and zero initial momentum. No uniform claim in a joint high-condition-number limit.</dd></div>
+          <div><dt>Yacht design</dt><dd>All 308 observations, six raw features, no-intercept unpenalized least squares. No centering, standardization, exclusions or train/test split.</dd></div>
+          <div><dt>Numerical precision</dt><dd>80 and 120 decimal digits, with 512 gradient queries. The examples are deterministic and use no random seed.</dd></div>
+          <div><dt>Data & code</dt><dd>Yacht Hydrodynamics: Gerritsma, Onnink and Versluis (1981), <a href="https://doi.org/10.24432/C5XG7R">UCI Machine Learning Repository</a>, CC BY 4.0. Source code: <a href="downloads/LICENSE.md">GPL version 3 or later</a>. Figure rights remain with their authors.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="authors-section section-shell" id="authors" aria-labelledby="authors-title">
+      <div class="authors-heading"><p class="eyebrow">THE AUTHORS</p><h2 id="authors-title">Behind the study.</h2></div>
+      <div class="author-grid">
+        <article class="author"><span class="author-initials" aria-hidden="true">BY</span><div><h3>Bahadır Yüzbaşı</h3><p>Department of Econometrics<br>İnönü University, Türkiye</p><a href="https://byuzbasi.github.io/">Academic profile <span aria-hidden="true">↗</span></a><a href="https://orcid.org/0000-0002-6196-3201">ORCID <span aria-hidden="true">↗</span></a></div></article>
+        <article class="author"><span class="author-initials" aria-hidden="true">MA</span><div><h3>Mohammad Arashi</h3><p>Ferdowsi University of Mashhad, Iran<br>University of Pretoria, South Africa</p><a href="https://orcid.org/0000-0002-5881-9241">ORCID <span aria-hidden="true">↗</span></a></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <div><a class="footer-wordmark" href="#top">PERIODIC MOMENTUM</a><p>A fourth-power relative-error threshold for two-periodic heavy ball.</p></div>
+    <p>Working manuscript<br>Research code and numerical illustrations<br><a href="https://github.com/byuzbasi/periodic-momentum">GitHub repository ↗</a></p>
+  </footer>
+</body>
+</html>

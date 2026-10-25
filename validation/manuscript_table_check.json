@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "yacht_adjacent_table_rows_match_manuscript_rounding": [
+    [
+      "511",
+      "0.2229411",
+      "0.2083337",
+      "1.0701152",
+      "167.7377",
+      "144.1499"
+    ],
+    [
+      "512",
+      "0.0758956",
+      "0.2070895",
+      "0.3664869",
+      "18.3757",
+      "142.4636"
+    ]
+  ],
+  "yacht_terminal_table_all_four_policy_ratio_pairs_match": true,
+  "new_updates": 0
+}

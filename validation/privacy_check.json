@@ -1,0 +1,9 @@
+{
+  "accepted": true,
+  "relative_repository_paths_only": true,
+  "personal_directory_or_machine_address_matches": 0,
+  "local_generated_outputs_in_public_scope": false,
+  "software_versions_retained_for_reproducibility": true,
+  "numerical_code_or_configuration_changes": false,
+  "new_numerical_updates": 0
+}

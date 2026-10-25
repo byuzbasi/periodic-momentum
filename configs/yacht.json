@@ -1,0 +1,11 @@
+{
+  "version":"v09", "n":308, "dimension":6,
+  "raw_sha256":"00dfecc0fc01ddd4c90b558a3ac11b246df8ebcfea130724223475a9a67f0ea1",
+  "R":"1/2", "precisions":[80,120], "horizon":512,
+  "initial":"w_minus_1=w_0=zeros(6)", "methods":["CHB","HB"],
+  "profiles":["exact","certified_mixing","scalar_half","scalar_above"],
+  "checkpoints":[1,2,16,64,512],
+  "limits":{"trajectory_executions":16,"gradient_updates":8192,"smoke_updates":2,"total_seconds":120},
+  "tolerances":{"reference":"1e-60","precision_log":"1e-45","matrix_relative":"1e-60","oracle_relative":"1e-60","tie_log":"1e-30"},
+  "preprocessing":"none", "intercept":false,"ridge":0,"seed_policy":"deterministic_no_rng_no_seed"
+}

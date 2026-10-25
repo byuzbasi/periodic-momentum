@@ -1,0 +1,66 @@
+{
+  "status": "limited_validation_passed",
+  "validation_date": "2026-10-25",
+  "environment": {
+    "python": "3.13.5",
+    "mpmath": "1.3.0",
+    "R": "4.6.0"
+  },
+  "preserved_design": {
+    "synthetic_work_units": 13,
+    "yacht_records": 16,
+    "rows_per_trajectory": 513,
+    "raw_yacht_dimensions": [
+      308,
+      7
+    ],
+    "numerical_kernels_and_original_configs": "unchanged",
+    "preprocessing": "six raw features and original target; no centering, scaling, exclusions or data split",
+    "randomness": "none"
+  },
+  "reporting": {
+    "csv_files_byte_identical_to_reference": 5,
+    "diagnostic_json_files_equal_to_reference": 2,
+    "figure_pdfs_with_matching_text_and_drawing_commands": 3,
+    "all_figure_fonts_embedded": true,
+    "figure_raster_image_objects": 0,
+    "manuscript_yacht_table_values_match": true
+  },
+  "numerical_validation": {
+    "total_updates": 8,
+    "independent_synthetic_state_updates": 4,
+    "yacht_gradient_updates": 4,
+    "decimal_digits": 120,
+    "synthetic_max_relative_checkpoint_error": "1.03494244143627756390642879810544754954442416583855694520044061866019742543415641062395326236959884547981533599897294563e-120",
+    "yacht_max_relative_checkpoint_error": "0.0",
+    "new_full_trajectory_executions": 0,
+    "new_QR_solves": 0,
+    "new_spectral_calculations": 0
+  },
+  "portability": {
+    "check_and_export_passed_in_isolated_copy": true,
+    "working_directory_independent": true,
+    "unconfirmed_full_replay_blocked_before_kernel_access": true,
+    "existing_output_directory_protected": true
+  },
+  "limits": [
+    "The adapted complete numerical replay was not executed end to end.",
+    "No additional scientific designs or full trajectories were run.",
+    "Limited prefix checks do not independently recompute all 512-query results.",
+    "These checks do not constitute a machine-checked mathematical proof.",
+    "The manuscript and its generative-AI declaration were not edited.",
+    "No GitHub publication or version-control mutation was performed."
+  ],
+  "evidence": [
+    "saved_records_check.json",
+    "reporting_check.json",
+    "limited_check.json",
+    "figure_checks.json",
+    "manuscript_table_check.json",
+    "portability_check.json",
+    "privacy_check.json",
+    "website_check.json"
+  ],
+  "code_licence": "GPL-3.0-or-later; applies to code/ and scripts/",
+  "public_revision": "Static research companion website added; numerical code, scientific configurations and accepted records retained unchanged."
+}

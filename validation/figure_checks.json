@@ -1,0 +1,46 @@
+{
+  "Fig1": {
+    "pdf_check": {
+      "pages": 1,
+      "embedded_font_names": [
+        "/JBYWZS+ArialMT",
+        "/OFIYOO+Arial-BoldMT",
+        "/VLWDNZ+ArialMT"
+      ],
+      "all_fonts_embedded": true,
+      "raster_image_objects": 0,
+      "strict_pdf_parse_passed": true
+    },
+    "drawing_commands_identical_to_manuscript": true,
+    "text_identical": true
+  },
+  "Fig2": {
+    "pdf_check": {
+      "pages": 1,
+      "embedded_font_names": [
+        "/JBYWZS+ArialMT",
+        "/QESZOP+ArialMT"
+      ],
+      "all_fonts_embedded": true,
+      "raster_image_objects": 0,
+      "strict_pdf_parse_passed": true
+    },
+    "drawing_commands_identical_to_manuscript": true,
+    "text_identical": true
+  },
+  "Fig3": {
+    "pdf_check": {
+      "pages": 1,
+      "embedded_font_names": [
+        "/JBYWZS+ArialMT",
+        "/OCMVDE+ArialMT",
+        "/VYPPCA+Arial-BoldMT"
+      ],
+      "all_fonts_embedded": true,
+      "raster_image_objects": 0,
+      "strict_pdf_parse_passed": true
+    },
+    "drawing_commands_identical_to_manuscript": true,
+    "text_identical": true
+  }
+}

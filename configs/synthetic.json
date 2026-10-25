@@ -1,0 +1,139 @@
+{
+  "version": "v06",
+  "mu": "1/16",
+  "L": "1",
+  "kappa": 16,
+  "dimension": 4,
+  "initial_x": [
+    "1",
+    "1",
+    "1",
+    "1"
+  ],
+  "initial_previous": "same_as_x0",
+  "precisions": [
+    80,
+    120
+  ],
+  "horizon": 512,
+  "checkpoints": [
+    1,
+    2,
+    16,
+    64,
+    512
+  ],
+  "methods": [
+    "CHB",
+    "HB"
+  ],
+  "profiles": {
+    "exact": {
+      "factor": "0",
+      "operator": "zero"
+    },
+    "scalar_half": {
+      "factor": "1/2",
+      "operator": "identity"
+    },
+    "scalar_above": {
+      "factor": "3/2",
+      "operator": "identity"
+    },
+    "mixing_half": {
+      "factor": "1/2",
+      "operator": "P,PT,-P"
+    }
+  },
+  "seed_policy": "fully_deterministic_no_rng_no_seed",
+  "limits": {
+    "work_units": 13,
+    "trajectory_executions": 32,
+    "gradient_updates": 16384,
+    "seconds_per_unit": 20,
+    "seconds_total": 180,
+    "solver_calls": 0
+  },
+  "tolerances": {
+    "scale_relative": "1e-50",
+    "trajectory_log": "1e-45",
+    "error_relative": "1e-60",
+    "matrix_relative": "1e-60",
+    "crossover_log": "1e-30"
+  },
+  "units": [
+    {
+      "id": "S01",
+      "kind": "scale",
+      "R": "1/2"
+    },
+    {
+      "id": "S02",
+      "kind": "scale",
+      "R": "1/4"
+    },
+    {
+      "id": "S03",
+      "kind": "scale",
+      "R": "1/8"
+    },
+    {
+      "id": "S04",
+      "kind": "scale",
+      "R": "1/16"
+    },
+    {
+      "id": "S05",
+      "kind": "scale",
+      "R": "1/32"
+    },
+    {
+      "id": "T01",
+      "kind": "trajectory_pair",
+      "R": "1/2",
+      "profile": "exact"
+    },
+    {
+      "id": "T02",
+      "kind": "trajectory_pair",
+      "R": "1/2",
+      "profile": "scalar_half"
+    },
+    {
+      "id": "T03",
+      "kind": "trajectory_pair",
+      "R": "1/2",
+      "profile": "scalar_above"
+    },
+    {
+      "id": "T04",
+      "kind": "trajectory_pair",
+      "R": "1/2",
+      "profile": "mixing_half"
+    },
+    {
+      "id": "T05",
+      "kind": "trajectory_pair",
+      "R": "1/8",
+      "profile": "exact"
+    },
+    {
+      "id": "T06",
+      "kind": "trajectory_pair",
+      "R": "1/8",
+      "profile": "scalar_half"
+    },
+    {
+      "id": "T07",
+      "kind": "trajectory_pair",
+      "R": "1/8",
+      "profile": "scalar_above"
+    },
+    {
+      "id": "T08",
+      "kind": "trajectory_pair",
+      "R": "1/8",
+      "profile": "mixing_half"
+    }
+  ]
+}

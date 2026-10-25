@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use these reproducibility materials, please cite this repository and the associated working manuscript."
+type: software
+title: "Reproducibility materials for A Fourth-Power Relative-Error Threshold for Two-Periodic Heavy Ball"
+authors:
+  - family-names: "Yüzbaşı"
+    given-names: "Bahadır"
+    orcid: "https://orcid.org/0000-0002-6196-3201"
+  - family-names: "Arashi"
+    given-names: "Mohammad"
+    orcid: "https://orcid.org/0000-0002-5881-9241"
+repository-code: "https://github.com/byuzbasi/periodic-momentum"
+url: "https://byuzbasi.github.io/periodic-momentum/"
+license: GPL-3.0-or-later
+preferred-citation:
+  type: unpublished
+  title: "A Fourth-Power Relative-Error Threshold for Two-Periodic Heavy Ball"
+  authors:
+    - family-names: "Yüzbaşı"
+      given-names: "Bahadır"
+      orcid: "https://orcid.org/0000-0002-6196-3201"
+    - family-names: "Arashi"
+      given-names: "Mohammad"
+      orcid: "https://orcid.org/0000-0002-5881-9241"
+  year: 2026
+  url: "https://github.com/byuzbasi/periodic-momentum"

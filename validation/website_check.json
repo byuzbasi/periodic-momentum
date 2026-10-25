@@ -1,0 +1,24 @@
+{
+  "accepted": true,
+  "version": "v03",
+  "local_only": true,
+  "responsive_widths_checked": [
+    360,
+    390,
+    768,
+    1440
+  ],
+  "horizontal_page_overflow": false,
+  "figure_tabs": "mouse and keyboard verified",
+  "command_copy_button": "verified",
+  "source_download_matches_prepared_archive": true,
+  "source_archive_files_verified": 71,
+  "private_path_scan": "passed",
+  "reference_PDF_downloads_unchanged": true,
+  "vector_SVG_figure_assets": 3,
+  "console_errors_or_warnings": 0,
+  "numerical_code_or_config_changes": false,
+  "new_numerical_updates": 0,
+  "publication_performed": false,
+  "interpretation": "Existing theorem and numerical illustrations; all limits retained"
+}
