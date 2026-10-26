@@ -1,0 +1,153 @@
+{
+  "candidates": [
+    {
+      "id": "istanbul",
+      "source": "https://archive.ics.uci.edu/dataset/247/istanbul%2Bstock%2Bexchange",
+      "doi": "10.24432/C54P4J",
+      "file": "data_akbilgic.xlsx",
+      "format": "xlsx",
+      "sheet": "orjinal data",
+      "header_row": 2,
+      "first_data_row": 3,
+      "last_data_row": 538,
+      "n": 536,
+      "p": 7,
+      "feature_columns": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "feature_names": [
+        "SP",
+        "DAX",
+        "FTSE",
+        "NIKKEI",
+        "BOVESPA",
+        "EU",
+        "EM"
+      ],
+      "not_inputs": [
+        "date",
+        "ISE (TL)",
+        "ISE (USD)"
+      ]
+    },
+    {
+      "id": "slump",
+      "source": "https://archive.ics.uci.edu/dataset/182/concrete%2Bslump%2Btest",
+      "doi": "10.24432/C5FG7D",
+      "file": "slump_test.data",
+      "format": "csv",
+      "delimiter": ",",
+      "header": true,
+      "source_columns": 11,
+      "n": 103,
+      "p": 7,
+      "feature_columns": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "feature_names": [
+        "Cement",
+        "Slag",
+        "Fly ash",
+        "Water",
+        "SP",
+        "Coarse Aggr.",
+        "Fine Aggr."
+      ],
+      "not_inputs": [
+        "No",
+        "SLUMP(cm)",
+        "FLOW(cm)",
+        "Compressive Strength (28-day)(Mpa)"
+      ]
+    },
+    {
+      "id": "hardware",
+      "source": "https://archive.ics.uci.edu/dataset/29/computer%2Bhardware",
+      "doi": "10.24432/C5830D",
+      "file": "machine.data",
+      "format": "csv",
+      "delimiter": ",",
+      "header": false,
+      "source_columns": 10,
+      "n": 209,
+      "p": 6,
+      "feature_columns": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "feature_names": [
+        "MYCT",
+        "MMIN",
+        "MMAX",
+        "CACH",
+        "CHMIN",
+        "CHMAX"
+      ],
+      "not_inputs": [
+        "VendorName",
+        "ModelName",
+        "PRP",
+        "ERP"
+      ]
+    },
+    {
+      "id": "power",
+      "source": "https://archive.ics.uci.edu/dataset/294/combined%2Bcycle%2Bpower%2Bplant",
+      "doi": "10.24432/C5002N",
+      "file": "CCPP/Folds5x2_pp.xlsx",
+      "format": "xlsx",
+      "sheet": "Sheet1",
+      "header_row": 1,
+      "first_data_row": 2,
+      "last_data_row": 9569,
+      "n": 9568,
+      "p": 4,
+      "feature_columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feature_names": [
+        "AT",
+        "V",
+        "AP",
+        "RH"
+      ],
+      "not_inputs": [
+        "PE",
+        "other shuffled sheets"
+      ]
+    }
+  ],
+  "matrix": "raw feature Gram X.T @ X / n; no intercept",
+  "center": false,
+  "standardize": false,
+  "ridge": 0,
+  "use_target": false,
+  "svd_calls_limit": 4,
+  "eigh_calls_limit": 4,
+  "optimizer_calls_limit": 0,
+  "gap_safety_factor": 0.99,
+  "arithmetic_guard_factor": 64,
+  "formula_precision_digits": 80,
+  "selection_rule": "Among full-rank accepted SPD and positive central-gap candidates: lowest raw kappa, then largest R_use, then smallest p and n. No performance-based candidate selection.",
+  "power_sheet_policy": "Only the first original worksheet Sheet1, preserving all 9568 rows; do not concatenate its five supplied shuffled copies.",
+  "randomness": "none; deterministic"
+}

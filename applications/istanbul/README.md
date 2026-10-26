@@ -49,3 +49,7 @@ and mathematical function identity. No fresh relocated replay was performed.
 
 The article figure is rendered from reference/trajectories.csv by
 render_article_figure.R, using base R/Cairo and a new output directory.
+
+The [candidate screening](selection/README.md) records all four eligible
+datasets and the feature-only selection rule. The [reference-accuracy note](REFERENCE_ACCURACY.md)
+defines the saved quadratic-energy measure and its residual correction.

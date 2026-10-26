@@ -8,7 +8,9 @@ and its coefficients are not presented as a new algorithm. A single Hessian
 cannot verify the fourth-power scaling law, universal empirical superiority,
 financial prediction accuracy or wall-clock speedups.
 
-Istanbul was selected by feature-only spectral geometry before optimizer outcomes.
+Istanbul was selected by feature-only spectral geometry before its optimizer outcomes.
+The [four-candidate screening records and selection rule](selection/README.md)
+make the targeted selection explicit.
 All early losses and overshoots are reported. This is a selected illustration,
 not an unbiased population benchmark.
 
@@ -103,8 +105,13 @@ a new numerical replay.
 
 Primary results are the 160-digit records, with 120 digits providing an
 arithmetic check. D_k is the Euclidean distance to the QR reference divided
-by its initial value. F_k is the quadratic gap, computed as
-(w_k-w*)^T H(w_k-w*)/2 and divided by its initial value. Both denominators
+by its initial value. The exact minimizer w_star and the finite-precision QR reference w_hat are
+distinct. The saved F_k is E(w_k)/E(w_0), where
+E(w) = (w-w_hat)^T H(w-w_hat)/2. With r = H w_hat - h,
+f(w)-f(w_hat) = E(w) + r^T(w-w_hat); the linear residual term is not
+part of the stored energy. The adapter's historical variable name `star`
+continues to denote w_hat. See [reference accuracy](REFERENCE_ACCURACY.md)
+for checks from saved states and bounds relative to the exact minimizer. Both denominators
 are positive. The normalized two-iterate norm is also retained.
 
 Report both adjacent terminal queries, all-query curves, peaks and maxima

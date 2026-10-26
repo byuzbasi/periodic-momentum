@@ -5,6 +5,7 @@ Mohammad Arashi**, prepared for *Optimization Letters*.
 
 [Research companion](https://byuzbasi.github.io/periodic-momentum/) ·
 [Istanbul results](applications/istanbul/reference/RESULTS.md) ·
+[Candidate selection](applications/istanbul/selection/README.md) ·
 [Synthetic comparisons](comparisons/gd-nag/reference/results.md)
 
 ![Fourth-power threshold and two spectral bands](docs/assets/mark.svg)
@@ -31,6 +32,11 @@ Both phases, adjacent-pair maxima, early losses and numerical checks are
 reported. One selected Hessian and a tiny certified error budget do not
 establish broad superiority, practical noise tolerance, forecasting accuracy
 or wall-clock speedups. Arithmetic precision is not measurement precision.
+
+For Istanbul, the reported F is normalized quadratic energy about the
+computed QR reference. The [residual check](applications/istanbul/REFERENCE_ACCURACY.md)
+distinguishes it from an exact objective difference and bounds reference error.
+The saved numbers and the optimization kernels have not changed.
 
 ## Contents
 

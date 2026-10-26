@@ -105,8 +105,8 @@
       "sha256": "fca8dd3c1b56dc02823f2ac915bb0a4f95866a08952ce76f5989d9d5869ff15b"
     },
     "applications/istanbul/protocol.md": {
-      "bytes": 6404,
-      "sha256": "3129d53aaa66636dd9a3f32bf802e9d64130b149b01842eef4fceef9a662fefe"
+      "bytes": 6898,
+      "sha256": "16358f7a2482ebd7a8c2df975da4dbc915ec95e02c9760239584aa5c82ebbe54"
     },
     "applications/istanbul/run_pilot.py": {
       "bytes": 12493,

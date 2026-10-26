@@ -1,7 +1,8 @@
 {
   "scope": "Synthetic examples and Istanbul Stock Exchange",
-  "manuscript": "V30",
+  "manuscript": "V31",
   "accepted_numerical_records_preserved": true,
   "new_optimizer_updates": 0,
-  "fresh_relocated_numerical_replay_performed": false
+  "fresh_relocated_numerical_replay_performed": false,
+  "revision": "QR-reference clarification, novelty explanation, selection records and early-iteration inset"
 }

@@ -133,8 +133,8 @@
       <div class="figure-panel" role="tabpanel" id="panel-istanbul" aria-labelledby="tab-istanbul" tabindex="0">
         <div class="figure-topline"><span>ISTANBUL STOCK EXCHANGE · FOUR METHODS</span><a class="text-link" href="downloads/Fig3.pdf" download>Article figure: exact gradients PDF <span aria-hidden="true">↓</span></a></div>
         <figure>
-          <img class="research-figure" src="assets/figures/istanbul-four-methods.svg" loading="lazy" alt="Istanbul normalized distance and objective gaps for CHB, HB, GD and NAG-Q, under exact gradients and certified mixing errors. CHB first overshoots and then has the smallest terminal errors.">
-          <figcaption><span class="caption-number">APPLICATION.</span> Four methods, 512 gradient queries and the same raw least-squares quadratic. Distance D and objective gap F are normalized to one at initialization. The two rows show log distance and log objective gap; columns show exact gradients and certified mixing errors.</figcaption>
+          <img class="research-figure" src="assets/figures/istanbul-article.svg" loading="lazy" alt="Istanbul normalized distance and quadratic energy gaps for four methods with exact gradients. An inset shows the first 16 queries and early overshoot.">
+          <figcaption><span class="caption-number">APPLICATION.</span> Four methods, 512 gradient queries and the same raw least-squares quadratic. Distance D and quadratic energy gap F are normalized to one at initialization. Both panels show exact gradients; the inset resolves the first 16 queries. The selected mixing-error curves nearly coincide.</figcaption>
         </figure>
         <p class="reading-note"><span>Read the whole trajectory</span> CHB reaches an objective gap about 62.815 times initialization at query 5. In this observed window it has smaller distances and gaps than all three comparators from query 62 through 512. One selected Hessian does not establish general superiority.</p>
       </div>
@@ -157,7 +157,9 @@
         </table>
       </div>
       <p class="reading-note"><span>Both phases count</span> For exact gradients, the terminal odd/even-pair maximum distance of CHB is about 1.1846 × 10<sup>−5</sup> times HB's; its pair maximum objective gap is about 1.4300 × 10<sup>−10</sup> times HB's. The final advantage is therefore present across both adjacent phases.</p>
+      <p class="reading-note"><span>Reference accuracy</span> F is computed as quadratic energy about a high-precision QR reference. Its difference from an exact objective gap is quantified in the <a href="https://github.com/byuzbasi/periodic-momentum/blob/main/applications/istanbul/REFERENCE_ACCURACY.md">reference-accuracy note</a>; the reported values are unchanged.</p>
       <p class="reading-note"><span>A bounded illustration</span> The error budget is tiny and chosen within the theorem's sufficient range. These high-precision results do not demonstrate practical noise tolerance, forecasting accuracy or wall-clock speedups.</p>
+      <p class="comparison-links"><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/tree/main/applications/istanbul/selection">Four-candidate screening and selection rule ↗</a></p>
       <p class="comparison-links"><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/tree/main/applications/istanbul">Istanbul code, protocol and records ↗</a><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/blob/main/applications/istanbul/reference/RESULTS.md">Complete comparison tables ↗</a></p>
     </section>
 

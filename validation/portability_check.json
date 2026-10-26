@@ -24,6 +24,10 @@
     {
       "script": "applications/istanbul/report.py",
       "accepted": true
+    },
+    {
+      "script": "applications/istanbul/check_reference_accuracy.py",
+      "accepted": true
     }
   ],
   "foreign_working_directory": true,

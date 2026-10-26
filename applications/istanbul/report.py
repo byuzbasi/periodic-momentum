@@ -83,6 +83,7 @@ def report(destination):
         write(destination/'comparison_scope.json',scope)
         sections=['# Istanbul: accepted four-method pilot','',
             'All four methods use the same 536 observations, seven raw inputs, USD-based ISE response, rest initialization and 512 gradient queries. Lower D and F are better. The 160-digit records are primary; 120 digits are an arithmetic check.',
+            'F is normalized quadratic energy about the computed QR reference. It approximates the exact objective gap; the residual correction and reference-error bounds are documented in ../REFERENCE_ACCURACY.md. The accepted metric values are unchanged.',
             '', '## Adjacent terminal queries and peaks','',
             markdown(endpoints,['profile','method','D511','D512','F511','F512','pair_max_D','pair_max_F','peak_D','peak_F']),
             '', '## CHB / comparator ratios','',

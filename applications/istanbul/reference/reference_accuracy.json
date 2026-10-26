@@ -1,0 +1,54 @@
+{
+  "accepted": true,
+  "scope": "Floating-point algebra on saved matrices and states; no interval certificate",
+  "diagnostic_digits": 220,
+  "precisions": {
+    "120": {
+      "saved_states_checked": 72,
+      "saved_state_indices": [
+        0,
+        1,
+        2,
+        15,
+        16,
+        63,
+        64,
+        511,
+        512
+      ],
+      "maxima": {
+        "linear_correction_relative_to_energy": "1.47953035854545416859612329317e-83",
+        "recorded_residual_linear_correction": "1.56683285401741019798955023522e-84",
+        "gap_relative_to_exact_minimizer_bound": "7.52437674707478067678256977778e-83",
+        "distance_relative_to_exact_minimizer_bound": "5.77305347271822517874874723877e-81",
+        "normalized_gap_relative_difference_bound": "7.52437674707478067678256977778e-83",
+        "normalized_distance_relative_difference_bound": "5.77305347271822517874874723877e-81"
+      }
+    },
+    "160": {
+      "saved_states_checked": 72,
+      "saved_state_indices": [
+        0,
+        1,
+        2,
+        15,
+        16,
+        63,
+        64,
+        511,
+        512
+      ],
+      "maxima": {
+        "linear_correction_relative_to_energy": "4.94268270432999149155291898957e-123",
+        "recorded_residual_linear_correction": "1.18455542632056609561719605902e-124",
+        "gap_relative_to_exact_minimizer_bound": "1.09845282225701761321127334605e-122",
+        "distance_relative_to_exact_minimizer_bound": "8.42784338598321770038952312915e-121",
+        "normalized_gap_relative_difference_bound": "1.09845282225701761321127334605e-122",
+        "normalized_distance_relative_difference_bound": "8.42784338598321770038952312915e-121"
+      }
+    }
+  },
+  "new_optimizer_updates": 0,
+  "new_QR_solves": 0,
+  "new_eigensolves": 0
+}
