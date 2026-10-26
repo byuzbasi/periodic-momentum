@@ -1,22 +1,35 @@
 {
   "accepted": true,
-  "isolated_commands": {
-    "check": {
-      "accepted": true,
-      "seconds": 0.37252741679549217,
-      "outside_original_project_tree": true,
-      "cwd_is_not_checkout": true,
-      "new_gradient_updates": 0
+  "checks": [
+    {
+      "script": "scripts/reproduce.py",
+      "accepted": true
     },
-    "export": {
-      "accepted": true,
-      "seconds": 0.5893813748843968,
-      "outside_original_project_tree": true,
-      "cwd_is_not_checkout": true,
-      "new_gradient_updates": 0
+    {
+      "script": "scripts/reproduce.py",
+      "accepted": true
+    },
+    {
+      "script": "comparisons/gd-nag/run_pilot.py",
+      "accepted": true
+    },
+    {
+      "script": "comparisons/gd-nag/report.py",
+      "accepted": true
+    },
+    {
+      "script": "applications/istanbul/verify_saved.py",
+      "accepted": true
+    },
+    {
+      "script": "applications/istanbul/report.py",
+      "accepted": true
     }
-  },
-  "unconfirmed_numerical_replay_blocked_before_kernel_access": true,
-  "existing_output_directory_protected": true,
-  "new_numerical_updates": 0
+  ],
+  "foreign_working_directory": true,
+  "accepted_records_checked": true,
+  "numerical_entry_points_blocked": true,
+  "new_gradient_updates": 0,
+  "new_QR_solves": 0,
+  "new_eigensolves": 0
 }

@@ -107,12 +107,12 @@
     <section class="evidence-section section-shell" id="evidence" aria-labelledby="evidence-title">
       <div class="evidence-heading">
         <div><p class="eyebrow"><span class="section-number">02</span> THE EVIDENCE</p><h2 id="evidence-title">See the scale.<br>Read the transients.</h2></div>
-        <p class="section-deck">The original three CHB/HB illustrations are retained below. <a href="#four-methods">The added GD/Nesterov comparison</a> shows why distance, objective gap and query phase must be assessed together.</p>
+        <p class="section-deck">Controlled two-band examples illustrate the fourth-power scale. The <a href="#four-methods">Istanbul four-method comparison</a> shows the terminal benefit alongside substantial early amplification.</p>
       </div>
       <div class="figure-tabs" role="tablist" aria-label="Numerical illustrations">
         <button type="button" role="tab" id="tab-scaling" aria-controls="panel-scaling" aria-selected="true">01 <span>Fourth-power scaling</span></button>
         <button type="button" role="tab" id="tab-synthetic" aria-controls="panel-synthetic" aria-selected="false" tabindex="-1">02 <span>Synthetic trajectories</span></button>
-        <button type="button" role="tab" id="tab-yacht" aria-controls="panel-yacht" aria-selected="false" tabindex="-1">03 <span>Yacht application</span></button>
+        <button type="button" role="tab" id="tab-istanbul" aria-controls="panel-istanbul" aria-selected="false" tabindex="-1">03 <span>Istanbul application</span></button>
       </div>
       <div class="figure-panel" role="tabpanel" id="panel-scaling" aria-labelledby="tab-scaling" tabindex="0">
         <div class="figure-topline"><span>SCALAR UPPER OBSTRUCTION · κ = 16</span><a class="text-link" href="downloads/Fig1.pdf" download>Vector PDF <span aria-hidden="true">↓</span></a></div>
@@ -125,49 +125,40 @@
       <div class="figure-panel" role="tabpanel" id="panel-synthetic" aria-labelledby="tab-synthetic" tabindex="0">
         <div class="figure-topline"><span>FOUR ENDPOINT MODES · 512 QUERIES</span><a class="text-link" href="downloads/Fig2.pdf" download>Vector PDF <span aria-hidden="true">↓</span></a></div>
         <figure>
-          <img class="research-figure" src="assets/figures/Fig2.svg" loading="lazy" alt="Four panels compare cyclical heavy ball and fixed heavy ball at gaps one half and one eighth, with exact gradients and a scalar error above the upper threshold. Errors are normalized by the benchmark rate.">
-          <figcaption><span class="caption-number">FIGURE 02.</span> Iterate errors are normalized by q<sup>k</sup>, with all four endpoint modes excited from rest. The top row uses exact gradients; the bottom row uses the scalar policy e<sub>k</sub> = (3ε<sub>U</sub>/2)Hx<sub>k</sub>. CHB denotes cyclical heavy ball; HB is the fixed, noiselessly tuned heavy-ball baseline.</figcaption>
+          <img class="research-figure" src="assets/figures/Fig2.svg" loading="lazy" alt="Four panels compare normalized iterate distance for CHB, HB, GD and NAG-Q at gaps one half and one eighth, with exact gradients and scalar-half errors.">
+          <figcaption><span class="caption-number">FIGURE 02.</span> Normalized iterate distance D is shown for CHB, HB, GD and NAG-Q, with all four endpoint modes excited from rest. The top row uses exact gradients; the bottom row uses scalar relative errors at ε<sub>U</sub>/2. Coefficients and initialization are fixed across comparisons.</figcaption>
         </figure>
-        <p class="reading-note"><span>Read with care</span> An increasing normalized curve can still represent a convergent method. The noisy baseline is not optimized for the error level, and one selected error path does not establish worst-case robustness.</p>
+        <p class="reading-note"><span>Read with care</span> The error level is selected from CHB’s scalar upper obstruction; it need not lie within the sufficient vector-error budget. One selected error path does not establish worst-case robustness.</p>
       </div>
-      <div class="figure-panel" role="tabpanel" id="panel-yacht" aria-labelledby="tab-yacht" tabindex="0">
-        <div class="figure-topline"><span>YACHT HYDRODYNAMICS · RAW LEAST SQUARES</span><a class="text-link" href="downloads/Fig3.pdf" download>Vector PDF <span aria-hidden="true">↓</span></a></div>
+      <div class="figure-panel" role="tabpanel" id="panel-istanbul" aria-labelledby="tab-istanbul" tabindex="0">
+        <div class="figure-topline"><span>ISTANBUL STOCK EXCHANGE · FOUR METHODS</span><a class="text-link" href="downloads/Fig3.pdf" download>Article figure: exact gradients PDF <span aria-hidden="true">↓</span></a></div>
         <figure>
-          <img class="research-figure" src="assets/figures/Fig3.svg" loading="lazy" alt="Yacht trajectories show alternating even and odd CHB phases for normalized distance and objective gap, compared with HB. Exact gradients and an above-threshold scalar error are shown.">
-          <figcaption><span class="caption-number">FIGURE 03.</span> Exact gradients appear on the left; the scalar policy at 3ε<sub>U</sub>/2 appears on the right. The rows show logarithms of normalized distance D<sub>k</sub> and objective gap F<sub>k</sub>. Solid and dashed lines connect even and odd queries. Both metrics equal one at initialization.</figcaption>
+          <img class="research-figure" src="assets/figures/istanbul-four-methods.svg" loading="lazy" alt="Istanbul normalized distance and objective gaps for CHB, HB, GD and NAG-Q, under exact gradients and certified mixing errors. CHB first overshoots and then has the smallest terminal errors.">
+          <figcaption><span class="caption-number">APPLICATION.</span> Four methods, 512 gradient queries and the same raw least-squares quadratic. Distance D and objective gap F are normalized to one at initialization. The two rows show log distance and log objective gap; columns show exact gradients and certified mixing errors.</figcaption>
         </figure>
-        <div class="phase-comparison" aria-label="Adjacent exact-gradient queries">
-          <div class="phase-context"><h3>One query changes the comparison.</h3><p>Exact-gradient normalized-distance ratio, CHB / HB. Lower values favor CHB.</p></div>
-          <div class="phase-value"><span>QUERY 511 · ODD</span><strong>1.0701152</strong><span>HB has smaller distance</span></div>
-          <div class="phase-value even"><span>QUERY 512 · EVEN</span><strong>0.3664869</strong><span>CHB has smaller distance</span></div>
-        </div>
-        <p class="reading-note"><span>Read with care</span> Both exact-gradient objective gaps are still above initialization at query 512: F<sub>512</sub> ≈ 18.38 for CHB and 142.46 for HB. This single raw-data Hessian illustrates phase effects; it cannot establish the fourth-power law or a general performance advantage.</p>
+        <p class="reading-note"><span>Read the whole trajectory</span> CHB reaches an objective gap about 62.815 times initialization at query 5. In this observed window it has smaller distances and gaps than all three comparators from query 62 through 512. One selected Hessian does not establish general superiority.</p>
       </div>
-      <noscript><p class="reading-note">JavaScript is disabled. All three illustrations are shown in order.</p></noscript>
     </section>
 
     <section class="four-methods section-shell" id="four-methods" aria-labelledby="four-methods-title">
-      <p class="eyebrow">FOUR-METHOD COMPARISON</p>
-      <h2 id="four-methods-title">Compare the distance.<br>Check the objective.</h2>
-      <p class="section-deck">The saved study adds gradient descent (GD) and quadratically tuned Nesterov (NAG-Q) to CHB and HB. Synthetic endpoint distances favor CHB. The Yacht results show the limits of that finite-horizon advantage.</p>
-      <div class="comparison-table-scroll">
+      <p class="eyebrow">THE ISTANBUL APPLICATION</p>
+      <h2 id="four-methods-title">An early overshoot.<br>A terminal advantage.</h2>
+      <p class="section-deck">All 536 observations, seven international returns and the USD-based ISE response. The same no-intercept least-squares problem, rest initialization and 512-query horizon are used for all four methods. No feature scaling or parameter retuning is applied.</p>
+      <div class="comparison-table-scroll" role="region" aria-label="Istanbul terminal errors" tabindex="0">
         <table class="comparison-table">
-          <caption>Yacht, exact gradients. D is normalized solution distance; F is normalized objective gap. Smaller values are better.</caption>
+          <caption>Istanbul Stock Exchange: lower is better. Both exact and certified mixing policies give these values at five significant digits; 160 digits are primary and 120 digits check arithmetic.</caption>
           <thead><tr><th scope="col">Method</th><th scope="col">D at query 511</th><th scope="col">D at query 512</th><th scope="col">F at query 512</th></tr></thead>
           <tbody>
-            <tr><th scope="row">CHB</th><td>0.22294</td><td>0.07590</td><td>18.37566</td></tr>
-            <tr><th scope="row">HB</th><td>0.20833</td><td>0.20709</td><td>142.46357</td></tr>
-            <tr><th scope="row">GD</th><td>0.84306</td><td>0.84278</td><td>0.79976</td></tr>
-            <tr><th scope="row">NAG-Q</th><td>0.10645</td><td>0.10569</td><td>0.002256</td></tr>
+            <tr><th scope="row">CHB</th><td>6.2203 × 10<sup>−38</sup></td><td>1.8162 × 10<sup>−38</sup></td><td>2.3430 × 10<sup>−75</sup></td></tr>
+            <tr><th scope="row">HB</th><td>5.2508 × 10<sup>−33</sup></td><td>4.4980 × 10<sup>−33</sup></td><td>1.4922 × 10<sup>−64</sup></td></tr>
+            <tr><th scope="row">GD</th><td>1.4418 × 10<sup>−3</sup></td><td>1.4243 × 10<sup>−3</sup></td><td>2.9875 × 10<sup>−6</sup></td></tr>
+            <tr><th scope="row">NAG-Q</th><td>3.3370 × 10<sup>−20</sup></td><td>3.0419 × 10<sup>−20</sup></td><td>4.3029 × 10<sup>−41</sup></td></tr>
           </tbody>
         </table>
       </div>
-      <figure class="comparison-figure">
-        <img src="assets/figures/gd-nag-objective.svg" loading="lazy" alt="Yacht normalized objective gaps for CHB, HB, GD and NAG-Q. NAG-Q is below CHB at every positive query under exact and scalar-half gradients.">
-        <figcaption>Yacht objective gaps on a log scale: exact gradients (left), scalar-half relative errors (right). A value of zero on the vertical axis denotes the initial gap.</figcaption>
-      </figure>
-      <p class="reading-note"><span>Distance and objective differ</span> NAG-Q has smaller objective gaps than CHB at all 512 positive queries under both shared policies. Its exact-gradient terminal gap is about 8145 times smaller. CHB has a smaller distance at query 512, but the larger distance in the final odd/even pair favors NAG-Q by about 2.09. These observations do not imply general empirical superiority.</p>
-      <p class="comparison-links"><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/tree/main/comparisons/gd-nag">Code, configuration and accepted results ↗</a><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/blob/main/comparisons/gd-nag/RESULTS.md">Full comparison tables ↗</a></p>
+      <p class="reading-note"><span>Both phases count</span> For exact gradients, the terminal odd/even-pair maximum distance of CHB is about 1.1846 × 10<sup>−5</sup> times HB's; its pair maximum objective gap is about 1.4300 × 10<sup>−10</sup> times HB's. The final advantage is therefore present across both adjacent phases.</p>
+      <p class="reading-note"><span>A bounded illustration</span> The error budget is tiny and chosen within the theorem's sufficient range. These high-precision results do not demonstrate practical noise tolerance, forecasting accuracy or wall-clock speedups.</p>
+      <p class="comparison-links"><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/tree/main/applications/istanbul">Istanbul code, protocol and records ↗</a><a class="text-link" href="https://github.com/byuzbasi/periodic-momentum/blob/main/applications/istanbul/reference/RESULTS.md">Complete comparison tables ↗</a></p>
     </section>
 
     <section class="reproduce-section" id="reproduce" aria-labelledby="reproduce-title">
@@ -175,7 +166,7 @@
         <div class="reproduction-copy">
           <p class="eyebrow"><span class="section-number">03</span> REPRODUCIBILITY</p>
           <h2 id="reproduce-title">From saved records<br>to the figures.</h2>
-          <p>The source archive includes the numerical kernels, fixed configurations, raw Yacht data, accepted records and reporting scripts. Start by checking the saved records; then regenerate the reporting tables and figures.</p>
+          <p>The source archive includes the numerical kernels, fixed configurations, the original Istanbul workbook, accepted records and reporting scripts. Start by checking the saved records; then regenerate the reporting tables and figures.</p>
           <div class="reproduction-actions"><a class="button light" href="downloads/periodic-momentum-source.zip" download>Download source & records <span aria-hidden="true">↓</span></a><a class="light-link" href="downloads/README.md">Full reproduction guide <span aria-hidden="true">↗</span></a></div>
           <div class="environment"><span>VALIDATED ENVIRONMENT</span><p>Python 3.13.5 · mpmath 1.3.0<br>R 4.6.0 with Cairo, for figures</p></div>
         </div>
@@ -192,20 +183,20 @@ python3 -m venv .venv
 .venv/bin/python scripts/reproduce.py export --out outputs/report_01
 .venv/bin/python scripts/reproduce.py figures --analysis outputs/report_01 --out outputs/figures_01
 
-# Check GD/Nesterov records and recreate their tables
-.venv/bin/python -B comparisons/gd-nag/run_pilot.py verify
-.venv/bin/python -B comparisons/gd-nag/report.py --out outputs/gd_nag_reports</code></pre>
+# Check and report Istanbul; no optimizer updates
+.venv/bin/python -B applications/istanbul/verify_saved.py
+.venv/bin/python -B applications/istanbul/report.py --out outputs/istanbul_01</code></pre>
           <p class="commands-footnote">Use an existing environment with mpmath 1.3.0 if preferred. Figure rendering requires R with Cairo. Each output directory must be new.</p>
           <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
         </div>
       </div>
       <div class="section-shell validation-strip">
-        <p><strong>13 + 16</strong><span>Synthetic work units + Yacht records checked</span></p>
-        <p><strong>5 + 2</strong><span>CSV reports + JSON diagnostics matched</span></p>
-        <p><strong>8 updates</strong><span>Four state transitions + four gradient updates</span></p>
-        <p><strong>3 figures</strong><span>Original CHB/HB drawing content checked</span></p>
+        <p><strong>536 × 7</strong><span>Raw Istanbul input matrix, every cell checked</span></p>
+        <p><strong>4 methods</strong><span>CHB, HB, GD and NAG-Q</span></p>
+        <p><strong>120 / 160</strong><span>Decimal digits for Istanbul arithmetic checks</span></p>
+        <p><strong>0 updates</strong><span>Saved-output verification and reporting</span></p>
       </div>
-      <p class="section-shell validation-scope">The original validation covers saved-output reporting and selected two-step prefixes. The additional GD/NAG-Q records and four-method reports are checked separately without optimizer updates. The adapted complete numerical replay has not been run end to end. The guide documents its separate command and the limits of the checks.</p>
+      <p class="section-shell validation-scope">The distribution is checked using accepted records, receipt manifests, source-cell identity and saved-output report comparisons. Optimizer, QR and eigen entry points are blocked in Istanbul verification. The relocated complete numerical replay has not been run end to end. Historical numerical work and current publication checks are recorded separately.</p>
     </section>
 
     <section class="study-notes section-shell" aria-labelledby="notes-title">
@@ -214,9 +205,9 @@ python3 -m venv .venv
         <div><h2 id="notes-title">A deliberately<br>bounded study.</h2><p class="notes-lead">The theorem is asymptotic in the gap. The numerical illustrations are finite and retain their original design.</p></div>
         <dl class="study-facts">
           <div><dt>Quadratic setting</dt><dd>Two equal-width spectral bands, fixed condition number and zero initial momentum. No uniform claim in a joint high-condition-number limit.</dd></div>
-          <div><dt>Yacht design</dt><dd>All 308 observations, six raw features, no-intercept unpenalized least squares. No centering, standardization, exclusions or train/test split.</dd></div>
-          <div><dt>Numerical precision</dt><dd>80 and 120 decimal digits, with 512 gradient queries. The examples are deterministic and use no random seed.</dd></div>
-          <div><dt>Data & code</dt><dd>Yacht Hydrodynamics: Gerritsma, Onnink and Versluis (1981), <a href="https://doi.org/10.24432/C5XG7R">UCI Machine Learning Repository</a>, CC BY 4.0. Source code: <a href="downloads/LICENSE.md">GPL version 3 or later</a>. Figure rights remain with their authors.</dd></div>
+          <div><dt>Istanbul design</dt><dd>All 536 observations, seven raw international returns, USD-based ISE response and no-intercept unpenalized least squares. No centering, standardization, exclusions or train/test split.</dd></div>
+          <div><dt>Numerical precision</dt><dd>80/120 digits for synthetic examples and 120/160 for Istanbul, with 512 gradient queries. The examples are deterministic and use no random seed.</dd></div>
+          <div><dt>Data & code</dt><dd>Istanbul Stock Exchange: Akbilgic (2013), <a href="https://doi.org/10.24432/C54P4J">UCI Machine Learning Repository</a>, CC BY 4.0. Source code: <a href="downloads/LICENSE.md">GPL version 3 or later</a>. Figure rights remain with their authors.</dd></div>
         </dl>
       </div>
     </section>

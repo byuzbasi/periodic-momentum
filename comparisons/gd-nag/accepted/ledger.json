@@ -1,6 +1,6 @@
 {
-  "reserved_updates": 12296,
-  "elapsed_seconds": 4.934081042185426,
+  "reserved_updates": 8196,
+  "elapsed_seconds": 2.2299762908369303,
   "attempts": {
     "SM01": {
       "status": "complete",
@@ -17,22 +17,6 @@
       "used_updates": 2,
       "bytes": 3559,
       "sha256": "4a8dadad15ebc3a975e13ccec0458d0a6f86c82ecc87c305061d239bbde8055b"
-    },
-    "SM03": {
-      "status": "complete",
-      "reserved_updates": 2,
-      "path": "prefix/SM03.json",
-      "used_updates": 2,
-      "bytes": 5683,
-      "sha256": "0399db59cf8d98c6ad8aef01e328b9d4c0452df7b554bb2479add7038e8b9259"
-    },
-    "SM04": {
-      "status": "complete",
-      "reserved_updates": 2,
-      "path": "prefix/SM04.json",
-      "used_updates": 2,
-      "bytes": 5805,
-      "sha256": "20ad09a0702903c41c19c878c1c05c8eaf94196990f68a4be579e275d01b659d"
     },
     "U01": {
       "status": "complete",
@@ -161,70 +145,6 @@
       "used_updates": 512,
       "bytes": 252044,
       "sha256": "4b231021cc43122f39397204615d51ca84937b98bbbc80635bb7beebb0f35ce0"
-    },
-    "U17": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U17.json",
-      "used_updates": 512,
-      "bytes": 257168,
-      "sha256": "a867cc5e7fc1e7a70c47517808d024c03bfd5bc3c7a5fbc85c601947b0a87272"
-    },
-    "U18": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U18.json",
-      "used_updates": 512,
-      "bytes": 257319,
-      "sha256": "f55a98eae9e4c9c9beb0eb26b2128beb400936195e2da544ab04c4713cb215ae"
-    },
-    "U19": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U19.json",
-      "used_updates": 512,
-      "bytes": 255402,
-      "sha256": "c1cbcde7becece5379e2034ad6d59d499be5f79af3b237db2ebecb7bb8215d91"
-    },
-    "U20": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U20.json",
-      "used_updates": 512,
-      "bytes": 255511,
-      "sha256": "5fc94626b9b44cd2fdf2cbee34eb5966c53e291511299461bc8cbe6b2dd42fa7"
-    },
-    "U21": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U21.json",
-      "used_updates": 512,
-      "bytes": 257442,
-      "sha256": "f7656c5e9e7ecd11e3db2e833c28285f4b0d867d3f2674de86370c649791837a"
-    },
-    "U22": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U22.json",
-      "used_updates": 512,
-      "bytes": 257578,
-      "sha256": "e6f4bc6c3c14267cfbe8789484b6392926adc467529c08464b37951e3d498f9f"
-    },
-    "U23": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U23.json",
-      "used_updates": 512,
-      "bytes": 255626,
-      "sha256": "dc417f14a9595fea45a4e52d65d3bd341e8bca9b1e0121d7608684ec18f878fb"
-    },
-    "U24": {
-      "status": "complete",
-      "reserved_updates": 512,
-      "path": "records/U24.json",
-      "used_updates": 512,
-      "bytes": 255762,
-      "sha256": "55b57da321dd6bdc0d59969b6ab3747e1a9d8867b5fc064e905d0488759474da"
     }
   }
 }

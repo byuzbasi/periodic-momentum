@@ -1,0 +1,132 @@
+{
+  "files": {
+    "applications/istanbul/accepted/ledger.json": {
+      "bytes": 5482,
+      "sha256": "7380df68b0d6bbc781d8ca80b151cd4c5ac8633855a7f11a87cced220dafacd7"
+    },
+    "applications/istanbul/accepted/prefix/SM01.json": {
+      "bytes": 8678,
+      "sha256": "2f4b9ce3b4ef2c3579cb5d914fe707deaf49ee6a4314a43bb776339bd2f34fdd"
+    },
+    "applications/istanbul/accepted/prefix/SM02.json": {
+      "bytes": 8684,
+      "sha256": "03b64ef16645266e3651504e41381a4652bedcf77611f86051ee32a9c39b7818"
+    },
+    "applications/istanbul/accepted/prefix/SM03.json": {
+      "bytes": 8691,
+      "sha256": "d77beef83de26cf14822455919c9d020e7653a22502cce7d9402257aa84b307d"
+    },
+    "applications/istanbul/accepted/prefix/SM04.json": {
+      "bytes": 8689,
+      "sha256": "47a33d909e9e7f715cdee923708936fc66b9b4c170442bdddda11a3d4122ddb2"
+    },
+    "applications/istanbul/accepted/records/U01.json": {
+      "bytes": 257474,
+      "sha256": "b6bdad09f44858678b70f43e8b27926a41f3c5b6ac8b2bbd59b6003ca4c0ec14"
+    },
+    "applications/istanbul/accepted/records/U02.json": {
+      "bytes": 322312,
+      "sha256": "7abab2761cf0da2849e94119c09035a206241a78576db5af76ded63171344bd2"
+    },
+    "applications/istanbul/accepted/records/U03.json": {
+      "bytes": 257407,
+      "sha256": "d32b396c193679d70bb8cf6b9204ebb399f56aa025a9dbedc3a5c6438bad74d4"
+    },
+    "applications/istanbul/accepted/records/U04.json": {
+      "bytes": 322233,
+      "sha256": "c93899ab2ab88d1336b812a4b7677feea7c51518247c9ab0b48197fa37679568"
+    },
+    "applications/istanbul/accepted/records/U05.json": {
+      "bytes": 257078,
+      "sha256": "bb5812406712d1b4ba0c800e0167e9dd158ff90a6a85d59660139b9dc2d65716"
+    },
+    "applications/istanbul/accepted/records/U06.json": {
+      "bytes": 321922,
+      "sha256": "236d7786a1d86f3e21b12b1f4532fdbd1cd9f34cf65213463225c53a2cf696c9"
+    },
+    "applications/istanbul/accepted/records/U07.json": {
+      "bytes": 257241,
+      "sha256": "5b1d916cac4d8d378b275ab77317dfa2bffa973152310cea22e857b5821045a1"
+    },
+    "applications/istanbul/accepted/records/U08.json": {
+      "bytes": 322095,
+      "sha256": "66330d049d7abc1dcc51ef9db35cfe0c30c01e98b76797d9afb3308db43744a6"
+    },
+    "applications/istanbul/accepted/records/U09.json": {
+      "bytes": 257740,
+      "sha256": "524b438b8438feb71ab63921887884a5587267eb3fd03dae39120e0be3778c3a"
+    },
+    "applications/istanbul/accepted/records/U10.json": {
+      "bytes": 322649,
+      "sha256": "6a297ea5e7135f7d8fe83b59315e6896cf14ba29013862a1effbc7a2116fa0ae"
+    },
+    "applications/istanbul/accepted/records/U11.json": {
+      "bytes": 257663,
+      "sha256": "0098550c5f1d5cd1d5b797697020463e06d67a2995fc4b8a04e3e2cde807f754"
+    },
+    "applications/istanbul/accepted/records/U12.json": {
+      "bytes": 322574,
+      "sha256": "160994d0a0d0253d0a2719087a0212c5d13ce68ec4599ab2896615a32f9f2ad2"
+    },
+    "applications/istanbul/accepted/records/U13.json": {
+      "bytes": 257367,
+      "sha256": "885feac108220319a67a3fb6fdfb5c073ed7a99c91e943b176a32b61a85a95b1"
+    },
+    "applications/istanbul/accepted/records/U14.json": {
+      "bytes": 322278,
+      "sha256": "d5e101cb5d8323500c8ee1f69afaf79f475468ec80865a1202ea161d14af8f6e"
+    },
+    "applications/istanbul/accepted/records/U15.json": {
+      "bytes": 257508,
+      "sha256": "283dfcbe3d4526add6c5de5d5ab23bf2837dee16a7b5fe61073d80c21019d49f"
+    },
+    "applications/istanbul/accepted/records/U16.json": {
+      "bytes": 322439,
+      "sha256": "6cc400805207baaa42d9552050a9f2fdb137354cb93531e2877b398e3506e569"
+    },
+    "applications/istanbul/accepted/setup_120.json": {
+      "bytes": 13177,
+      "sha256": "290396c4f9707586e328c5e3b688093b8698564e4e4563350e9edd54232f975d"
+    },
+    "applications/istanbul/accepted/setup_160.json": {
+      "bytes": 16377,
+      "sha256": "267e4956a79e74bfe5a6ed06fdd145746a1e880368736e77bdc9d26a0b2846ef"
+    },
+    "applications/istanbul/adapter.py": {
+      "bytes": 7397,
+      "sha256": "cc99668f6ebaa437a70ccce8c3d4761ddb5d932fe53645f7eb144e518a716e5e"
+    },
+    "applications/istanbul/config.json": {
+      "bytes": 1252,
+      "sha256": "d1e961cf78bd9d11f8ef2661bf0d7cf0b78cf760602462d922621916ecc19e4f"
+    },
+    "applications/istanbul/input_tokens.json": {
+      "bytes": 128047,
+      "sha256": "fca8dd3c1b56dc02823f2ac915bb0a4f95866a08952ce76f5989d9d5869ff15b"
+    },
+    "applications/istanbul/protocol.md": {
+      "bytes": 6404,
+      "sha256": "3129d53aaa66636dd9a3f32bf802e9d64130b149b01842eef4fceef9a662fefe"
+    },
+    "applications/istanbul/run_pilot.py": {
+      "bytes": 12493,
+      "sha256": "2d94738e5d583d3bac9164403359132d5028b3fdb16d1f3c3b9dc393b77db8a7"
+    },
+    "applications/istanbul/source.py": {
+      "bytes": 2297,
+      "sha256": "5a6b69a8743ac4a3d8e21bcfaed7ce5959597ae4c7cc1c89ee8eb2f5b5046859"
+    },
+    "code/periodic_momentum_numerics_v06/code/numerics.py": {
+      "bytes": 9818,
+      "sha256": "1e1d0db45e0d4e17a7ae7dabe5837587b4538356e682c97f2f08332e9edd6fe3"
+    },
+    "data/raw/data_akbilgic.xlsx": {
+      "bytes": 70296,
+      "sha256": "3b4f344458e947feced1db80df576160396fb44c9f927ca98e46f6e6f5b34cfa"
+    },
+    "scripts/common.py": {
+      "bytes": 2306,
+      "sha256": "a592f97ce145831627f9afe494beb810fc318cdece76e203129433801b281ce8"
+    }
+  }
+}

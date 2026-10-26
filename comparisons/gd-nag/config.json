@@ -11,11 +11,6 @@
       "id": "synthetic_R_eighth",
       "kind": "synthetic",
       "R": "1/8"
-    },
-    {
-      "id": "yacht",
-      "kind": "yacht",
-      "R": "1/2"
     }
   ],
   "methods": [
@@ -47,22 +42,21 @@
     "retuning": false
   },
   "limits": {
-    "full_trajectories": 24,
-    "main_gradient_updates": 12288,
-    "prefix_checks": 4,
-    "prefix_gradient_updates": 8,
-    "total_gradient_updates": 12296,
+    "full_trajectories": 16,
+    "main_gradient_updates": 8192,
+    "prefix_checks": 2,
+    "prefix_gradient_updates": 4,
+    "total_gradient_updates": 8196,
     "cumulative_numerical_seconds": 120
   },
   "tolerances": {
     "precision_log": "1e-45",
     "matrix_relative": "1e-60",
     "oracle_relative": "1e-60",
-    "comparison_log_synthetic": "1e-12",
-    "comparison_log_yacht": "1e-30"
+    "comparison_log_synthetic": "1e-12"
   },
   "randomness": "deterministic_no_rng_no_seed",
-  "preprocessing": "unchanged raw Yacht, no intercept, scaling, regularization or split",
-  "reference_policy": "reuse saved 80/120-digit Yacht setup; no new QR or eigensolve",
+  "preprocessing": "Fixed four-dimensional synthetic diagonal Hessians",
+  "reference_policy": "Known zero minimizer; no QR solve or eigensolve",
   "baseline_policy": "reuse accepted CHB/HB records; no new baseline trajectories"
 }

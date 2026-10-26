@@ -19,15 +19,10 @@ def units(cfg):
 
 def setup(cfg, unit):
     case = next(c for c in cfg['cases'] if c['id'] == unit['case'])
-    if case['kind'] == 'synthetic':
-        p = numeric.parameters(read(PUBLIC / 'configs/synthetic.json'), case['R'])
-        H = mp.diag(p['lambdas']); h = mp.zeros(4, 1); star = mp.zeros(4, 1)
-        initial = mp.matrix([1]*4)
-    else:
-        saved = read(PUBLIC / f"data/accepted/yacht/setup_{unit['digits']}.json")
-        s = dense.unpack_setup(saved)
-        H, h, star, p = [s[k] for k in ['H', 'h', 'star', 'p']]
-        initial = mp.zeros(6, 1)
+    require(case['kind']=='synthetic','Only synthetic cases are in this module')
+    p = numeric.parameters(read(PUBLIC / 'configs/synthetic.json'), case['R'])
+    H = mp.diag(p['lambdas']); h = mp.zeros(4, 1); star = mp.zeros(4, 1)
+    initial = mp.matrix([1]*4)
     epsilon = mp.mpf(0) if unit['profile'] == 'exact' else p['epsilon_upper']/2
     return H, h, star, initial, p, epsilon
 

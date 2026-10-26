@@ -1,0 +1,56 @@
+{
+  "version": "istanbul-v28",
+  "n": 536,
+  "p": 7,
+  "methods": [
+    "CHB",
+    "HB",
+    "GD",
+    "NAG-Q"
+  ],
+  "profiles": [
+    "exact",
+    "certified_mixing"
+  ],
+  "precisions": [
+    120,
+    160
+  ],
+  "prefix_precision": 160,
+  "horizon": 512,
+  "checkpoints": [
+    1,
+    2,
+    16,
+    64,
+    512
+  ],
+  "bounds": {
+    "mu_safe": "5.235251356211395e-06",
+    "L_safe": "0.0008564028670237406",
+    "R_use": "0.49644090689845105"
+  },
+  "limits": {
+    "full_trajectories": 16,
+    "main_gradient_updates": 8192,
+    "prefix_checks": 4,
+    "prefix_gradient_updates": 8,
+    "total_gradient_updates": 8200,
+    "QR_solves": 2,
+    "eigensolves": 2,
+    "cumulative_numerical_seconds": 120
+  },
+  "tolerances": {
+    "reference": "1e-60",
+    "precision_log": "1e-45",
+    "matrix_relative": "1e-60",
+    "oracle_relative": "1e-60",
+    "comparison_log": "1e-30"
+  },
+  "randomness": "none; deterministic",
+  "initialization": "w[-1]=w[0]=0; CHB alpha0 first",
+  "preprocessing": "none; raw features, no intercept, no regularization, all 536 rows",
+  "error_policy": "epsilon=c_kappa*R^4/2; P,P.T,-P; NAG at predicted point",
+  "retuning": false,
+  "source_sha256": "3b4f344458e947feced1db80df576160396fb44c9f927ca98e46f6e6f5b34cfa"
+}

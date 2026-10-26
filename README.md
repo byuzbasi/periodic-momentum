@@ -1,252 +1,129 @@
 # A fourth-power relative-error threshold for two-periodic heavy ball
 
-Companion code for the working manuscript by Bahadır Yüzbaşı and Mohammad
-Arashi, prepared for *Optimization Letters*.
+Research materials for the working manuscript by **Bahadır Yüzbaşı and
+Mohammad Arashi**, prepared for *Optimization Letters*.
 
-The numerical examples study established two-periodic cyclical heavy-ball
-coefficients on quadratics with a gapped spectrum. They illustrate the scalar
-upper bound's fourth-power scaling, finite-horizon transients, and alternating
-phases on the Yacht Hydrodynamics least-squares problem. The uniform vector-error
-guarantee is a theorem in the manuscript; these selected computations do not
-establish an adversarial optimum or a general performance advantage.
+[Research companion](https://byuzbasi.github.io/periodic-momentum/) ·
+[Istanbul results](applications/istanbul/reference/RESULTS.md) ·
+[Synthetic comparisons](comparisons/gd-nag/reference/results.md)
 
-The four-method comparison also includes gradient descent (GD) and
-quadratically tuned Nesterov (NAG-Q). Synthetic endpoint distances favor CHB;
-on Yacht, NAG-Q has smaller objective gaps throughout the observed horizon
-under the two shared policies. See [the comparison materials](comparisons/gd-nag/).
+![Fourth-power threshold and two spectral bands](docs/assets/mark.svg)
 
-This is a collection of scripts and frozen research inputs, not an installable
-Python or R package.
+The contribution is a sharp fourth-power order for the relative-gradient-error
+threshold as a spectral gap closes at fixed condition number. The cyclical
+heavy-ball coefficients are established in the literature; this repository
+does not claim a new optimization algorithm. The paper proves a uniform
+vector-error lower bound and a scalar obstruction of matching order.
 
-[GitHub repository](https://github.com/byuzbasi/periodic-momentum) · [Research website](https://byuzbasi.github.io/periodic-momentum/) · [Citation](CITATION.cff)
+## Numerical illustrations
 
-## Research companion website
+- Controlled four-dimensional two-band quadratics illustrate the scalar
+  upper obstruction, transients and comparisons with stationary heavy ball
+  (HB), gradient descent (GD) and quadratically tuned Nesterov (NAG-Q).
+- The **Istanbul Stock Exchange** application uses all 536 observations,
+  seven raw international returns and the USD-based ISE response. It is
+  no-intercept, unpenalized least squares without scaling or exclusions.
+  CHB has smaller distance and objective gap than all three comparators
+  at queries 62–512 under exact and certified mixing policies. Its early
+  objective gap peaks at about 62.815 times initialization.
 
-The [research website](https://byuzbasi.github.io/periodic-momentum/) presents the theorem,
-the original CHB/HB figures and the added GD/Nesterov comparison, with
-interpretation and reproduction commands.
-Its source is in `docs/index.html`. It can be previewed with a static web server
-and requires no build or external
-web dependencies. The download on the site contains the validated research
-source and records. It does not start a calculation.
+Both phases, adjacent-pair maxima, early losses and numerical checks are
+reported. One selected Hessian and a tiny certified error budget do not
+establish broad superiority, practical noise tolerance, forecasting accuracy
+or wall-clock speedups. Arithmetic precision is not measurement precision.
 
-## Requirements
+## Contents
 
-- Python 3.13.5 and `mpmath==1.3.0` were used for the accepted calculations and
-  the limited checks described below. The scripts use the Python standard
-  library and mpmath. The command-line interface requires Python 3.10 or later;
-  other Python versions have not been validated here.
-- Base R with Cairo support is needed only to redraw the figures. The validated
-  rendering used R 4.6.0 and Arial. Different font installations may change
-  typography; they do not change the numerical plotting data.
-- CVXPY, SDP solvers, NumPy and SymPy are not dependencies of this workflow.
+| Path | Purpose |
+|---|---|
+| `code/periodic_momentum_numerics_v06/code/numerics.py` | Original synthetic CHB/HB kernel, unchanged |
+| `configs/synthetic.json` | Fixed synthetic protocol, no random draws |
+| `data/accepted/synthetic` | Five scalar units and eight paired CHB/HB units |
+| `comparisons/gd-nag` | Both synthetic GD/NAG-Q cases, 16 full records and two prefixes |
+| `applications/istanbul` | Portable seven-dimensional four-method adapter, fixed protocol, input tokens and accepted records |
+| `data/raw/data_akbilgic.xlsx` | Unmodified UCI source workbook |
+| `reference/synthetic` | Original synthetic reporting CSVs |
+| `docs` | Research website and source download |
 
-After placing this directory on your computer, an optional isolated environment
-can be created with the following commands. An existing environment with the
-pinned dependency can also be used.
+The current distribution follows the manuscript's synthetic and Istanbul
+scope. Previous distributions remain recoverable in Git history. The
+synthetic comparator records form an explicitly documented subset of their
+historical study, selected by case identity, with every retained record
+unchanged. No outcomes, coefficients or trajectories were recomputed to
+prepare this publication.
 
-Each command block starts from the parent of this directory. If you are already
-inside it, omit the first `cd` command.
+## Environment and saved-output reproduction
 
-Commands use paths relative to the repository. No personal directory or machine
-configuration is required. If your checkout has a different name, adjust only
-the first `cd` command.
+Validated with Python 3.13.5 and **mpmath 1.3.0**; base R 4.6.0 with Cairo
+is used only for plotting. Python's ZIP/XML reader verifies the workbook
+without pandas or a spreadsheet package. This is research code, not an
+installable Python package.
 
-```bash
+```sh
 cd periodic-momentum
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
-```
-
-## Check the accepted records
-
-```bash
-cd periodic-momentum
-.venv/bin/python scripts/reproduce.py check --out outputs/check_local
-```
-
-This verifies the frozen files, raw-data dimensions, 13 synthetic work units,
-16 Yacht records, trace dimensions, and the original numerical acceptance
-criteria. The Yacht precision comparison is recomputed from the saved 80/120-digit
-logs. No optimizer iteration, QR solve or eigensolver is called. A completion
-marker alone is not used as evidence of validity.
-
-## Recreate the reporting data and figures
-
-```bash
-cd periodic-momentum
-.venv/bin/python scripts/reproduce.py export --out outputs/report_local
-.venv/bin/python scripts/reproduce.py figures --analysis outputs/report_local --out outputs/figures_local
-```
-
-The exporter recreates five reporting CSV files and the noise-effect and phase
-diagnostics directly from accepted records. It compares them with `reference/`:
-CSV files must match byte for byte, and JSON values must match exactly. These
-comparisons passed in the validated environment. Small platform-dependent
-floating-point formatting differences are not silently accepted or used to
-change the frozen reference values.
-
-`adjacent_queries.csv` additionally reports the two exact-gradient Yacht rows
-at queries 511 and 512. `reporting_check.json` records the comparisons. The
-existing directory names in the generated reports preserve the original plot
-script's input contract.
-
-The figure command reads these exported CSV files only. The resulting three
-vector PDFs are in `outputs/figures_local/figures/`. Rendering never starts a
-trajectory. In the limited verification, their text and drawing commands
-matched the original three CHB/HB figures, and their fonts were embedded.
-The added four-method reporting data and figures are in `comparisons/gd-nag/`.
-
-All output commands require a new directory and refuse unintended overwrites.
-Use a new output name for another reporting check.
-
-## Verify and report the GD/Nesterov comparison
-
-The [comparison directory](comparisons/gd-nag/) contains fixed configurations,
-code, 24 full accepted trajectories, four prefix records and reporting data.
-The [protocol](comparisons/gd-nag/protocol.md) and
-[results](comparisons/gd-nag/RESULTS.md) specify the scope and limitations.
-
-```bash
-cd periodic-momentum
+.venv/bin/python -B scripts/reproduce.py check --out outputs/check_01
+.venv/bin/python -B scripts/reproduce.py export --out outputs/synthetic_01
+.venv/bin/python -B scripts/reproduce.py figures --analysis outputs/synthetic_01 --out outputs/synthetic_figures_01
 .venv/bin/python -B comparisons/gd-nag/run_pilot.py verify
-.venv/bin/python -B comparisons/gd-nag/report.py --out outputs/gd_nag_reports
-Rscript --vanilla comparisons/gd-nag/plot.R outputs/gd_nag_reports outputs/gd_nag_figures
+.venv/bin/python -B comparisons/gd-nag/report.py --out outputs/comparisons_01
+.venv/bin/python -B applications/istanbul/verify_saved.py
+.venv/bin/python -B applications/istanbul/report.py --out outputs/istanbul_01
+Rscript --vanilla applications/istanbul/plot.R applications/istanbul/outputs/istanbul_01 outputs/istanbul_figures_01
 ```
 
-These commands use saved results only. No optimizer step, prefix, QR solve or
-eigensolver is executed. The comparison records preserve the completed
-24-trajectory, 12,296-update study; checking them does not repeat that study.
-The original CHB/HB workflow below remains separate. A fresh comparison replay
-has its own explicit command, documented in the comparison README, and was not
-run when publishing this update.
+Use new output names for repeated reporting. The `check`, `verify` and
+reporting commands read saved results; they do not perform optimizer updates,
+QR solves or eigensolves. The manuscript's 120/160-digit Istanbul records
+contain 16 full trajectories plus four prefixes (8,200 historical updates).
+Synthetic records use 80/120 digits. Precision pairs are arithmetic checks,
+not independent statistical replications. Synthetic CHB/HB objective gaps
+are reported only where saved states permit their evaluation.
 
-## Optional eight-update prefix check
+## Article figures from saved outputs
 
-```bash
+The original CHB/HB diagnostic rendering remains available through the root
+`figures` command. The current article's four-method figures are reproduced by:
+
+```sh
 cd periodic-momentum
-.venv/bin/python scripts/reproduce.py smoke --out outputs/smoke_local
+Rscript --vanilla comparisons/gd-nag/render_article_figure.R comparisons/gd-nag/reference outputs/article_synthetic_01
+Rscript --vanilla applications/istanbul/render_article_figure.R applications/istanbul/reference outputs/article_istanbul_01
 ```
 
-This explicitly requested numerical check uses only existing exact-gradient
-cases at 120 decimal digits:
+Both renderers read accepted CSV reports only and refuse existing PDF outputs.
 
-| Existing case | Method | Work performed |
-|---|---|---|
-| Synthetic T01, R = 1/2 | CHB | Two independent state-transition updates |
-| Synthetic T01, R = 1/2 | HB | Two independent state-transition updates |
-| Yacht Y02 | CHB | Two gradient updates from the saved setup |
-| Yacht Y04 | HB | Two gradient updates from the saved setup |
+## Optional numerical replay
 
-The synthetic transition implementation is compared against the saved direct
-iteration states. The Yacht check exercises the unchanged gradient loop and
-compares its first two checkpoints with accepted records. The original frozen
-matrix-check tolerance is used. The Yacht Hessian and reference solution are
-loaded from the accepted 120-digit setup; no new QR or spectrum computation is
-performed. A two-step runtime prefix does not modify either 512-query
-configuration file. It is not a new scientific scenario or a new full trajectory.
+Saved-output checks are sufficient to inspect the reported results. Explicit
+numerical commands are separate:
 
-One such check was performed for this handoff: four state transitions and four
-gradient updates, eight updates in total. It passed. See
-`validation/limited_check.json`. Do not interpret this limited check as a fresh
-recomputation of every 512-query result.
-
-The original CHB/HB verification scope and remaining limits are recorded in
-[`validation/summary.json`](validation/summary.json).
-
-## Frozen design
-
-| Component | Fixed choices |
-|---|---|
-| Synthetic | mu = 1/16, L = 1, condition number 16, four endpoint modes, rest initialization |
-| Scalar scaling | R = 1/2, 1/4, 1/8, 1/16, 1/32 |
-| Synthetic trajectories | R = 1/2 and 1/8; exact, scalar-half, scalar-above and mixing-half policies |
-| Yacht | All 308 rows, six raw inputs, seventh column as target |
-| Objective | No-intercept, unpenalized least squares; no centering, scaling, exclusions or split |
-| Yacht methods/policies | CHB and fixed noiseless HB; four original error policies |
-| Precision/horizon | 80 and 120 decimal digits; 512 queries |
-| Randomness | None; no RNG or seed is used |
-
-The two mathematical kernels and the original synthetic and Yacht
-configurations are retained byte for byte. The new adapters handle portable
-file access, validation, reporting and explicitly requested execution.
-
-The scalar upper obstruction is a threshold for retaining the benchmark rate,
-not a divergence threshold. The fixed HB comparison is not the optimal noisy
-stationary method. Yacht's even and odd phases and its large objective
-transients are retained. Distance and objective metrics should not be conflated.
-
-## Complete numerical replay: prepared, not run for this handoff
-
-The following commands are provided for a separately authorized replay of the
-same frozen design. They were **not executed** during the limited validation.
-They perform fresh QR/spectral preparation and all existing trajectories;
-there is no parameter search or additional dataset. The newly adapted complete
-runner has only static/control-flow validation, not a fresh end-to-end replay.
-
-```bash
+```sh
 cd periodic-momentum
-.venv/bin/python scripts/reproduce.py recompute --out outputs/replay_local --confirm-frozen-replay
-.venv/bin/python scripts/reproduce.py export --records outputs/replay_local --out outputs/replay_reports
+.venv/bin/python -B scripts/reproduce.py recompute --confirm-frozen-replay --out outputs/synthetic_replay_01
+.venv/bin/python -B comparisons/gd-nag/run_pilot.py run
+.venv/bin/python -B applications/istanbul/run_pilot.py run
 ```
 
-The complete replay comprises two Yacht setup records, five scalar records,
-eight synthetic paired records and sixteen Yacht records. It executes 48
-trajectories and 24,576 gradient updates, plus two QR solves and the prescribed
-spectral checks. These are the original work units, not new replications.
-Runtime for this adapted full runner has not been measured. Storage is expected
-to be of the same order as the small accepted archive, but a fresh measurement
-has not been made.
+These commands were **not run after relocation**. They retain fixed designs,
+write fresh outputs and support `--resume` only for complete, verified units
+with matching signatures. Interrupted/failed units require inspection;
+automatic retry is disabled. See each module's README and protocol. Do not
+confuse accepted historical records with a newly validated relocated replay.
 
-Each accepted work unit is saved atomically with an input/software signature
-and a receipt. Progress counts durably saved units (31 including setup), not
-elapsed time. Inspect it with:
+## Data, license and citation
 
-```bash
-cd periodic-momentum
-cat outputs/replay_local/progress.json
-```
+Akbilgic, O. (2013). *Istanbul Stock Exchange*. UCI Machine Learning
+Repository. [DOI: 10.24432/C54P4J](https://doi.org/10.24432/C54P4J),
+CC BY 4.0. See [data attribution](data/ATTRIBUTION.txt). The source workbook
+is unchanged and its selected numeric cells are preserved as text tokens.
+Code is GPL version 3 or later; see [LICENSE](LICENSE.md).
 
-A compatible interrupted run can resume completed, verified work:
+Use [CITATION.cff](CITATION.cff) for both authors and the working manuscript.
+No publication DOI is claimed. Both authors declare no competing interests;
+no funding was received for the study.
 
-```bash
-cd periodic-momentum
-.venv/bin/python scripts/reproduce.py recompute --out outputs/replay_local --confirm-frozen-replay --resume
-```
-
-An attempted but uncommitted unit stops automatic continuation for inspection.
-Changed signatures and invalid receipts are rejected. After a complete replay,
-the exporter validates its records and compares the reporting values with the
-accepted reference. Neither receipt counts nor `progress.json` replace the
-scientific validation.
-
-## Directory guide
-
-| Path | Contents |
-|---|---|
-| `code/` | Unchanged numerical kernels, retaining their relative import layout |
-| `configs/` | Original scientific configurations, spectral bounds and validation budget |
-| `data/raw/` | Unchanged Yacht numeric file |
-| `data/accepted/` | Accepted scalar, trajectory and setup records |
-| `reference/` | Original reporting values and manuscript figures |
-| `scripts/` | Portable command-line and reporting adapters |
-| `validation/` | Results and scope of the limited verification |
-| `docs/` | Static research website, figure assets and source download |
-| `outputs/` | Local generated results, excluded by `.gitignore` |
-
-## Data attribution, code licence and manuscript status
-
-Gerritsma, J., Onnink, R., and Versluis, A. (1981), *Yacht Hydrodynamics*,
-UCI Machine Learning Repository, [DOI: 10.24432/C5XG7R](https://doi.org/10.24432/C5XG7R).
-The numeric file is distributed unchanged under CC BY 4.0; see
-`data/ATTRIBUTION.txt`. The data licence does not assign a licence to the code.
-The source code in `code/` and `scripts/`, together with the website's HTML,
-CSS and JavaScript source, is distributed under the GNU General
-Public License, version 3 or (at your option) any later version. See
-[`LICENSE.md`](LICENSE.md). This code licence does not change the Yacht data
-licence or assign a software licence to the manuscript figures.
-
-The manuscript remains a working draft; no journal acceptance or published
-paper DOI is claimed. The code is publicly available in this repository. The present checks cover the numerical
-illustrations and reporting; they are not a machine-checked proof of the theorem
-and do not replay the earlier SDP exploration.
+Questions or reproducibility issues can be reported through GitHub Issues.
+Include the command, software versions and the relevant unit identifier;
+do not upload private machine paths or credentials.

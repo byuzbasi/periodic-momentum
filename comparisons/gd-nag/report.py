@@ -38,13 +38,8 @@ def all_series(cfg):
                     trace[k]['ln_relative_f'] = mp.log((v.T*H*v)[0]/(2*initial_gap))
             output.append(dict(case=case, profile=u['profile'], method=method, trace=trace,
                                source='accepted_synthetic_float64_norm_logs_and_saved_states'))
-    for path in sorted((PUBLIC/'data/accepted/yacht').glob('Y*.json')):
-        row = read(path); u = row['unit']
-        if u['digits']==120 and u['profile'] in cfg['profiles']:
-            output.append(dict(case='yacht', profile=u['profile'], method=u['method'],
-                               trace=parsed_trace(row['trace']), source='accepted_yacht_120_digit_record'))
-    require(len(output)==24, 'Expected 3 cases x 2 profiles x 4 methods')
-    require(len({(s['case'],s['profile'],s['method']) for s in output})==24, 'Duplicate series')
+    require(len(output)==16, 'Expected 2 cases x 2 profiles x 4 methods')
+    require(len({(s['case'],s['profile'],s['method']) for s in output})==16, 'Duplicate series')
     return output
 
 
@@ -94,7 +89,7 @@ def report(destination):
             for profile in cfg['profiles']:
                 sub={s['method']:s for s in series if s['case']==case['id'] and s['profile']==profile}
                 chb=sub['CHB']['trace']
-                tol=mp.mpf(cfg['tolerances']['comparison_log_yacht' if case['id']=='yacht' else 'comparison_log_synthetic'])
+                tol=mp.mpf(cfg['tolerances']['comparison_log_synthetic'])
                 for method in ['HB','GD','NAG-Q']:
                     other=sub[method]['trace']
                     row=dict(case=case['id'],profile=profile,comparator=method,
@@ -115,8 +110,8 @@ def report(destination):
         csv_file(destination/'endpoint_metrics.csv',endpoints)
         csv_file(destination/'CHB_comparisons.csv',comparisons)
         write(destination/'numerical_quality.json',checked)
-        write(destination/'comparison_scope.json',dict(series=24,trace_rows=len(traces),pair_rows=len(pairs),
-            methods=['CHB','HB','GD','NAG-Q'],new_full_trajectories=24,reused_baseline_series=12,
+        write(destination/'comparison_scope.json',dict(series=16,trace_rows=len(traces),pair_rows=len(pairs),
+            methods=['CHB','HB','GD','NAG-Q'],published_comparator_trajectories=16,reused_baseline_series=8,
             synthetic_baseline_objective_available_at=[0,1,2,15,16,63,64,511,512],
             baseline_recomputed=False,unreported_synthetic_objective_points='missing; no interpolation'))
         text=['# GD/NAG bounded comparison: saved results','',
@@ -128,10 +123,10 @@ def report(destination):
               '', '## Odd/even distance counts (256 per phase)','',
               table(comparisons,['case','profile','comparator','odd_CHB_wins','odd_CHB_losses','odd_ties','even_CHB_wins','even_CHB_losses','even_ties']),
               '', '## Validation and scope','',
-              '24 new full trajectories; 12,288 main updates + 8 prefix updates = 12,296. No new CHB/HB trajectory, QR solve or eigensolve.',
+              'The published synthetic subset contains 16 accepted full trajectories and two prefixes: 8,192 + 4 = 8,196 historical updates. No new CHB/HB trajectory, QR solve or eigensolve.',
               'All new trajectories passed independent affine-state and relative-error checks, and 80/120-digit log comparisons. See numerical_quality.json.',
-              'Synthetic CHB/HB objective values exist only at saved state points. Their full objective peaks are intentionally missing. Yacht has full objective traces for all four methods.',
-              'Synthetic baseline norm logs were stored as float64: comparisons use a 1e-12 log tie tolerance. Yacht uses 1e-30. All reported distances refer to the same reference solution and initialization.',
+              'Synthetic CHB/HB objective values exist only at saved state points. Their full objective peaks are intentionally missing.',
+              'Synthetic baseline norm logs were stored as float64: comparisons use a 1e-12 log tie tolerance. All reported distances refer to the same reference solution and initialization.',
               'No claim about arbitrary gradient-error paths, parameter-optimal noisy methods, out-of-sample prediction or general empirical superiority follows from this pilot.','']
         (destination/'results.md').write_text('\n'.join(text))
         print(json.dumps(dict(accepted=True,series=len(series),trace_rows=len(traces),endpoint_rows=len(endpoints),comparison_rows=len(comparisons)),indent=2))

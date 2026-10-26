@@ -4,14 +4,14 @@ import os
 import time
 from mpmath import mp
 from common import (ROOT, configs, digest, kernels, output_path, read, require,
-                    signature, write, yacht_units, frozen_check)
+                    signature, write, frozen_check)
 
 
 def recompute(destination, confirm=False, resume=False):
     require(confirm, "Numerical replay requires --confirm-frozen-replay")
     frozen_check()
     numeric, dense = kernels()
-    scfg, ycfg = configs()
+    scfg = configs()
     out = output_path(destination, create=not resume)
     sign = signature()
     if resume:
@@ -19,7 +19,6 @@ def recompute(destination, confirm=False, resume=False):
         receipts = read(out / "receipts.json")
     else:
         (out / "synthetic").mkdir()
-        (out / "yacht").mkdir()
         write(out / "signature.json", sign)
         write(out / "receipts.json", {})
         receipts = {}
@@ -31,9 +30,7 @@ def recompute(destination, confirm=False, resume=False):
     # A started but uncommitted unit is retained for inspection, never retried silently.
     require(attempted <= set(receipts), "An interrupted unit needs inspection; automatic retry is disabled")
     started = time.perf_counter()
-    planned = [f"yacht/setup_{d}.json" for d in [80,120]]
-    planned += ["synthetic/" + u["id"] + ".json" for u in scfg["units"]]
-    planned += ["yacht/" + u["id"] + ".json" for u in yacht_units(ycfg)]
+    planned = ["synthetic/" + u["id"] + ".json" for u in scfg["units"]]
 
     def commit_unit(rel, compute):
         if rel in receipts:
@@ -56,28 +53,13 @@ def recompute(destination, confirm=False, resume=False):
         print(f"{len(receipts)}/{len(planned)} committed: {rel}", flush=True)
         return value
 
-    for digits in ycfg["precisions"]:
-        def prepare(digits=digits):
-            with mp.workdps(digits):
-                return dense.pack_setup(dense.preparation(ycfg, read(ROOT / "configs/yacht_bounds.json"),
-                                                         ROOT / "data/raw/yacht_hydrodynamics.data"))
-        commit_unit(f"yacht/setup_{digits}.json", prepare)
     for unit in scfg["units"]:
         commit_unit("synthetic/" + unit["id"] + ".json", lambda unit=unit: numeric.evaluate(scfg, unit))
-    for unit in yacht_units(ycfg):
-        def calculate(unit=unit):
-            with mp.workdps(unit["digits"]):
-                setup = dense.unpack_setup(read(out / "yacht" / f"setup_{unit['digits']}.json"))
-                counter = {"updates": 0}
-                result = dense.trajectory(ycfg, setup, unit, counter)
-                require(counter["updates"] == 512, "Unexpected replay update count")
-                return result
-        commit_unit("yacht/" + unit["id"] + ".json", calculate)
     require(set(receipts) == set(planned), "Incomplete replay")
     from records import validate
     checked = validate(out)
     report = dict(accepted=True, validation=checked, committed_units=len(receipts),
-                  trajectory_executions=48, gradient_updates=24576, QR_solves=2,
+                  trajectory_executions=32, gradient_updates=16384, QR_solves=0,
                   scope="Exact frozen-design numerical replay, not an expanded experiment")
     if not (out / "replay_check.json").exists():
         write(out / "replay_check.json", report)

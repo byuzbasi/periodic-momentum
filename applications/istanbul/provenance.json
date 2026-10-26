@@ -1,0 +1,12 @@
+{
+  "accepted_full_trajectories": 16,
+  "accepted_prefix_checks": 4,
+  "historical_gradient_updates": 8200,
+  "record_and_setup_and_ledger_files_byte_identical": 23,
+  "source_numeric_tokens_unchanged": true,
+  "numerical_function_bodies_AST_identical_except_setup_file_routing": true,
+  "numerical_quality_and_design_AST_identical": true,
+  "input_metadata_source_path_made_portable": true,
+  "new_optimizer_updates": 0,
+  "fresh_relocated_numerical_replay_performed": false
+}

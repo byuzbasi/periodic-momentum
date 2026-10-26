@@ -13,7 +13,7 @@ from common import ROOT, environment, frozen_check, output_path, require, write
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
-    for name in ["check", "export", "smoke", "figures", "recompute"]:
+    for name in ["check", "export", "figures", "recompute"]:
         p = commands.add_parser(name)
         p.add_argument("--out", required=True, help="New output directory; existing paths are protected")
         if name == "export":
@@ -35,12 +35,8 @@ def main():
             out = output_path(args.out)
             result = subprocess.run(["Rscript", "--vanilla", str(ROOT / "scripts/plot_figures.R"),
                                      str(analysis), str(out / "figures")], check=True, capture_output=True, text=True)
-            result = dict(accepted=True, figures=["Fig1.pdf", "Fig2.pdf", "Fig3.pdf"], new_gradient_updates=0)
+            result = dict(accepted=True, figures=["Fig1.pdf", "Fig2.pdf"], new_gradient_updates=0)
             write(out / "figure_check.json", result)
-        elif args.command == "smoke":
-            from limited_check import smoke
-            out = output_path(args.out)
-            result = smoke(out)
         elif args.command == "export":
             from reporting import export
             out = output_path(args.out)

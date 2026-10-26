@@ -1,0 +1,18 @@
+{
+  "primary_precision": 160,
+  "arithmetic_check_precision": 120,
+  "primary_series": 8,
+  "trace_rows": 4104,
+  "pair_rows": 2048,
+  "endpoint_rows": 8,
+  "comparison_rows": 6,
+  "all_methods_new_on_same_data": true,
+  "profile_policy": [
+    "exact",
+    "certified_mixing"
+  ],
+  "random_repetitions": 0,
+  "financial_forecast": false,
+  "source_response": "ISE USD BASED, C column",
+  "new_work_after_accepted_run": "saved-output analysis only"
+}

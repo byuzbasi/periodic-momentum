@@ -1,15 +1,15 @@
 {
-  "series": 24,
-  "trace_rows": 12312,
-  "pair_rows": 6144,
+  "series": 16,
+  "trace_rows": 8208,
+  "pair_rows": 4096,
   "methods": [
     "CHB",
     "HB",
     "GD",
     "NAG-Q"
   ],
-  "new_full_trajectories": 24,
-  "reused_baseline_series": 12,
+  "published_comparator_trajectories": 16,
+  "reused_baseline_series": 8,
   "synthetic_baseline_objective_available_at": [
     0,
     1,

@@ -1,6 +1,14 @@
-Gerritsma, J., Onnink, R., Versluis, A. (1981). Yacht Hydrodynamics [Dataset].
-UCI Machine Learning Repository. https://doi.org/10.24432/C5XG7R
-Source: https://archive.ics.uci.edu/dataset/243/yacht%2Bhydrodynamics
+Istanbul Stock Exchange
+Akbilgic, O. (2013). UCI Machine Learning Repository.
+https://doi.org/10.24432/C54P4J
+https://archive.ics.uci.edu/dataset/247/istanbul+stock+exchange
 License: Creative Commons Attribution 4.0 International (CC BY 4.0).
 https://creativecommons.org/licenses/by/4.0/
-The distributed raw numeric file is unchanged. Derived matrices and logs are separate.
+
+Original file: raw/data_akbilgic.xlsx (unmodified).
+Worksheet: orjinal data. Observations: original rows 3-538 inclusive.
+Inputs: SP, DAX, FTSE, NIKKEI, BOVESPA, EU, EM (columns D-J).
+Response: USD BASED ISE (column C). Date and TL-based ISE are not inputs.
+The token export in applications/istanbul/input_tokens.json preserves all
+3,752 input and 536 response cells without transformation. No observations
+were removed. Code is separately licensed under GPL version 3 or later.

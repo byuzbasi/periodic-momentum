@@ -47,22 +47,9 @@ def output_path(value, create=True):
 
 def kernels():
     sys.path.insert(0, str(ROOT / "code/periodic_momentum_numerics_v06/code"))
-    sys.path.insert(0, str(ROOT / "code/periodic_momentum_yacht_v09"))
     import numerics
-    import dense_math
     require(importlib.metadata.version("mpmath") == "1.3.0", "Use mpmath 1.3.0")
-    return numerics, dense_math
-
-
-def configs():
-    return read(ROOT / "configs/synthetic.json"), read(ROOT / "configs/yacht.json")
-
-
-def yacht_units(cfg):
-    combinations = ((p, m, d) for p in cfg["profiles"]
-                    for m in cfg["methods"] for d in cfg["precisions"])
-    return [dict(id=f"Y{i+1:02d}", profile=p, method=m, digits=d)
-            for i, (p, m, d) in enumerate(combinations)]
+    return numerics, None
 
 
 def environment():
@@ -81,6 +68,10 @@ def frozen_check():
 def signature():
     paths = [p for directory in ["configs", "code", "scripts"]
              for p in (ROOT / directory).rglob("*") if p.is_file() and "__pycache__" not in p.parts]
-    paths += [ROOT / "data/raw/yacht_hydrodynamics.data", ROOT / "frozen_inputs.json"]
+    paths += [ROOT / "frozen_inputs.json"]
     return {"environment": environment(),
             "files": {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}}
+
+
+def configs():
+    return read(ROOT / "configs/synthetic.json")

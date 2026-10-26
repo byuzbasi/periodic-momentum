@@ -1,0 +1,189 @@
+{
+  "reserved_updates": 8200,
+  "elapsed_seconds": 6.268846041988581,
+  "attempts": {
+    "SM01": {
+      "status": "complete",
+      "path": "prefix/SM01.json",
+      "reserved_updates": 2,
+      "used_updates": 2,
+      "bytes": 8678,
+      "sha256": "2f4b9ce3b4ef2c3579cb5d914fe707deaf49ee6a4314a43bb776339bd2f34fdd"
+    },
+    "SM02": {
+      "status": "complete",
+      "path": "prefix/SM02.json",
+      "reserved_updates": 2,
+      "used_updates": 2,
+      "bytes": 8684,
+      "sha256": "03b64ef16645266e3651504e41381a4652bedcf77611f86051ee32a9c39b7818"
+    },
+    "SM03": {
+      "status": "complete",
+      "path": "prefix/SM03.json",
+      "reserved_updates": 2,
+      "used_updates": 2,
+      "bytes": 8691,
+      "sha256": "d77beef83de26cf14822455919c9d020e7653a22502cce7d9402257aa84b307d"
+    },
+    "SM04": {
+      "status": "complete",
+      "path": "prefix/SM04.json",
+      "reserved_updates": 2,
+      "used_updates": 2,
+      "bytes": 8689,
+      "sha256": "47a33d909e9e7f715cdee923708936fc66b9b4c170442bdddda11a3d4122ddb2"
+    },
+    "U01": {
+      "status": "complete",
+      "path": "records/U01.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257474,
+      "sha256": "b6bdad09f44858678b70f43e8b27926a41f3c5b6ac8b2bbd59b6003ca4c0ec14"
+    },
+    "U02": {
+      "status": "complete",
+      "path": "records/U02.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 322312,
+      "sha256": "7abab2761cf0da2849e94119c09035a206241a78576db5af76ded63171344bd2"
+    },
+    "U03": {
+      "status": "complete",
+      "path": "records/U03.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257407,
+      "sha256": "d32b396c193679d70bb8cf6b9204ebb399f56aa025a9dbedc3a5c6438bad74d4"
+    },
+    "U04": {
+      "status": "complete",
+      "path": "records/U04.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 322233,
+      "sha256": "c93899ab2ab88d1336b812a4b7677feea7c51518247c9ab0b48197fa37679568"
+    },
+    "U05": {
+      "status": "complete",
+      "path": "records/U05.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257078,
+      "sha256": "bb5812406712d1b4ba0c800e0167e9dd158ff90a6a85d59660139b9dc2d65716"
+    },
+    "U06": {
+      "status": "complete",
+      "path": "records/U06.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 321922,
+      "sha256": "236d7786a1d86f3e21b12b1f4532fdbd1cd9f34cf65213463225c53a2cf696c9"
+    },
+    "U07": {
+      "status": "complete",
+      "path": "records/U07.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257241,
+      "sha256": "5b1d916cac4d8d378b275ab77317dfa2bffa973152310cea22e857b5821045a1"
+    },
+    "U08": {
+      "status": "complete",
+      "path": "records/U08.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 322095,
+      "sha256": "66330d049d7abc1dcc51ef9db35cfe0c30c01e98b76797d9afb3308db43744a6"
+    },
+    "U09": {
+      "status": "complete",
+      "path": "records/U09.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257740,
+      "sha256": "524b438b8438feb71ab63921887884a5587267eb3fd03dae39120e0be3778c3a"
+    },
+    "U10": {
+      "status": "complete",
+      "path": "records/U10.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 322649,
+      "sha256": "6a297ea5e7135f7d8fe83b59315e6896cf14ba29013862a1effbc7a2116fa0ae"
+    },
+    "U11": {
+      "status": "complete",
+      "path": "records/U11.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257663,
+      "sha256": "0098550c5f1d5cd1d5b797697020463e06d67a2995fc4b8a04e3e2cde807f754"
+    },
+    "U12": {
+      "status": "complete",
+      "path": "records/U12.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 322574,
+      "sha256": "160994d0a0d0253d0a2719087a0212c5d13ce68ec4599ab2896615a32f9f2ad2"
+    },
+    "U13": {
+      "status": "complete",
+      "path": "records/U13.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257367,
+      "sha256": "885feac108220319a67a3fb6fdfb5c073ed7a99c91e943b176a32b61a85a95b1"
+    },
+    "U14": {
+      "status": "complete",
+      "path": "records/U14.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 322278,
+      "sha256": "d5e101cb5d8323500c8ee1f69afaf79f475468ec80865a1202ea161d14af8f6e"
+    },
+    "U15": {
+      "status": "complete",
+      "path": "records/U15.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 257508,
+      "sha256": "283dfcbe3d4526add6c5de5d5ab23bf2837dee16a7b5fe61073d80c21019d49f"
+    },
+    "U16": {
+      "status": "complete",
+      "path": "records/U16.json",
+      "reserved_updates": 512,
+      "used_updates": 512,
+      "bytes": 322439,
+      "sha256": "6cc400805207baaa42d9552050a9f2fdb137354cb93531e2877b398e3506e569"
+    }
+  },
+  "preparations": {
+    "120": {
+      "status": "complete",
+      "path": "setup_120.json",
+      "bytes": 13177,
+      "sha256": "290396c4f9707586e328c5e3b688093b8698564e4e4563350e9edd54232f975d"
+    },
+    "160": {
+      "status": "complete",
+      "path": "setup_160.json",
+      "bytes": 16377,
+      "sha256": "267e4956a79e74bfe5a6ed06fdd145746a1e880368736e77bdc9d26a0b2846ef"
+    }
+  },
+  "QR": [
+    120,
+    160
+  ],
+  "eigen": [
+    120,
+    160
+  ],
+  "peak_rss_bytes": 49807360
+}

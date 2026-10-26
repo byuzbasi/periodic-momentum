@@ -1,0 +1,15 @@
+{
+  "accepted": true,
+  "source_cells_verified": 4288,
+  "Istanbul_numerical_records_preserved": 20,
+  "Istanbul_setup_files_preserved": 2,
+  "synthetic_units_preserved": 13,
+  "synthetic_comparator_records_preserved": 18,
+  "Istanbul_reporting_CSVs_byte_identical": 4,
+  "synthetic_comparison_CSV_rows_unchanged": true,
+  "numerical_kernels_unchanged": true,
+  "new_optimizer_updates": 0,
+  "new_QR_solves": 0,
+  "new_eigensolves": 0,
+  "fresh_relocated_numerical_replay_performed": false
+}
