@@ -28,7 +28,7 @@ draw <- function() {
     box()
   }
 }
-dir.create(output)
+dir.create(output,recursive=TRUE)
 png(file.path(output,"istanbul_four_methods.png"),width=1500,height=1050,res=140,type="cairo",pointsize=12)
 draw(); invisible(dev.off())
 svg(file.path(output,"istanbul_four_methods.svg"),width=10.7,height=7.5,pointsize=12)

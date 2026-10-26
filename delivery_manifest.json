@@ -133,8 +133,8 @@
       "sha256": "fca8dd3c1b56dc02823f2ac915bb0a4f95866a08952ce76f5989d9d5869ff15b"
     },
     "applications/istanbul/plot.R": {
-      "bytes": 1718,
-      "sha256": "b1b1d6c2654e7b7c7753ff11ba45024d444bcc7d5ff9c878494618de1a740af1"
+      "bytes": 1733,
+      "sha256": "3706c88a5682ae3edcc747ec7011e50fe4873fd7193a0017ef182dfe2b4c4f19"
     },
     "applications/istanbul/protocol.md": {
       "bytes": 6404,
@@ -333,8 +333,8 @@
       "sha256": "f4c61316747ac4ecf7a6d9b48a6e3dfe354a279ea987454f77ceceb66c74e7e0"
     },
     "comparisons/gd-nag/run_pilot.py": {
-      "bytes": 9889,
-      "sha256": "201b5ba39427b9b1c45e6e953c3c1af90043e9854f815ab0542ca136f20fe4f4"
+      "bytes": 9906,
+      "sha256": "6c9630e82dab0d9f1260b01cd03f724e8b75ce6672ce245e4bd271c05699eddb"
     },
     "configs/synthetic.json": {
       "bytes": 2358,
@@ -513,8 +513,8 @@
       "sha256": "b1416a993d60d1dd86793738fd8f24bff1f5c5e38cc6a6e7d6862f9cc21035a3"
     },
     "validation/portability_check.json": {
-      "bytes": 734,
-      "sha256": "153c5d106b8a00425ee92332c4570a71cdc82bd58d3acd8305adc296589ad61d"
+      "bytes": 777,
+      "sha256": "2002d2ce7543e12dd8cbcc16e47f5a824a20a646015be7d804c373160a95013f"
     },
     "validation/publication_check.json": {
       "bytes": 492,

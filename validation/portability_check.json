@@ -29,6 +29,7 @@
   "foreign_working_directory": true,
   "accepted_records_checked": true,
   "numerical_entry_points_blocked": true,
+  "replay_input_signatures_resolve": true,
   "new_gradient_updates": 0,
   "new_QR_solves": 0,
   "new_eigensolves": 0

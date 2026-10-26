@@ -12,7 +12,7 @@ from adapter import ROOT, PUBLIC, mp, numeric, units, trajectory, read, write, d
 
 
 def signature():
-    paths = [ROOT/n for n in ['config.json', 'protocol.md', 'adapter.py', 'run_pilot.py', 'report.py', 'plot.R']]
+    paths = [ROOT/n for n in ['config.json', 'protocol.md', 'adapter.py', 'run_pilot.py', 'report.py', 'render_article_figure.R']]
     paths += [p for folder in ['code', 'scripts', 'configs', 'data']
               for p in (PUBLIC/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts]
     paths += [PUBLIC/'frozen_inputs.json', PUBLIC/'delivery_manifest.json']
