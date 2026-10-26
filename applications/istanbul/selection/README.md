@@ -33,7 +33,7 @@ interval-arithmetic certificate.
 The unchanged JSON records contain the Gram matrices, all eigenvalues, SVD
 cross-checks, feature means, enclosure endpoints and acceptance diagnostics.
 The CSV retains the original row order and full stored numerical values;
-the display above is rounded and sorted by the selection rule. Config.json
+the display above is rounded and sorted by the selection rule. config.json
 documents the exact source locations, feature columns and safeguards. The
 source links and dataset DOIs identify the original UCI data; only the chosen
 Istanbul workbook is distributed with the application. No additional source

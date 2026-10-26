@@ -34,7 +34,7 @@
     },
     "applications/istanbul/accepted/manifest.json": {
       "bytes": 5300,
-      "sha256": "d8384074b6b89701e09bb80fdf84ef33bea86b8c2cbe672e838cd2ada2dc1d5d"
+      "sha256": "40ad8d9b214ff32d7e4e1e4dcc591493fd2a3799ae7140a0d2698c2a809f5b51"
     },
     "applications/istanbul/accepted/prefix/SM01.json": {
       "bytes": 8678,
@@ -145,8 +145,8 @@
       "sha256": "3706c88a5682ae3edcc747ec7011e50fe4873fd7193a0017ef182dfe2b4c4f19"
     },
     "applications/istanbul/protocol.md": {
-      "bytes": 6898,
-      "sha256": "16358f7a2482ebd7a8c2df975da4dbc915ec95e02c9760239584aa5c82ebbe54"
+      "bytes": 6910,
+      "sha256": "a3ad74774f409891d3785bc06e03818672897f3c37e161c8495dc8f790578419"
     },
     "applications/istanbul/provenance.json": {
       "bytes": 478,
@@ -198,7 +198,7 @@
     },
     "applications/istanbul/selection/README.md": {
       "bytes": 2797,
-      "sha256": "f1f2c7b4beb9efdbea5ea22b8cee28400be2dd94d4802d4ccebf5c0112d6ef63"
+      "sha256": "e8f24cf97aff3d00243425c43fdd81f0026b35f8143876b8ba1d0a48a65128af"
     },
     "applications/istanbul/selection/candidate_summary.csv": {
       "bytes": 476,

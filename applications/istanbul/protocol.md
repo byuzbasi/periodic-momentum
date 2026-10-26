@@ -32,7 +32,7 @@ selection, lagged variable, imputation or train/test split is introduced.
 No out-of-sample or causal claim is made.
 
 At each working precision, original decimal tokens are read directly, H and
-h are formed once, and one QR least-squares reference w* and one symmetric
+h are formed once, and one QR least-squares reference w_hat and one symmetric
 eigensolve of H are computed. Numerical precision does not change the
 measurement precision of the supplied returns. References and matrices are
 stored at their full working precision; serialization retains the complete working precision.
@@ -62,8 +62,8 @@ Q_k cycles P,P^T,-P beginning at k=0. The same policy and relative budget
 apply to each method's own gradient; realized error vectors can differ.
 This is controlled computational error, not measurement noise.
 
-Independent checks use a centered affine state [w-w*;w_previous-w*;1].
-They retain r=H*w*-h, the finite-precision reference residual. Writing
+Independent checks use a centered affine state [w-w_hat;w_previous-w_hat;1].
+They retain r=H*w_hat-h, the finite-precision reference residual. Writing
 S=I+epsilon*Q_k, the top blocks are (1+beta)I-alpha*(1+eta)*S*H,
 -beta*I+alpha*eta*S*H, and -alpha*S*r. The bottom blocks shift the
 previous iterate and retain the constant 1. Their product over a period
