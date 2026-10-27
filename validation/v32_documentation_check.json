@@ -1,0 +1,15 @@
+{
+  "accepted": true,
+  "manuscript": "V32",
+  "compiled_manuscript_pdf_present": false,
+  "source_and_source_archive_identical_to_approved_version": true,
+  "all_numerical_code_configurations_and_records_preserved": true,
+  "AI_declaration_preserved": true,
+  "local_html_links": 36,
+  "markdown_links_checked": true,
+  "private_machine_paths_absent": true,
+  "new_optimizer_updates": 0,
+  "new_QR_solves": 0,
+  "new_eigensolves": 0,
+  "previous_numerical_verification_retained_without_rerun": true
+}

@@ -56,8 +56,17 @@ update is w_next=w+beta*(w-w_previous)-alpha*(g(z)+e), where
 z=w+eta*(w-w_previous). The reported iterate is w, not NAG's query point z.
 
 The two policies are exact (e=0) and certified_mixing. The latter uses
-epsilon=c_kappa*R^4/2, evaluated from the same theorem formulas at each
-precision, and e_k=epsilon*Q_k*g(z_k). For P(v1,...,v7)=(v7,v1,...,v6),
+epsilon=c_kappa^p*R^4/2, evaluated from the fixed protocol formulas at each
+precision, and e_k=epsilon*Q_k*g(z_k). The superscript p distinguishes
+the earlier sufficient constant from the improved c_kappa in V32.
+Specifically, c_kappa^p=min(1,d_minus^2/(4 K_p G_p)),
+K_p=sqrt((4 kappa^2+3)^2+2), and
+G_p=4 kappa (sqrt(4 kappa^2+2)+kappa), with
+d_minus=(3/2) q^2 sqrt(kappa)/(kappa+1).
+The improved constant is at least c_kappa^p; the saved budget remains
+approximately 1.60364486e-15. The code fields named `c` and
+`epsilon_lower` and the frozen config have not been renamed or retuned.
+For P(v1,...,v7)=(v7,v1,...,v6),
 Q_k cycles P,P^T,-P beginning at k=0. The same policy and relative budget
 apply to each method's own gradient; realized error vectors can differ.
 This is controlled computational error, not measurement noise.

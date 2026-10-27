@@ -1,0 +1,1176 @@
+% Prepared for Optimization Letters using the publisher's December 2024 template.
+% The publisher class is supplied unchanged. This is a single-file manuscript.
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{microtype}
+% BEGIN COMPACT LAYOUT v13
+% Keep the publisher class, body fonts, line spacing and page margins unchanged.
+\usepackage{etoolbox}
+\makeatletter
+\apptocmd{\normalsize}{%
+  \abovedisplayskip=7pt plus1pt minus1pt
+  \belowdisplayskip=7pt plus1pt minus1pt
+  \abovedisplayshortskip=2pt plus1pt
+  \belowdisplayshortskip=3pt plus1pt minus1pt
+}{}{\PackageError{compact-layout}{Normal-size spacing patch failed}{}}
+\apptocmd{\th@thmstyleone}{%
+  \thm@preskip=8pt plus1pt minus1pt
+  \thm@postskip=8pt plus1pt minus1pt
+}{}{\PackageError{compact-layout}{Theorem spacing patch failed}{}}
+\apptocmd{\th@thmstyletwo}{%
+  \thm@preskip=8pt plus1pt minus1pt
+  \thm@postskip=8pt plus1pt minus1pt
+}{}{\PackageError{compact-layout}{Remark spacing patch failed}{}}
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-10pt plus-2pt minus-1pt}{5pt}{\sectionfont}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-8pt plus-2pt minus-1pt}{4pt}{\subsectionfont}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-8pt plus-2pt minus-1pt}{4pt}{\subsubsectionfont}}
+\patchcmd{\@maketitle}{\vskip21pt}{\vskip8pt}{}{\PackageError{compact-layout}{Title top patch failed}{}}
+\patchcmd{\@maketitle}{\vskip20pt}{\vskip12pt}{}{\PackageError{compact-layout}{Title gap patch failed}{}}
+\patchcmd{\@maketitle}{\vskip20pt}{\vskip12pt}{}{\PackageError{compact-layout}{Author gap patch failed}{}}
+\patchcmd{\@maketitle}{\vskip24pt}{\vskip12pt}{}{\PackageError{compact-layout}{Email gap patch failed}{}}
+\patchcmd{\@maketitle}{\vskip24pt}{\vskip12pt}{}{\PackageError{compact-layout}{Abstract gap patch failed}{}}
+\patchcmd{\@maketitle}{\vskip36pt}{\vskip10pt}{}{\PackageError{compact-layout}{Title end patch failed}{}}
+\AtBeginDocument{%
+  \normalsize
+}
+\makeatother
+\setlength{\floatsep}{9pt plus2pt minus1pt}
+\setlength{\textfloatsep}{9pt plus2pt minus1pt}
+\setlength{\intextsep}{9pt plus2pt minus1pt}
+\setlength{\belowcaptionskip}{4pt}
+\setlength{\bibsep}{4pt}
+% END COMPACT LAYOUT v13
+\hypersetup{hidelinks,pdftitle={A Fourth-Power Relative-Error Threshold for Two-Periodic Heavy Ball},
+pdfauthor={Bahadir Yuzbasi and Mohammad Arashi},pdfsubject={Optimization Letters manuscript}}
+\theoremstyle{thmstyleone}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{thmstyletwo}
+\newtheorem{remark}{Remark}
+\raggedbottom
+\newcommand{\R}{\mathbb R}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\crit}{\mathrm{crit}}
+\newcommand{\cT}{\mathsf T}
+\newcommand{\cK}{\mathsf K}
+\newcommand{\cG}{\mathsf G}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+
+\begin{document}
+\title[Relative errors in two-periodic heavy ball]{A Fourth-Power Relative-Error Threshold for Two-Periodic Heavy Ball}
+\author*[1,2]{\fnm{Bahad{\i}r} \sur{Y\"uzba\c{s}{\i}}}\email{bahadir.yuzbasi@inonu.edu.tr}
+\author[3]{\fnm{Mohammad} \sur{Arashi}}\email{arashi@um.ac.ir}
+\affil*[1]{\orgdiv{Department of Econometrics}, \orgname{\.{I}n\"on\"u University},
+\orgaddress{\city{Malatya}, \country{T\"urkiye}}}
+\affil[2]{\orgdiv{Department of Statistics}, \orgname{F{\i}rat University},
+\orgaddress{\postcode{23199}, \city{Elaz{\i}\u{g}}, \country{T\"urkiye}}}
+\affil[3]{\orgdiv{Department of Statistics, Faculty of Mathematical Sciences},
+\orgname{Ferdowsi University of Mashhad},
+\orgaddress{\city{Mashhad}, \country{Iran}}}
+\abstract{\unboldmath
+Periodic heavy-ball coefficients can exploit a gap in the Hessian
+spectrum of a strongly convex quadratic. We study how accurately the
+gradient must be computed to preserve this advantage. For two equal-width
+spectral bands and a fixed condition number $\kappa>1$, we consider the
+established two-periodic coefficients tuned for exact gradients, with
+zero initial momentum. We prove that the supremum of relative-error levels
+preserving a per-query rate below
+$q=(\sqrt\kappa-1)/(\sqrt\kappa+1)$ has order $R^4$ as the normalized
+spectral gap $R$ tends to zero. Both bounds have explicit constants.
+The lower bound is uniform in dimension and allows history-dependent
+vector errors that mix Hessian eigenspaces. Its proof uses a regularized
+quadratic energy and gives an estimate for every iterate. A scalar
+multiplicative error yields the matching upper order for the same
+initialization. Controlled two-band examples illustrate the scalar fourth-power
+scaling and cyclical heavy ball's smaller terminal errors under a fixed query budget.
+On a least-squares example built from observed stock index returns,
+cyclical heavy ball achieves smaller terminal distances and objective gaps than stationary heavy ball, gradient
+descent and quadratically tuned Nesterov, after an early overshoot.
+The theorem concerns a benchmark-rate
+threshold for fixed coefficients, rather than a stability threshold
+or the full rate--robustness tradeoff under inexactness.}
+\keywords{heavy-ball method, cyclical step sizes, inexact gradients, spectral gaps, robustness, quadratic optimization}
+\maketitle
+\noindent\textit{ORCID:} Bahad{\i}r Y\"uzba\c{s}{\i}: \url{https://orcid.org/0000-0002-6196-3201};\\
+Mohammad Arashi: \url{https://orcid.org/0000-0002-5881-9241}
+
+\section{Introduction}
+For the established two-periodic cyclical heavy-ball (CHB) coefficients of
+Goujaud et al.~\cite[Algorithm 2 and Corollary 3.2]{goujaud2022}, we prove
+an order-$R^4$ relative-error threshold as the normalized spectral gap $R$
+closes at fixed condition number $\kappa>1$.
+
+The exponent reflects a quadratic noiseless rate margin and square-root
+sensitivity of repeated endpoint eigenvalues to scalar errors. The main
+technical step is the matching dimension-independent lower bound for
+history-dependent vector errors that mix eigenspaces. Unlike stationary
+robustness results, we track this periodic family as its gap closes.
+Switched-system certificates alone do not supply a matching obstruction;
+we establish both bounds for the same coefficients, iterate-rate criterion
+and ordinary first step from $x_{-1}=x_0$, without special rescaling. The comparison with stationary methods is a
+corollary of the exact-gradient rate barrier; it does not identify the
+best rate achievable after retuning for a positive error budget.
+
+Table~\ref{tab:comparison} locates this contribution among robustness,
+switched-system and energy analyses. Related schedules exploit spectral structure~\cite{oymak2021,agarwal2021}; broader-objective momentum is studied
+in~\cite{khanh2026}. See also Vasin et al., \emph{On solving minimization
+and min-max problems by first-order methods with relative error in gradients}
+(2025, \href{https://arxiv.org/abs/2503.06628v3}{arXiv:2503.06628v3}).
+
+\begin{table}[htbp]
+\caption{Relation to the closest results. The comparisons distinguish the
+coefficient choice and the rate criterion.}
+\label{tab:comparison}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
+\toprule
+Source & Established result & Contribution of this paper\\
+\midrule
+Goujaud et al.~\cite{goujaud2022} & Noiseless CHB rates on gapped spectra & Relative-error tolerance preserving the gap benefit\\[4pt]
+Gannot~\cite{gannot2022}; Cyrus et al.~\cite{cyrus2018} & Relative-error rates and stationary rate--robustness tradeoffs & Fixed periodic coefficients; tolerance as the gap closes\\[4pt]
+G\"urb\"uzbalaban~\cite{gurbuz2025} & Constant-momentum gains and multiplicative stability radii & Retention of $q$, with two-sided order in $R$\\[4pt]
+Miller et al.~\cite[Theorem 4.1]{miller2026} & Switched convergence and rate certificates & Closed-form gap law and a matching scalar obstruction\\[4pt]
+Orvieto~\cite[Proposition 4]{orvieto2025} & Invariant energy and convex-quadratic acceleration & Endpoint regularization for arbitrary vector errors\\[4pt]
+De Klerk et al.~\cite[Theorem 5.1]{deklerk2017} & Tight noisy exact-line-search rate & Periodic fixed steps and an iterate-rate threshold\\
+\botrule
+\end{tabular}
+\end{table}
+
+\section{Problem, methods, and rates}\label{sec:setting}
+Fix $0<\mu<L$, $\kappa=L/\mu>1$, and $0<R<1$.
+For each positive integer $d$, consider $f:\R^d\to\R$ with
+minimizer $x^\star\in\R^d$, minimum $f^\star\in\R$, and symmetric
+Hessian $H\in\R^{d\times d}$ restricted to two spectral bands:
+\begin{equation}\label{eq:class}
+\begin{split}
+ f(x)&=\tfrac12(x-x^\star)^TH(x-x^\star)+f^\star,\qquad
+ \spec(H)\subseteq\Lambda_R=[\mu,a]\cup[b,L],\\
+ a&=\frac{L+\mu-R(L-\mu)}2,\qquad
+ b=\frac{L+\mu+R(L-\mu)}2 .
+\end{split}
+\end{equation}
+In \eqref{eq:class}, $R=(b-a)/(L-\mu)$ is dimensionless and
+$a-\mu=L-b$. The endpoints $\mu,L$ are class bounds, not necessarily attained
+eigenvalues, and $a,b$ are the band edges defined in \eqref{eq:class}.
+Scalar Hessians $H=\mu$ and $H=L$ are included.
+We use the Euclidean and induced operator norms $\norm{\cdot}$,
+transpose $T$, identity $I_n$ of order $n$, and
+$A\preceq B$ for positive semidefinite $B-A$.
+
+The CHB benchmark $q$, normalized midpoint $\chi$, momentum $m$,
+step sizes $\alpha_0,\alpha_1$, and two-step margin $\Delta$ are
+\begin{equation}\label{eq:coefficients}
+\begin{gathered}
+ q=\frac{\sqrt\kappa-1}{\sqrt\kappa+1},\qquad
+ \chi=\frac{L+\mu}{L-\mu},\qquad
+ m=\left(\frac{\sqrt{\chi^2-R^2}-\sqrt{\chi^2-1}}
+                  {\sqrt{1-R^2}}\right)^2,\\
+ \alpha_0=\frac{1+m}{a},\qquad
+ \alpha_1=\frac{1+m}{b},\qquad
+ \Delta=q^2-m .
+\end{gathered}
+\end{equation}
+Using \eqref{eq:coefficients} from \cite[Algorithm 2]{goujaud2022}
+and writing $\xi_k=x_k-x^\star$, we take one gradient query per step:
+\begin{equation}\label{eq:chb}
+\begin{split}
+ x_{k+1}&=x_k+m(x_k-x_{k-1})-\alpha_r(H\xi_k+e_k),
+ \qquad r=k\bmod 2,\\
+ x_{-1}&=x_0,\qquad
+ \norm{e_k}\leq\varepsilon\norm{H\xi_k},\qquad 0\leq\varepsilon<1 .
+\end{split}
+\end{equation}
+For nonnegative integers $k$, the real errors $e_k\in\R^d$ may depend
+adversarially on the entire history, without independence, unbiasedness,
+symmetry, or eigenspace preservation. Equation \eqref{eq:chb} uses
+$x_1=x_0-\alpha_0(H\xi_0+e_0)$ without rescaling and reports $x_k$.
+
+For comparison, let $\mathcal S$ be the family with constant scalar
+parameters $\alpha>0$ and $\beta,\eta\in\R$ defined by
+\begin{equation}\label{eq:stationary}
+\begin{split}
+ y_k&=x_k+\eta(x_k-x_{k-1}),\\
+ x_{k+1}&=x_k+\beta(x_k-x_{k-1})
+       -\alpha\bigl(H(y_k-x^\star)+e_k\bigr),\\
+ x_{-1}&=x_0,\qquad
+ \norm{e_k}\leq\varepsilon\norm{H(y_k-x^\star)} .
+\end{split}
+\end{equation}
+Parameters in \eqref{eq:stationary} may depend on $\mu,L,R,\varepsilon$,
+but not individual eigenvalues. This includes gradient, heavy-ball,
+Nesterov, and robust momentum, excluding matrix coefficients, higher
+memory, and adaptation, with equal class information and one query per step.
+
+For a fixed method $\mathcal A$ and class parameters,
+$r_{\mathcal A}(\varepsilon)$ is the infimum of $r>0$ admitting
+a finite constant $C$ such that
+\begin{equation}\label{eq:rate}
+ \norm{x_k-x^\star}\leq C r^k\norm{x_0-x^\star}
+ \quad\text{for every }k\geq0,\ d,\ H,\ x_0,\text{ and admissible error path}.
+\end{equation}
+In \eqref{eq:rate}, $C$ may depend only on $\mu,L,R,\varepsilon$,
+the method, and $r$. The empty-set infimum is $+\infty$;
+the infimum need not be attained, notably at repeated roots.
+Writing $r_{\mathcal C}$ for \eqref{eq:chb}, define the stationary
+optimum and benchmark-rate threshold by
+\begin{equation}\label{eq:threshold}
+ r_{\mathcal S}^*(\varepsilon)
+   =\inf_{\mathcal A\in\mathcal S}r_{\mathcal A}(\varepsilon),
+ \qquad
+ \varepsilon_{\crit}(\kappa,R)
+   =\sup\bigl(\{0\}\cup
+     \{\varepsilon\in[0,1):r_{\mathcal C}(\varepsilon)<q\}\bigr).
+\end{equation}
+Scaling $H,\mu,L$ leaves $\alpha_rH$ unchanged, so
+\eqref{eq:threshold} depends only on $\kappa,R$. Nested error sets make
+$r_{\mathcal C}(\varepsilon)$ nondecreasing. The threshold retains $q$;
+it measures neither divergence nor the full rate--robustness tradeoff
+of methods retuned for inexact gradients.
+
+\section{An explicit fourth-power law}\label{sec:main}
+The following constants depend only on $\kappa$. The quantities $d_-$
+and $d_+$ bound $\Delta/R^2$. For $R\leq1/2$ and phase $r\in\{0,1\}$,
+$\mathsf A_r$ bounds $\alpha_rL$, $\mathsf B_r$ bounds
+$|1+m-\alpha_r\lambda|$, and $\cT_r$ bounds the state transition;
+$\cK$ and $\cG$ control the energy and two-step perturbation:
+\begin{equation}\label{eq:auxconstants}
+\begin{gathered}
+ d_0=\frac{2q^2\sqrt\kappa}{\kappa+1},\qquad
+ d_-=\tfrac34d_0,\qquad d_+=2d_0,\\
+ \mathsf A_0=\frac{8\kappa}{\kappa+3},\quad
+ \mathsf A_1=\frac{4\kappa}{\kappa+1},\quad
+ \mathsf B_0=\frac{6(\kappa-1)}{\kappa+3},\quad
+ \mathsf B_1=\frac{6(\kappa-1)}{3\kappa+1},\\
+ \cT_r=\sqrt{\mathsf B_r^2+2},\qquad
+ \cK=\sqrt{(\cT_0\cT_1+1)^2+2},\qquad
+ \cG=\cT_1\mathsf A_0+\cT_0\mathsf A_1+\mathsf A_0\mathsf A_1.
+\end{gathered}
+\end{equation}
+Using \eqref{eq:auxconstants}, choose the positive threshold constants
+and the admissible gap range as follows:
+\begin{equation}\label{eq:mainconstants}
+\begin{gathered}
+ c_\kappa=\min\left\{1,\frac{d_-^2}{4\cK\cG}\right\},\qquad
+ C_\kappa=\frac{4q^2}{(\kappa-1)(1+3q^2/4)^2},\\
+ R_\kappa=\min\left\{\frac12,(2C_\kappa)^{-1/4}\right\}.
+\end{gathered}
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+For every fixed $\kappa>1$ and $0<R\leq R_\kappa$, the method
+\eqref{eq:chb} and the threshold \eqref{eq:threshold} satisfy
+\begin{equation}\label{eq:fourthpower}
+ c_\kappa R^4\leq\varepsilon_{\crit}(\kappa,R)\leq C_\kappa R^4 .
+\end{equation}
+For $0\leq\varepsilon<c_\kappa R^4$, set $\delta=\Delta/2$.
+An explicit bound for every iterate, implying
+$r_{\mathcal C}(\varepsilon)<q$, is
+\begin{equation}\label{eq:prefactor}
+\begin{split}
+ \gamma&=m+\delta+\frac{\cK\cG}{\delta}\varepsilon<q^2,\\
+ \mathcal C&=\frac{\sqrt2\cK}{\delta}
+     \max\left\{1,\frac{\cT_0+\mathsf A_0\varepsilon}{\sqrt\gamma}\right\},\\
+ \norm{\xi_k}&\leq\mathcal C\,\gamma^{k/2}\norm{\xi_0}
+ \quad(k\geq0).
+\end{split}
+\end{equation}
+The constants in \eqref{eq:prefactor} are finite, positive, and
+independent of dimension, Hessian, initial point, and error path.
+\end{theorem}
+
+The bounds in \eqref{eq:fourthpower} have matching fourth-power order
+at fixed $\kappa$; their coefficients are not claimed optimal.
+No uniform assertion is made as $\kappa\to\infty$ and $R\to0$
+simultaneously. The prefactor in \eqref{eq:prefactor} can grow as the
+gap closes, so the rate bound alone implies no short-horizon advantage.
+
+\begin{corollary}\label{cor:comparison}
+Under the assumptions of Theorem~\ref{thm:main}, if
+$0\leq\varepsilon<c_\kappa R^4$, then
+\begin{equation}\label{eq:separation}
+ r_{\mathcal C}(\varepsilon)<q=r_{\mathcal S}^*(0)
+     \leq r_{\mathcal S}^*(\varepsilon).
+\end{equation}
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:main} gives the strict inequality in
+\eqref{eq:separation}; Lemma~\ref{lem:stationary} below gives the rest.
+\end{proof}
+This comparison concerns only $\mathcal S$. It uses the admissibility
+of zero error, not a strict deterioration of the optimal stationary
+rate when the error budget increases.
+
+\section{Proof of Theorem \ref{thm:main}}\label{sec:proof}
+\subsection{The stationary benchmark and initialization}
+\begin{lemma}\label{lem:stationary}
+For every $\varepsilon\in[0,1)$, the family
+\eqref{eq:stationary} satisfies
+$r_{\mathcal S}^*(\varepsilon)\geq r_{\mathcal S}^*(0)=q$.
+\end{lemma}
+\begin{proof}
+Zero error is admissible for every $\varepsilon$. Take a scalar Hessian
+$H=\lambda$, where $\lambda$ is either $\mu$ or $L$, and set
+$x^\star=0$, $x_{-1}=x_0=1$. The state matrix and its characteristic
+polynomial, with scalar variable $z$, are
+\begin{equation}\label{eq:stationarymatrix}
+\begin{split}
+ S_\lambda&=
+ \begin{pmatrix}
+ 1+\beta-\alpha\lambda(1+\eta)&-\beta+\alpha\eta\lambda\\
+ 1&0
+ \end{pmatrix},\\
+ p_\lambda(z)&=z^2-[1+\beta-\alpha\lambda(1+\eta)]z
+                  +\beta-\alpha\eta\lambda,\qquad
+ p_\lambda(1)=\alpha\lambda .
+\end{split}
+\end{equation}
+For the initialized state $v=(1,1)^T$, \eqref{eq:stationarymatrix}
+gives $S_\lambda v=(1-\alpha\lambda,1)^T$ and
+$\det[v,S_\lambda v]=\alpha\lambda>0$. Thus $v,S_\lambda v$
+form a basis, regardless of the parameters $\beta,\eta$.
+
+Suppose \eqref{eq:rate} held with some $0<r<q$.
+The bounds on $x_k,x_{k-1}$ imply
+$\norm{S_\lambda^kv}\leq C_\lambda r^k$, enlarging the constant to
+include $k=0$. They also bound $S_\lambda^k(S_\lambda v)$ by a
+constant times $r^k$. Using the basis just established gives
+$\norm{S_\lambda^k}\leq C'_\lambda r^k$. Consequently both
+characteristic roots $z_1,z_2$ have modulus at most $r$.
+This argument rules out cancellation of a root by the prescribed
+initialization.
+
+Evaluating the polynomial in \eqref{eq:stationarymatrix} at $1$
+now bounds the step size at both endpoints:
+\begin{equation}\label{eq:endpointobstruction}
+ (1-r)^2\leq |(1-z_1)(1-z_2)|=\alpha\lambda\leq(1+r)^2,
+ \qquad
+ \kappa=\frac{\alpha L}{\alpha\mu}
+       \leq\left(\frac{1+r}{1-r}\right)^2.
+\end{equation}
+Since $r<1$, \eqref{eq:endpointobstruction} implies $r\geq q$,
+a contradiction. If $r_{\mathcal A}(\varepsilon)<q$, the infimum
+definition would supply an admissible $r<q$. Therefore no member of
+$\mathcal S$ has a rate below $q$.
+
+For the reverse bound at zero error, stationary heavy ball with
+$\alpha=4/(\sqrt L+\sqrt\mu)^2$, $\beta=q^2$ and $\eta=0$
+has $\det S_\lambda=q^2$ and $|\tr S_\lambda|\leq2q$
+for every $\lambda\in[\mu,L]$. Lemma~\ref{lem:energy} below,
+with $m=q$ and any $\delta>0$, bounds its scalar powers by
+$C_\delta(q+\delta)^k$ uniformly over this compact interval:
+the energy has lower bound $\delta^2I_2$ and a uniform upper
+bound because the entries of $S_\lambda$ are bounded.
+Taking direct sums and using $\norm{z_0}=\sqrt2\norm{\xi_0}$
+preserves uniformity in dimension and initialization. Letting
+$\delta\downarrow0$ in the rate infimum gives
+$r_{\mathcal S}^*(0)\leq q$. Finally, nested error sets give
+$r_{\mathcal A}(\varepsilon)\geq r_{\mathcal A}(0)$ for every
+fixed parameter triple. Taking infima over the same triples proves
+$r_{\mathcal S}^*(\varepsilon)\geq r_{\mathcal S}^*(0)$, even
+when the optimizing triple depends on $\varepsilon$.
+\end{proof}
+
+\subsection{The size of the noiseless margin}
+\begin{lemma}\label{lem:margin}
+For $0<R\leq1/2$, the coefficients \eqref{eq:coefficients} satisfy
+$0<m<q^2<1$ and $d_-R^2\leq\Delta\leq d_+R^2$.
+\end{lemma}
+\begin{proof}
+Let $u=R^2$, $B=\sqrt{\chi^2-1}>0$, and
+$A(u)=\sqrt{\chi^2-u}$. Rationalizing the numerator in
+\eqref{eq:coefficients} yields the following representation of
+$s(u)=\sqrt{m(u)}$:
+\begin{equation}\label{eq:rationalm}
+ s(u)=\frac{\sqrt{1-u}}{A(u)+B},\qquad
+ s(0)=\frac1{\chi+B}=q,\qquad
+ m(u)=\frac{1-u}{(A(u)+B)^2}.
+\end{equation}
+Taking logarithmic derivatives in \eqref{eq:rationalm} and using
+$A(u)^2-B^2=1-u$ gives exact derivative identities:
+\begin{equation}\label{eq:derivative}
+ \frac{s'(u)}{s(u)}=-\frac{B}{2A(u)(1-u)},\qquad
+ -m'(u)=\frac{m(u)B}{A(u)(1-u)},\qquad
+ -m'(0)=\frac{q^2B}{\chi}=d_0.
+\end{equation}
+The last equality in \eqref{eq:derivative} follows from
+$B/\chi=2\sqrt\kappa/(\kappa+1)$.
+
+For $0\leq u\leq1/4$, \eqref{eq:rationalm} implies
+$m(u)\geq(1-u)q^2\geq3q^2/4$, while
+\eqref{eq:derivative} implies $m(u)\leq q^2$.
+Also $3\chi/4\leq A(u)\leq\chi$: for the lower bound,
+$\chi^2-u\geq\chi^2-1/4\geq9\chi^2/16$ because $\chi>1$.
+Together with $1-u\geq3/4$, these estimates give
+$(3/4)d_0\leq -m'(u)\leq(16/9)d_0<2d_0$.
+Integration therefore provides the required explicit margin:
+\begin{equation}\label{eq:margin}
+ \Delta=\int_0^{R^2}[-m'(u)]\,du,\qquad
+ d_-R^2\leq\Delta\leq d_+R^2 .
+\end{equation}
+Equation \eqref{eq:margin} also proves $\Delta>0$. These bounds hold
+throughout the stated interval.
+\end{proof}
+
+\subsection{The two-step transition}
+\begin{lemma}\label{lem:trace}
+For every $\lambda\in\Lambda_R$, the noiseless two-step state matrix
+has determinant $m^2$ and trace of absolute value at most $2m$.
+\end{lemma}
+\begin{proof}
+For phase $r\in\{0,1\}$ put $c_r(\lambda)=1+m-\alpha_r\lambda$.
+The one-step and two-step matrices are
+\begin{equation}\label{eq:transitions}
+ T_r(\lambda)=\begin{pmatrix}c_r(\lambda)&-m\\1&0\end{pmatrix},
+ \qquad
+ M_\lambda=T_1(\lambda)T_0(\lambda)
+   =\begin{pmatrix}c_1c_0-m&-mc_1\\c_0&-m\end{pmatrix}.
+\end{equation}
+Each factor in \eqref{eq:transitions} has determinant $m$, so
+$\det M_\lambda=m^2$. Substitution of the step sizes gives
+the trace polynomial
+\begin{equation}\label{eq:tracepoly}
+ \tr M_\lambda
+   =(1+m)^2\frac{(\lambda-a)(\lambda-b)}{ab}-2m .
+\end{equation}
+To evaluate \eqref{eq:tracepoly} at the band endpoints, use the
+quantities $A,B,u,s$ from Lemma \ref{lem:margin}.
+The identities
+$s=(A-B)/\sqrt{1-u}$ and $1/s=(A+B)/\sqrt{1-u}$ imply
+$s+1/s=2A/\sqrt{1-u}$. Squaring this equality gives
+\begin{equation}\label{eq:equioscillation}
+ (1+m)^2\frac{1-R^2}{\chi^2-R^2}=4m,\qquad
+ \frac{(L-a)(L-b)}{ab}
+ =\frac{(\mu-a)(\mu-b)}{ab}
+ =\frac{1-R^2}{\chi^2-R^2}.
+\end{equation}
+Equations \eqref{eq:tracepoly} and \eqref{eq:equioscillation}
+give trace $2m$ at $\mu,L$ and trace $-2m$ at $a,b$.
+The polynomial $(\lambda-a)(\lambda-b)$ decreases on $[\mu,a]$
+and increases on $[b,L]$, since its derivative is $2\lambda-a-b$
+and $a+b=L+\mu$. Thus its values do not exceed the endpoint
+range within either band. This proves the trace bound.
+\end{proof}
+
+\subsection{An energy valid at repeated roots}
+For a real symmetric positive definite matrix $P$, use the energy
+norm $\norm{v}_P=(v^TPv)^{1/2}$ and its induced operator norm
+$\norm{A}_P=\sup_{v\ne0}\norm{Av}_P/\norm{v}_P$.
+The next lemma avoids an eigenvector condition number, which would
+be singular at a defective endpoint.
+
+\begin{lemma}\label{lem:energy}
+Let $M\in\R^{2\times2}$, $m>0$, $\det M=m^2$, and
+$|\tr M|\leq2m$. For every $\delta>0$, there is a symmetric
+$P_\delta\succeq\delta^2I_2$ such that
+$\norm{M}_{P_\delta}\leq m+\delta$.
+\end{lemma}
+\begin{proof}
+Set $t=\tr M/2$, $N=M-tI_2$, and $\omega^2=m^2-t^2\geq0$.
+Cayley--Hamilton gives $N^2=-\omega^2I_2$. Define the
+unregularized and regularized energies by
+\begin{equation}\label{eq:energydef}
+ P_0=N^TN+\omega^2I_2,\qquad
+ P_\delta=P_0+\delta^2I_2 .
+\end{equation}
+The first matrix in \eqref{eq:energydef} can be singular.
+The second is positive definite even when $\omega=0$.
+Direct multiplication using $N^2=-\omega^2I_2$ yields
+\begin{equation}\label{eq:energyidentities}
+ N^TP_0+P_0N=0,\qquad
+ N^TP_0N=\omega^2P_0,\qquad
+ M^TP_0M=(t^2+\omega^2)P_0=m^2P_0 .
+\end{equation}
+For example, in the first identity in \eqref{eq:energyidentities},
+$(N^T)^2N=-\omega^2N$ and $N^TN^2=-\omega^2N^T$ cancel the
+remaining terms. In the second, $(N^2)^TN^2=\omega^4I_2$.
+Expanding the regularization using these identities gives an
+explicit sum of positive semidefinite terms:
+\begin{equation}\label{eq:sos}
+\begin{split}
+ &(m^2+m\delta+\delta^2)P_\delta-M^TP_\delta M\\
+ &\quad=m\delta
+       \left(N-\frac{t\delta}{m}I_2\right)^T
+       \left(N-\frac{t\delta}{m}I_2\right)\\
+ &\qquad\quad+
+   \left[\omega^2\left(m\delta+2\delta^2+\frac{\delta^3}{m}\right)
+                 +\delta^4\right]I_2 .
+\end{split}
+\end{equation}
+Every coefficient on the right of \eqref{eq:sos} is nonnegative.
+Consequently the desired matrix inequality follows:
+\begin{equation}\label{eq:energybound}
+ M^TP_\delta M\preceq(m^2+m\delta+\delta^2)P_\delta
+                  \preceq(m+\delta)^2P_\delta .
+\end{equation}
+By the definition of the induced norm, \eqref{eq:energybound}
+proves the claim. Neither diagonalizability nor a nonzero
+$\omega$ was assumed.
+\end{proof}
+
+\subsection{Uniform control of arbitrary vector errors}
+\begin{lemma}\label{lem:vector}
+Let $0<R\leq1/2$, $0<\delta\leq1$, and $0\leq\varepsilon<1$.
+For each admissible Hessian $H$, a single positive definite energy
+matrix $P_H$ bounds every two-step block of \eqref{eq:chb}
+by $m+\delta+\cK\cG\varepsilon/\delta$ in its induced norm.
+The norm-equivalence constants are independent of $H$ and $d$.
+\end{lemma}
+\begin{proof}
+Let $H=Q\diag(\lambda_1,\ldots,\lambda_d)Q^T$, where $Q$ is
+orthogonal. In the state $z_k=(\xi_k^T,\xi_{k-1}^T)^T$, apply
+$Q^T$ to each component and permute the coordinates into pairs.
+The noiseless two-step matrix $M_H=T_1(H)T_0(H)$ then becomes
+the direct sum of the matrices $M_{\lambda_i}$ in
+\eqref{eq:transitions}. Here
+$T_r(H)=\left(\begin{smallmatrix}(1+m)I_d-\alpha_rH&-mI_d\\
+I_d&0\end{smallmatrix}\right)$.
+Take the direct sum of the energies in Lemma \ref{lem:energy}
+and transform it back by the same orthogonal change of coordinates;
+call the resulting matrix $P_H$.
+
+We bound the phases separately. From $0<R\leq1/2$ and
+\eqref{eq:class},
+$(L+3\mu)/4\leq a\leq(L+\mu)/2$ and
+$(L+\mu)/2\leq b\leq(3L+\mu)/4$.
+Together with $1+m<2$, these intervals imply
+$\alpha_rL\leq\mathsf A_r$. For $\lambda\in[\mu,L]$,
+$1-\lambda/a$ lies between $-3(\kappa-1)/(\kappa+3)$ and
+$(\kappa-1)/(\kappa+1)$; $1-\lambda/b$ lies between
+$-(\kappa-1)/(\kappa+1)$ and $3(\kappa-1)/(3\kappa+1)$.
+The larger absolute endpoint in each interval gives
+$|c_r(\lambda)|\leq\mathsf B_r$.
+The scalar Frobenius norm therefore satisfies
+$\norm{T_r(\lambda)}\leq\sqrt{\mathsf B_r^2+m^2+1}\leq\cT_r$.
+The norm of the full direct sum is its largest block norm, so
+$\norm{T_r(H)}\leq\cT_r$ without a dimension factor.
+
+In each scalar block, $|t|\leq m\leq1$,
+$\norm{N}\leq\norm{M_\lambda}+|t|\leq\cT_1\cT_0+1$, and
+$\omega^2\leq1$. Since $\delta\leq1$,
+\eqref{eq:energydef} and Lemma \ref{lem:energy} yield
+\begin{equation}\label{eq:uniformenergy}
+\begin{gathered}
+ \delta^2I_{2d}\preceq P_H\preceq\cK^2I_{2d},\qquad
+ \norm{M_H}_{P_H}\leq m+\delta,\\
+ \norm{F}_{P_H}\leq\frac{\cK}{\delta}\norm{F}
+ \qquad\text{for every }F\in\R^{2d\times2d}.
+\end{gathered}
+\end{equation}
+The choice $\cK^2=(\cT_0\cT_1+1)^2+2$ in
+\eqref{eq:auxconstants} proves the upper bound in
+\eqref{eq:uniformenergy}. The last inequality follows from its
+two norm-equivalence bounds. It applies to all matrices $F$,
+including those that mix the Hessian eigenspaces. Although $P_H$
+depends on $H$, the constants in \eqref{eq:uniformenergy} do not.
+
+To represent an arbitrary error along a realized path, let
+$h_k=H\xi_k$. If $h_k\ne0$, define a real rank-one matrix by
+\begin{equation}\label{eq:errorrepresentation}
+ D_k=\frac{e_kh_k^T}{\norm{h_k}^2},\qquad
+ e_k=D_kh_k,\qquad
+ \norm{D_k}=\frac{\norm{e_k}}{\norm{h_k}}\leq\varepsilon .
+\end{equation}
+If $h_k=0$, the relative error assumption forces $e_k=0$ and
+we set $D_k=0$. Equation \eqref{eq:errorrepresentation} is
+a pathwise representation, not an assumption on the error mechanism.
+In particular $D_k$ may depend on the current state and the history.
+For $k=2j+r$, the perturbed state transition is
+\begin{equation}\label{eq:onesteppert}
+\begin{split}
+ z_{k+1}&=(T_r(H)+E_{r,j})z_k,\\
+ E_{r,j}&=\begin{pmatrix}-\alpha_rD_{2j+r}H&0\\0&0\end{pmatrix},
+ \qquad \norm{E_{r,j}}\leq\mathsf A_r\varepsilon .
+\end{split}
+\end{equation}
+All blocks in \eqref{eq:onesteppert} have size $d\times d$.
+Multiplying two consecutive transitions along the same path gives
+\begin{equation}\label{eq:twosteppert}
+\begin{split}
+ z_{2j+2}&=(M_H+F_j)z_{2j},\\
+ F_j&=T_1(H)E_{0,j}+E_{1,j}T_0(H)+E_{1,j}E_{0,j},\\
+ \norm{F_j}&\leq(\cT_1\mathsf A_0+\cT_0\mathsf A_1)\varepsilon
+                  +\mathsf A_0\mathsf A_1\varepsilon^2
+             \leq\cG\varepsilon .
+\end{split}
+\end{equation}
+The final bound in \eqref{eq:twosteppert} uses $\varepsilon<1$
+and the definition of $\cG$. Dependence of $D_{2j+1}$ on the first
+step does not alter this exact pathwise product.
+
+The triangle inequality, together with \eqref{eq:uniformenergy} and
+\eqref{eq:twosteppert}, bounds every block in the same energy:
+\begin{equation}\label{eq:blockbound}
+ \norm{M_H+F_j}_{P_H}\leq
+ \gamma:=m+\delta+\frac{\cK\cG}{\delta}\varepsilon,\qquad
+ \norm{z_{2j}}\leq\frac{\cK}{\delta}\gamma^j\norm{z_0}.
+\end{equation}
+The second estimate in \eqref{eq:blockbound} follows by iterating in
+the energy norm and converting to the Euclidean norm only at the initial
+and final states. Thus the norm-equivalence constants enter once.
+
+Initially, $\norm{z_0}=\sqrt2\norm{\xi_0}$.
+For odd indices we use the bound
+$\norm{T_0(H)+E_{0,j}}\leq\cT_0+\mathsf A_0\varepsilon$.
+Equation \eqref{eq:blockbound} then gives both parity bounds:
+\begin{equation}\label{eq:parities}
+\begin{split}
+ \norm{\xi_{2j}}&\leq
+       \frac{\sqrt2\cK}{\delta}\gamma^j\norm{\xi_0},\\
+ \norm{\xi_{2j+1}}&\leq
+       \frac{\sqrt2\cK}{\delta}(\cT_0+\mathsf A_0\varepsilon)
+                    \gamma^j\norm{\xi_0}.
+\end{split}
+\end{equation}
+Since $\gamma>0$, the two estimates in \eqref{eq:parities}
+combine into the prefactor form of \eqref{eq:prefactor}.
+This proves the lemma, including its uniformity assertion.
+\end{proof}
+
+\subsection{The sufficient error level}
+We prove the lower bound in \eqref{eq:fourthpower} and the
+all-iterate estimate \eqref{eq:prefactor}.
+Lemma \ref{lem:margin} gives $0<\Delta<q^2<1$, so
+$\delta=\Delta/2$ is permitted in Lemma \ref{lem:vector}.
+For $0\leq\varepsilon<c_\kappa R^4$, we have
+$\varepsilon<1$ because $c_\kappa\leq1$ and $R\leq1/2$.
+The choices in \eqref{eq:mainconstants} and the margin
+\eqref{eq:margin} imply
+\begin{equation}\label{eq:strictmargin}
+ \frac{\cK\cG\varepsilon}{\delta}
+ <\frac{d_-^2R^4}{4\delta}
+ \leq\frac{\Delta^2}{4\delta}
+ =\frac{\Delta}{2},\qquad
+ \gamma<m+\frac{\Delta}{2}+\frac{\Delta}{2}=q^2 .
+\end{equation}
+Using \eqref{eq:strictmargin} in \eqref{eq:parities} proves
+\eqref{eq:prefactor} and
+$r_{\mathcal C}(\varepsilon)\leq\sqrt\gamma<q$.
+Every $\varepsilon<c_\kappa R^4$ is in the strict-rate set
+of \eqref{eq:threshold}, so its supremum is at least
+$c_\kappa R^4$. No strict-rate claim is needed at
+the endpoint $\varepsilon=c_\kappa R^4$.
+
+\subsection{A matching upper order and output observability}
+\begin{lemma}\label{lem:upper}
+Let $0<R\leq1/2$. Define positive dimensionless quantities
+$D_R,B_R,V$ and a scalar upper threshold $\varepsilon_U$ by
+\begin{equation}\label{eq:upperthreshold}
+\begin{gathered}
+ D_R=\alpha_0\alpha_1L(L-\mu),\qquad
+ B_R=\alpha_0\alpha_1L^2,\qquad
+ V=\frac{\Delta^2}{q^2},\\
+ \varepsilon_U
+ =\frac{\sqrt{D_R^2+4B_RV}-D_R}{2B_R}
+ =\frac{2V}{D_R+\sqrt{D_R^2+4B_RV}} .
+\end{gathered}
+\end{equation}
+If $\varepsilon_U<1$, then
+$\varepsilon_{\crit}(\kappa,R)\leq\varepsilon_U$.
+\end{lemma}
+\begin{proof}
+Take $d=1$, $H=L$, $x^\star=0$, $x_{-1}=x_0=1$,
+and the admissible multiplicative error $e_k=\varepsilon Lx_k$.
+The actual Hessian remains $L$ and satisfies \eqref{eq:class}.
+The state transition is obtained from \eqref{eq:transitions}
+at the effective value $\lambda_{\mathrm{eff}}=L(1+\varepsilon)$.
+This substitution describes the erroneous oracle, not a Hessian
+outside the problem class.
+
+The trace formula \eqref{eq:tracepoly}, $a+b=L+\mu$, and
+$\tr M_L=2m$ give the perturbed trace and its larger eigenvalue:
+\begin{equation}\label{eq:upperroot}
+\begin{split}
+ \tr M_{\lambda_{\mathrm{eff}}}&=2m+u_\varepsilon,\qquad
+ u_\varepsilon=D_R\varepsilon+B_R\varepsilon^2,\\
+ \rho_+(\varepsilon)&=
+       m+\frac{u_\varepsilon}{2}
+        +\sqrt{mu_\varepsilon+\frac{u_\varepsilon^2}{4}} .
+\end{split}
+\end{equation}
+The determinant remains $m^2$. For $\varepsilon>0$ the two
+eigenvalues are distinct and positive. The larger one in
+\eqref{eq:upperroot} equals $q^2$ precisely when the trace is
+$q^2+m^2/q^2$, or equivalently when
+$u_\varepsilon=(q^2-m)^2/q^2=V$.
+The unique positive solution is \eqref{eq:upperthreshold}.
+Both $u_\varepsilon$ and $\rho_+(\varepsilon)$ increase with
+$\varepsilon$, so $\rho_+(\varepsilon)\geq q^2$ for
+$\varepsilon\geq\varepsilon_U>0$.
+
+It remains to check that this larger eigenvalue appears in the
+initialized output. At such an $\varepsilon$,
+$\lambda_{\mathrm{eff}}>L>b>a$, hence both
+$c_0(\lambda_{\mathrm{eff}})$ and
+$c_1(\lambda_{\mathrm{eff}})$ are negative.
+For $v=(1,1)^T$ and $M=M_{\lambda_{\mathrm{eff}}}$,
+$(Mv)_2=c_0-m<0$. If $v$ were an eigenvector for the smaller
+positive eigenvalue, this component would be positive.
+Thus the coefficient of the larger eigenvector in the expansion
+of $v$ is nonzero. Further, $M_{12}=-mc_1>0$, so no eigenvector
+can have zero first coordinate. The larger eigenvalue is therefore
+both excited by $v$ and visible in $x_{2j}$. Its contribution gives
+the exact output rate
+\begin{equation}\label{eq:observability}
+ \lim_{j\to\infty}|x_{2j}|^{1/(2j)}
+     =\sqrt{\rho_+(\varepsilon)}\geq q
+ \qquad(\varepsilon_U\leq\varepsilon<1).
+\end{equation}
+Equation \eqref{eq:observability} excludes every such
+$\varepsilon$ from the strict-rate set in \eqref{eq:threshold}.
+This proves the lemma with the prescribed initialization and
+the actual reported output.
+\end{proof}
+
+To finish the upper bound in Theorem \ref{thm:main}, note that
+$D_R\varepsilon_U+B_R\varepsilon_U^2=V$ implies
+$\varepsilon_U\leq V/D_R$.
+Since $ab\leq(L+\mu)^2/4$ and $m\geq3q^2/4$ by
+Lemma~\ref{lem:margin}, we have the
+explicit lower bound on the linear trace perturbation:
+\begin{equation}\label{eq:Dlower}
+ D_R=\frac{(1+m)^2L(L-\mu)}{ab}
+ \geq\frac{4(1+3q^2/4)^2L(L-\mu)}{(L+\mu)^2}
+ =\frac{4(1+3q^2/4)^2\kappa(\kappa-1)}{(\kappa+1)^2}.
+\end{equation}
+Combining \eqref{eq:Dlower} with Lemma \ref{lem:margin} gives
+the required fourth-power upper bound:
+\begin{equation}\label{eq:upperconstant}
+ \varepsilon_U\leq\frac{\Delta^2}{q^2D_R}
+ \leq\frac{d_+^2}{q^2}
+         \frac{(\kappa+1)^2}{4(1+3q^2/4)^2\kappa(\kappa-1)}R^4
+ =C_\kappa R^4 .
+\end{equation}
+For $R\leq R_\kappa$, \eqref{eq:mainconstants} ensures
+$C_\kappa R^4\leq1/2$. Thus \eqref{eq:upperconstant} puts
+$\varepsilon_U$ strictly inside the permitted error interval,
+and Lemma \ref{lem:upper} applies.
+This proves the upper bound in \eqref{eq:fourthpower}.
+The lower bound and the all-iterate estimate were proved above,
+completing Theorem \ref{thm:main}. \hfill$\square$
+\section{Two analytic refinements}\label{sec:refinements}
+The first refinement identifies the noiseless rate for our exact
+initialization. It also quantifies the gain that the error threshold
+preserves.
+
+\begin{corollary}\label{cor:noiseless}
+For $0<R\leq1/2$, $r_{\mathcal C}(0)=\sqrt m$.
+The noiseless rate advantage obeys
+\begin{equation}\label{eq:noiselessgain}
+ \frac{d_-}{2q}R^2\leq q-\sqrt m\leq\frac{d_+}{q}R^2,
+ \qquad
+ \lim_{R\downarrow0}\frac{q-\sqrt m}{R^2}
+       =\frac{q\sqrt\kappa}{\kappa+1}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+At zero error, Lemma \ref{lem:vector} applies for every sufficiently
+small $\delta>0$, giving
+$r_{\mathcal C}(0)\leq\sqrt{m+\delta}$.
+Letting $\delta\downarrow0$ proves
+$r_{\mathcal C}(0)\leq\sqrt m$.
+The prefactor need not remain bounded in this limit: the rate is
+an infimum as defined in \eqref{eq:rate}.
+
+For the reverse inequality take $H=L$, $x^\star=0$, and
+$x_{-1}=x_0=1$. Lemma \ref{lem:trace} gives trace $2m$ and
+determinant $m^2$. With $N=M_L-mI_2$,
+Cayley--Hamilton yields $N^2=0$, and therefore the exact power
+formula is
+\begin{equation}\label{eq:jordanpower}
+ M_L^j=m^j\left(I_2+\frac{j}{m}N\right),\qquad j\geq0 .
+\end{equation}
+For any nonzero vector $v$, the factor in parentheses in
+\eqref{eq:jordanpower} sends $v$ either to $v$ (if $Nv=0$)
+or to a vector with norm asymptotically linear in $j$.
+Thus $\norm{M_L^jv}^{1/j}\to m$.
+An output bound \eqref{eq:rate} with $r<\sqrt m$ would bound
+both coordinates of $z_{2j}=(x_{2j},x_{2j-1})^T$ by a
+constant times $r^{2j}$, contradicting this limit.
+This establishes the claimed noiseless rate.
+
+Finally,
+$\Delta=(q-\sqrt m)(q+\sqrt m)$ and
+$q\leq q+\sqrt m\leq2q$ convert Lemma \ref{lem:margin}
+to the bounds in \eqref{eq:noiselessgain}.
+Equation \eqref{eq:derivative} gives $\Delta/R^2\to d_0$;
+dividing by $q+\sqrt m\to2q$ proves the limit in
+\eqref{eq:noiselessgain}.
+\end{proof}
+
+The second refinement concerns the explicit scalar upper threshold,
+not the exact worst-case threshold over all vector errors.
+
+\begin{corollary}\label{cor:uppercoefficient}
+For fixed $\kappa>1$, the upper threshold
+\eqref{eq:upperthreshold} satisfies
+\begin{equation}\label{eq:upperlimit}
+ \lim_{R\downarrow0}\frac{\varepsilon_U}{R^4}
+      =\frac{\kappa-1}{4(\kappa+1)^2}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+As $R\downarrow0$, the coefficient formula
+\eqref{eq:coefficients} gives
+$m\to q^2$ and
+$\alpha_0,\alpha_1\to4/[\mu(\sqrt\kappa+1)^2]$.
+Consequently
+$D_R\to D_0=16\kappa(\kappa-1)/(\sqrt\kappa+1)^4>0$,
+while $B_R$ remains bounded. By \eqref{eq:derivative},
+$\Delta/R^2\to d_0$.
+The rationalized expression in \eqref{eq:upperthreshold}
+therefore gives
+$\varepsilon_U/R^4\to d_0^2/(q^2D_0)$.
+Substituting the values of $d_0,q,D_0$ simplifies this to
+\eqref{eq:upperlimit}.
+\end{proof}
+
+The scalar construction is only one member of the allowed error
+class. Thus \eqref{eq:upperlimit} does not assert the same limiting
+coefficient for $\varepsilon_{\crit}$. Errors that vary over time or
+mix eigenspaces might produce a smaller critical constant.
+
+\section{Controlled two-band examples}\label{sec:numerics}
+\suppressfloats[t]
+Set $\mu=1/16$, $L=1$, $\kappa=16$, and $q=0.6$ for scalar
+thresholds and 512-query comparisons with fixed noiseless tuning.
+These controlled quadratics are the primary numerical examples: they
+isolate the two-band geometry at a moderate condition number.
+The case $R=1/2$ illustrates the spectral-gap benefit, while $R=1/8$
+shows its reduction as the gap narrows. The two cases keep the
+condition number, initialization, and query budget fixed.
+
+\subsection{Scalar threshold scaling}
+Figure~\ref{fig:scaling} evaluates \eqref{eq:upperthreshold} at
+$R=2^{-j}$, $j=1,\ldots,5$. The local exponent
+$\log(\varepsilon_U(2R)/\varepsilon_U(R))/\log 2$, plotted at the
+smaller gap, decreases from $4.114858$ to $4.001647$.
+At $R=1/32$, $\varepsilon_U/R^4=0.0129807135$ is $0.0380\%$
+above the limit $15/1156$ in \eqref{eq:upperlimit}.
+For $H=L$, the per-query factors at $\varepsilon_U/2$, $\varepsilon_U$,
+and $3\varepsilon_U/2$ lie below, at, and above $q$, respectively.
+This illustrates the scalar obstruction, not the vector-error threshold.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures_v24/Fig1.pdf}
+\caption{Scalar upper obstruction at $\kappa=16$. The left panel
+normalizes \eqref{eq:upperthreshold} by $R^4$; the horizontal line
+is the limiting coefficient in \eqref{eq:upperlimit}. The right
+panel shows the local exponent for consecutive gap halvings.}
+\label{fig:scaling}
+\end{figure}
+
+\subsection{Method comparison at a fixed query budget}
+For $R\in\{1/2,1/8\}$, use $H=\diag(\mu,a,b,L)$ from
+\eqref{eq:class}, $x^\star=0$, and $x_{-1}=x_0=(1,1,1,1)^T$.
+In the stationary family \eqref{eq:stationary}, HB uses $\eta=0$,
+$\alpha=4/(\sqrt L+\sqrt\mu)^2$, and $\beta=q^2$.
+Gradient descent (GD) uses $\alpha=2/(L+\mu)$ and $\beta=\eta=0$.
+The quadratically tuned Nesterov method, denoted NAG-Q, uses
+$\alpha=4/(3L+\mu)$ and
+$\beta=\eta=(\sqrt{3\kappa+1}-2)/(\sqrt{3\kappa+1}+2)$
+\cite[Proposition~1]{lessard2016}. Its gradient, including the
+relative error, is evaluated at $y_k$ in \eqref{eq:stationary}.
+All four methods share Hessians, initializations, error policies,
+and query counts; none is retuned under errors.
+
+The four-method comparison uses exact gradients and scalar errors
+$e_k=(\varepsilon_U/2)\nabla f(y_k)$, with $y_k=x_k$ for CHB, HB,
+and GD. Figure~\ref{fig:finite} plots $D_k=\norm{x_k}/\norm{x_0}$.
+CHB has the smallest terminal distance in both problems and policies,
+also when comparing $\max\{D_{511},D_{512}\}$. With exact gradients,
+the terminal CHB/HB distance ratio increases from
+$9.9911\times10^{-17}$ at $R=1/2$ to $0.1383215$ at $R=1/8$:
+the advantage over HB weakens as the gap narrows.
+The corresponding CHB/NAG-Q ratios are $9.7639\times10^{-55}$
+and $1.3518\times10^{-39}$.
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures_v24/Fig2.pdf}
+\caption{Normalized iterate distances on the controlled two-band quadratics,
+with rest initialization and all four endpoint modes excited.
+The left column is the primary $R=1/2$ example; the right column
+reduces the gap to $R=1/8$ at the same condition number $\kappa=16$.
+The top row uses exact gradients; the bottom row uses scalar
+relative errors with $\varepsilon=\varepsilon_U/2$.
+Each method retains its fixed noiseless tuning.}
+\label{fig:finite}
+\end{figure}
+
+Table~\ref{tab:syntheticfour} also reports the terminal normalized
+objective gap $F_k=[f(x_k)-f^\star]/[f(x_0)-f^\star]$, which
+measures objective accuracy relative to initialization. CHB has the
+smallest $D_{512}$ and $F_{512}$ in both exact-gradient examples;
+the same ordering holds with scalar-half errors. These high-precision
+errors describe convergence on the fixed examples, not runtime gains
+or a general finite-horizon guarantee.
+
+\begin{table}[htbp]
+\centering
+\caption{Terminal distances and objective gaps with exact gradients and
+512 queries in 80/120-digit arithmetic on the controlled examples.
+The definitions of $D_k$ and
+$F_k$ give one at initialization; smaller values are better.}
+\label{tab:syntheticfour}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{$R=1/2$} & \multicolumn{2}{c}{$R=1/8$}\\
+\cmidrule(lr){2-3}\cmidrule(l){4-5}
+Method & $D_{512}$ & $F_{512}$ & $D_{512}$ & $F_{512}$\\
+\midrule
+CHB & $1.0945\times10^{-127}$ & $1.9181\times10^{-254}$ & $1.5152\times10^{-112}$ & $4.0340\times10^{-224}$\\
+HB & $1.0954\times10^{-111}$ & $2.1334\times10^{-222}$ & $1.0954\times10^{-111}$ & $2.1334\times10^{-222}$\\
+GD & $1.0432\times10^{-28}$ & $1.0882\times10^{-56}$ & $1.0432\times10^{-28}$ & $1.0882\times10^{-56}$\\
+NAG-Q & $1.1209\times10^{-73}$ & $1.4786\times10^{-147}$ & $1.1209\times10^{-73}$ & $1.4786\times10^{-147}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The CHB/HB comparisons also cover $e_k=(3\varepsilon_U/2)Hx_k$
+and mixing errors $e_k=(\varepsilon_U/2)Q_kHx_k$, where
+$P(v_1,v_2,v_3,v_4)^T=(v_4,v_1,v_2,v_3)^T$ and $Q_k$ cycles through $P,P^T,-P$, starting with $Q_0=P$.
+Above-threshold CHB/HB per-query factors are $(0.609714,0.647302)$
+at $R=1/2$ and $(0.600501,0.602716)$ at $R=1/8$: both converge
+above $q$. All positive synthetic budgets exceed $c_\kappa R^4$;
+these selected paths do not establish a worst-case vector-error guarantee.
+
+GD and NAG-Q calculations use mpmath 1.3.0 at 80/120 digits.
+Their norm-log discrepancies are below
+$1.06\times10^{-76}$; affine-state discrepancies at $k=1,2,16,64,512$
+are below $4.37\times10^{-76}$. Synthetic CHB/HB objective values
+exist only at saved states.
+
+\section{An illustration with stock index returns}\label{sec:istanbul}
+Use all 536 Istanbul Stock Exchange~\cite{istanbul2013} observations in
+source order: seven raw international returns (SP, DAX, FTSE, NIKKEI,
+BOVESPA, EU, EM) and the USD-based ISE response. Neither date nor TL-based
+ISE enters the design. Before optimization, feature-only screening selected
+Istanbul by the lowest raw condition number among four eligible datasets;
+public candidate records document this targeted selection.
+For $n=536$, design $X\in\R^{n\times7}$, response $y\in\R^n$ and
+coefficients $w\in\R^7$, define the objective, Hessian and gradient by
+\begin{equation}\label{eq:regressionobjective}
+ f(w)=\frac{\norm{Xw-y}^2}{2n},\qquad
+ H=\frac{X^TX}{n},\qquad h=\frac{X^Ty}{n},\qquad g(w)=Hw-h.
+\end{equation}
+Equation \eqref{eq:regressionobjective} defines contemporaneous least squares
+without an intercept, centering, scaling, penalty or train/test split.
+
+The screening eigenvalues $\widehat\lambda_i$ define enclosing bounds
+$\mu=\widehat\lambda_{\min}-\tau$ and
+$L=\widehat\lambda_{\max}+\tau$, where
+$\tau=64u_{\rm fp}\widehat\lambda_{\max}$ and $u_{\rm fp}=2^{-52}$
+is binary64 machine precision. These are floating-point safeguards,
+not interval certificates; the saved high-precision spectrum also lies
+inside these bounds. The resulting $\mu\approx5.23525\times10^{-6}$,
+$L\approx8.56403\times10^{-4}$ and fixed
+$R=0.49644090689845105$ enclose all seven eigenvalues in
+\eqref{eq:class}, with six in the lower band and one in the upper.
+Here $\kappa\approx163.584$. All methods use the fixed tuning rules
+in Section~\ref{sec:numerics}, $w_{-1}=w_0=0$ and 512 queries;
+the bounds and horizon are not retuned. Displayed endpoints are rounded;
+tuning uses the full decimal values in the fixed configuration, and
+$a,b$ are obtained from \eqref{eq:class}, not treated as eigenvalues.
+
+The experiment used the earlier sufficient constant
+$c_\kappa^{\rm p}=\min\{1,d_-^2/(4K_{\rm p}G_{\rm p})\}$, with
+$K_{\rm p}=\sqrt{(4\kappa^2+3)^2+2}$ and
+$G_{\rm p}=4\kappa(\sqrt{4\kappa^2+2}+\kappa)$.
+Here the superscript ${\rm p}$ denotes the fixed protocol.
+Since $\mathsf A_r,\mathsf B_r\leq2\kappa$, the constants in
+\eqref{eq:auxconstants} give $c_\kappa\geq c_\kappa^{\rm p}$.
+Compare exact gradients with errors $e_k=\varepsilon Q_k g(z_k)$,
+where $z_k$ is each method's query point and the unchanged budget is
+$\varepsilon=c_\kappa^{\rm p}R^4/2\approx1.60364486\times10^{-15}$.
+For $P(v_1,\ldots,v_7)^T=(v_7,v_1,\ldots,v_6)^T$,
+$Q_k$ cycles through $P,P^T,-P$ from $Q_0=P$.
+Orthogonality enforces the computational error budget, which lies
+in the sufficient region of Theorem~\ref{thm:main}.
+
+Let $w^\star$ be the exact minimizer, $\widehat w$ the computed QR
+reference, and $r=H\widehat w-h$ its gradient residual. For $k=0,\ldots,512$,
+use the cancellation-free energy
+$E_{\widehat w}(w)=\tfrac12(w-\widehat w)^TH(w-\widehat w)$ to define
+\begin{equation}\label{eq:regressionmetrics}
+ D_k=\frac{\norm{w_k-\widehat w}}{\norm{w_0-\widehat w}},\qquad
+ F_k=\frac{E_{\widehat w}(w_k)}{E_{\widehat w}(w_0)}.
+\end{equation}
+The normalized distance and energy gap in \eqref{eq:regressionmetrics}
+equal one initially. The exact objective difference includes the residual:
+\begin{equation}\label{eq:regressiongap}
+ f(w)-f(\widehat w)=E_{\widehat w}(w)+r^T(w-\widehat w).
+\end{equation}
+In \eqref{eq:regressiongap}, the residual term vanishes at $\widehat w=w^\star$.
+Its magnitude relative to $E_{\widehat w}$ is below $4.95\times10^{-123}$
+at the saved 160-digit checkpoints. The code documents reference-error
+bounds and affine-state checks retaining $r$.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures_v31_final/Fig3_clean.pdf}
+\caption{Istanbul exact-gradient curves for \eqref{eq:regressionmetrics}.
+The inset resolves the first 16 queries of the energy gap and CHB's
+early overshoot. Selected mixing-error curves nearly coincide.}
+\label{fig:istanbul}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Istanbul QR-referenced errors from \eqref{eq:regressionmetrics}. The displayed
+five significant digits coincide under both policies. Smaller is better.}
+\label{tab:istanbulfour}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Method & $D_{511}$ & $D_{512}$ & $F_{512}$\\
+\midrule
+CHB & $6.2203\times10^{-38}$ & $1.8162\times10^{-38}$ & $2.3430\times10^{-75}$\\
+HB & $5.2508\times10^{-33}$ & $4.4980\times10^{-33}$ & $1.4922\times10^{-64}$\\
+GD & $1.4418\times10^{-3}$ & $1.4243\times10^{-3}$ & $2.9875\times10^{-6}$\\
+NAG-Q & $3.3370\times10^{-20}$ & $3.0419\times10^{-20}$ & $4.3029\times10^{-41}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:istanbulfour} reports adjacent terminal queries. To assess both phases, set
+$\widehat D_j=\max\{D_{2j-1},D_{2j}\}$ and
+$\widehat F_j=\max\{F_{2j-1},F_{2j}\}$ for $j=1,\ldots,256$.
+For exact gradients, the terminal CHB/HB ratios of
+$(\widehat D_{256},\widehat F_{256})$ are
+$(1.1846\times10^{-5},1.4300\times10^{-10})$; CHB/NAG-Q gives
+$(1.8640\times10^{-18},5.6153\times10^{-34})$.
+Under both policies, CHB has smaller distances and energy gaps than all
+comparators at every recorded query 62--512.
+
+Figure~\ref{fig:istanbul} also shows substantial early amplification:
+CHB peaks at $F_k\approx62.815$ at query 5 and $D_k\approx2.9221$.
+HB's peak energy gap is about 17.909; GD and NAG-Q remain at or below
+initialization throughout the window.
+
+The 16 trajectories use mpmath 1.3.0 at 120/160 digits, with 160 primary.
+Norm-log discrepancies are below $1.10\times10^{-82}$, affine-state errors
+below $1.57\times10^{-83}$ and normalized QR residuals below
+$2.29\times10^{-122}$. One selected Hessian and a tiny error budget
+establish neither practical noise tolerance nor wall-clock gains.
+
+\section{Interpretation and limitations}\label{sec:discussion}
+The constants in Theorem~\ref{thm:main} are conservative;
+\eqref{eq:upperlimit} concerns only the scalar obstruction. Exact
+vector-error constants and the full rate--robustness tradeoff under
+noise-dependent tuning remain open. The low-dimensional examples
+illustrate the analysis and transients; they do not assess scalability.
+
+At fixed $\kappa$ within the theorem's error range, $\delta$ has order
+$R^2$ and $\gamma$ stays away from zero as $R\downarrow0$, so
+the prefactor in \eqref{eq:prefactor} grows as $R^{-2}$.
+This bound guarantees neither a short-horizon advantage nor monotone
+objective decrease. Extending the fixed-Hessian, equal-width-band
+analysis to unequal bands, nonquadratic objectives, stochastic errors,
+or explicit crossover horizons remains open.
+
+\backmatter
+\section*{Statements and Declarations}
+\subsection*{Funding}
+No funding was received for this work.
+\subsection*{Competing interests}
+The authors declare no competing interests.
+\subsection*{Data and code availability}
+{\raggedright
+The Istanbul Stock Exchange data are available from UCI~\cite{istanbul2013}
+under CC BY 4.0. Code, fixed configurations, candidate-selection records,
+source data and accepted results are public at
+\url{https://github.com/byuzbasi/periodic-momentum}.
+Reproduction guides and figures are available at
+\url{https://byuzbasi.github.io/periodic-momentum/}.\par}
+\subsection*{Use of generative AI}
+During manuscript preparation, ChatGPT
+(OpenAI) was used for English-language editing and stylistic refinement.
+The author reviewed all content and takes full responsibility for the
+accuracy and scientific integrity of the manuscript.
+
+\begin{thebibliography}{12}
+\raggedright
+\bibitem{goujaud2022}
+Goujaud, B., Scieur, D., Dieuleveut, A., Taylor, A.B., Pedregosa, F.:
+Super-acceleration with cyclical step-sizes.
+In: Proceedings of the 25th International Conference on Artificial
+Intelligence and Statistics, PMLR \textbf{151}, 3028--3065 (2022).
+\url{https://proceedings.mlr.press/v151/goujaud22a.html}
+
+\bibitem{oymak2021}
+Oymak, S.: Provable super-convergence with a large cyclical learning rate.
+IEEE Signal Process. Lett. \textbf{28}, 1645--1649 (2021).
+\url{https://doi.org/10.1109/LSP.2021.3101131}
+
+\bibitem{agarwal2021}
+Agarwal, N., Goel, S., Zhang, C.: Acceleration via fractal learning rate schedules.
+In: Proceedings of the 38th International Conference on Machine Learning,
+PMLR \textbf{139}, 87--99 (2021).
+\url{https://proceedings.mlr.press/v139/agarwal21a.html}
+
+\bibitem{gannot2022}
+Gannot, O.: A frequency-domain analysis of inexact gradient methods.
+Math. Program. \textbf{194}, 975--1016 (2022).
+\url{https://doi.org/10.1007/s10107-021-01665-8}
+
+\bibitem{cyrus2018}
+Cyrus, S., Hu, B., Van Scoy, B., Lessard, L.:
+A robust accelerated optimization algorithm for strongly convex functions.
+In: 2018 Annual American Control Conference, pp. 1376--1381 (2018).
+\url{https://doi.org/10.23919/ACC.2018.8430824}
+
+\bibitem{gurbuz2025}
+G\"urb\"uzbalaban, M.: Robustly stable accelerated momentum methods with a
+near-optimal $L_2$ gain and $H_\infty$ performance.
+Math. Oper. Res., published online 5 December 2025.
+\url{https://doi.org/10.1287/moor.2023.0321}
+
+\bibitem{khanh2026}
+Khanh, P.D., Mordukhovich, B.S., Tran, D.B.:
+Convergence of first-order algorithms with momentum from the perspective
+of an inexact gradient descent method.
+J. Optim. Theory Appl. \textbf{208}, article 40 (2026).
+\url{https://doi.org/10.1007/s10957-025-02864-5}
+
+\bibitem{miller2026}
+Miller, J., Jakob, F., Scherer, C., Iannelli, A.:
+Analysis and synthesis of switched optimization algorithms.
+Nonlinear Anal. Hybrid Syst. \textbf{62}, article 101788 (2026).
+\url{https://doi.org/10.1016/j.nahs.2026.101788}
+
+\bibitem{orvieto2025}
+Orvieto, A.: An accelerated Lyapunov function for Polyak's heavy-ball
+on convex quadratics. Optim. Lett. \textbf{19}, 307--328 (2025).
+\url{https://doi.org/10.1007/s11590-024-02119-8}
+
+\bibitem{deklerk2017}
+de Klerk, E., Glineur, F., Taylor, A.B.:
+On the worst-case complexity of the gradient method with exact line search
+for smooth strongly convex functions.
+Optim. Lett. \textbf{11}, 1185--1199 (2017).
+\url{https://doi.org/10.1007/s11590-016-1087-4}
+\bibitem{lessard2016}
+Lessard, L., Recht, B., Packard, A.:
+Analysis and design of optimization algorithms via integral quadratic constraints.
+SIAM J. Optim. \textbf{26}(1), 57--95 (2016).
+\url{https://doi.org/10.1137/15M1009597}
+
+\bibitem{istanbul2013}
+Akbilgic, O.: Istanbul Stock Exchange [Dataset].
+UCI Machine Learning Repository (2013).
+\url{https://doi.org/10.24432/C54P4J}
+
+\end{thebibliography}
+\end{document}

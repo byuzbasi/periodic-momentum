@@ -21,6 +21,9 @@ Rscript --vanilla applications/istanbul/plot.R applications/istanbul/outputs/ist
 ```
 
 Reporting reads saved records and does not fit or optimize a model.
+V32 refines analytic constants only. The saved mixing-error level still
+uses the historical sufficient constant, denoted c_kappa^p in V32 and
+specified in [protocol.md](protocol.md). No tuning input or result changed.
 See [reference/RESULTS.md](reference/RESULTS.md), [protocol.md](protocol.md)
 and [config.json](config.json). Reports are checked against accepted records.
 The numerical record files and all feature/response tokens are unchanged; only the source-file metadata path is made portable.

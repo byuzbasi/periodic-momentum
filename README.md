@@ -10,11 +10,23 @@ Mohammad Arashi**, prepared for *Optimization Letters*.
 
 ![Fourth-power threshold and two spectral bands](docs/assets/mark.svg)
 
-The contribution is a sharp fourth-power order for the relative-gradient-error
+The paper establishes matching fourth-power bounds for the relative-gradient-error
 threshold as a spectral gap closes at fixed condition number. The cyclical
 heavy-ball coefficients are established in the literature; this repository
 does not claim a new optimization algorithm. The paper proves a uniform
 vector-error lower bound and a scalar obstruction of matching order.
+The threshold retains the benchmark rate q; it does not give a full
+rate-robustness tradeoff or a stability margin. The stationary-method
+comparison follows from the exact-gradient barrier.
+
+The [V32 manuscript source](manuscript/v32/main.tex),
+[LaTeX source archive](manuscript/v32/manuscript_source_v32.zip) and
+[revision notes](manuscript/v32/README.md) document the refined constants.
+The compiled manuscript PDF is not distributed in this repository.
+V32 improves the analytic bounds without retuning any experiment.
+The fixed Istanbul protocol and stored `c` values retain the earlier
+sufficient constant, denoted c_kappa^p in V32. All trajectories and
+reported numbers are unchanged.
 
 ## Numerical illustrations
 

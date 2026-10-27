@@ -4,17 +4,29 @@ Research materials for the working manuscript by **Bahadır Yüzbaşı and
 Mohammad Arashi**, prepared for *Optimization Letters*.
 
 [Research companion](https://byuzbasi.github.io/periodic-momentum/) ·
-[Istanbul results](applications/istanbul/reference/RESULTS.md) ·
-[Candidate selection](applications/istanbul/selection/README.md) ·
-[Synthetic comparisons](comparisons/gd-nag/reference/results.md)
+[Istanbul results](https://github.com/byuzbasi/periodic-momentum/blob/main/applications/istanbul/reference/RESULTS.md) ·
+[Candidate selection](https://github.com/byuzbasi/periodic-momentum/blob/main/applications/istanbul/selection/README.md) ·
+[Synthetic comparisons](https://github.com/byuzbasi/periodic-momentum/blob/main/comparisons/gd-nag/reference/results.md)
 
-![Fourth-power threshold and two spectral bands](docs/assets/mark.svg)
+![Fourth-power threshold and two spectral bands](https://raw.githubusercontent.com/byuzbasi/periodic-momentum/main/docs/assets/mark.svg)
 
-The contribution is a sharp fourth-power order for the relative-gradient-error
+The paper establishes matching fourth-power bounds for the relative-gradient-error
 threshold as a spectral gap closes at fixed condition number. The cyclical
 heavy-ball coefficients are established in the literature; this repository
 does not claim a new optimization algorithm. The paper proves a uniform
 vector-error lower bound and a scalar obstruction of matching order.
+The threshold retains the benchmark rate q; it does not give a full
+rate-robustness tradeoff or a stability margin. The stationary-method
+comparison follows from the exact-gradient barrier.
+
+The [V32 manuscript source](https://github.com/byuzbasi/periodic-momentum/blob/main/manuscript/v32/main.tex),
+[LaTeX source archive](https://github.com/byuzbasi/periodic-momentum/blob/main/manuscript/v32/manuscript_source_v32.zip) and
+[revision notes](https://github.com/byuzbasi/periodic-momentum/blob/main/manuscript/v32/README.md) document the refined constants.
+The compiled manuscript PDF is not distributed in this repository.
+V32 improves the analytic bounds without retuning any experiment.
+The fixed Istanbul protocol and stored `c` values retain the earlier
+sufficient constant, denoted c_kappa^p in V32. All trajectories and
+reported numbers are unchanged.
 
 ## Numerical illustrations
 
@@ -34,7 +46,7 @@ establish broad superiority, practical noise tolerance, forecasting accuracy
 or wall-clock speedups. Arithmetic precision is not measurement precision.
 
 For Istanbul, the reported F is normalized quadratic energy about the
-computed QR reference. The [residual check](applications/istanbul/REFERENCE_ACCURACY.md)
+computed QR reference. The [residual check](https://github.com/byuzbasi/periodic-momentum/blob/main/applications/istanbul/REFERENCE_ACCURACY.md)
 distinguishes it from an exact objective difference and bounds reference error.
 The saved numbers and the optimization kernels have not changed.
 
@@ -122,11 +134,11 @@ confuse accepted historical records with a newly validated relocated replay.
 
 Akbilgic, O. (2013). *Istanbul Stock Exchange*. UCI Machine Learning
 Repository. [DOI: 10.24432/C54P4J](https://doi.org/10.24432/C54P4J),
-CC BY 4.0. See [data attribution](data/ATTRIBUTION.txt). The source workbook
+CC BY 4.0. See [data attribution](https://github.com/byuzbasi/periodic-momentum/blob/main/data/ATTRIBUTION.txt). The source workbook
 is unchanged and its selected numeric cells are preserved as text tokens.
-Code is GPL version 3 or later; see [LICENSE](LICENSE.md).
+Code is GPL version 3 or later; see [LICENSE](https://github.com/byuzbasi/periodic-momentum/blob/main/LICENSE.md).
 
-Use [CITATION.cff](CITATION.cff) for both authors and the working manuscript.
+Use [CITATION.cff](https://github.com/byuzbasi/periodic-momentum/blob/main/CITATION.cff) for both authors and the working manuscript.
 No publication DOI is claimed. Both authors declare no competing interests;
 no funding was received for the study.
 
